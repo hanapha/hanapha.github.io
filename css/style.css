@@ -59,7 +59,7 @@ img {
 
 .featured-label {
   display: inline-block;
-  background: #d94b4b;
+  background: #198754;
   color: #fff;
   padding: 4px 10px;
   margin-bottom: 10px;
@@ -85,7 +85,7 @@ img {
 }
 
 .latest-post h6 {
-  background: #C94A4A;
+  background: #198754;
   display: inline-block;
   position: relative;
   line-height: 28px;
@@ -101,8 +101,8 @@ img {
   top: 0;
   right: -12px;
   border-top: 28px solid transparent;
-  border-left: 12px solid #C94A4A;
-  border-left: .75rem solid #C94A4A
+  border-left: 12px solid #198754;
+  border-left: .75rem solid #198754
 }
 
 

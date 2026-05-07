@@ -84,7 +84,7 @@ layout: default
   <!-- SHARE -->
   <div class="share mb-5">
     <h6 class="fw-bold text-uppercase mb-3">
-      <span class="text-succes">/</span> SHARE <span class="text-succes">/</span>
+      <span class="text-success">/</span> SHARE <span class="text-success">/</span>
     </h6>
 
     <div class="d-flex flex-wrap gap-2">
@@ -149,7 +149,7 @@ layout: default
   <div class="related-posts mb-5">
 
     <h6 class="fw-bold text-uppercase mb-3">
-      <span class="text-succes">/</span> RELATED POSTS <span class="text-succes">/</span>
+      <span class="text-success">/</span> RELATED POSTS <span class="text-success">/</span>
     </h6>
 
     <div class="row g-3">
@@ -179,7 +179,7 @@ layout: default
 
       {% if relatedCount < maxRelated %}
       <div class="col-6 col-md-3">
-        <a href="{{ post.url | relative_url }}" class="text-decoration-none text-succes">
+        <a href="{{ post.url | relative_url }}" class="text-decoration-none text-success">
 
           {% if post.image %}
           <img class='img-fluid rounded-0 mb-2 ' src="{{ post.image | relative_url }}"
@@ -209,7 +209,7 @@ layout: default
       {% for post in site.posts limit:8 %}
       {% if post.url != page.url %}
       <div class="col-6 col-md-3">
-        <a href="{{ post.url | relative_url }}" class="text-decoration-none text-succes">
+        <a href="{{ post.url | relative_url }}" class="text-decoration-none text-success">
           {% if post.image %}
           <img class="img-fluid rounded-0 mb-2" src="{{ post.image | relative_url }}">
           {% endif %}
