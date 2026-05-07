@@ -17,7 +17,7 @@ layout: default
 
         {% if page.categories.size > 0 %}
         <a href="{{ '/categories/' | append: page.categories.first | append: '/' | relative_url }}"
-          class="text-danger text-capitalize fw-semibold text-decoration-none">
+          class="text-succes text-capitalize fw-semibold text-decoration-none">
 
           {{ page.categories | first }}
 
@@ -84,7 +84,7 @@ layout: default
   <!-- SHARE -->
   <div class="share mb-5">
     <h6 class="fw-bold text-uppercase mb-3">
-      <span class="text-danger">/</span> SHARE <span class="text-danger">/</span>
+      <span class="text-succes">/</span> SHARE <span class="text-succes">/</span>
     </h6>
 
     <div class="d-flex flex-wrap gap-2">
@@ -149,7 +149,7 @@ layout: default
   <div class="related-posts mb-5">
 
     <h6 class="fw-bold text-uppercase mb-3">
-      <span class="text-danger">/</span> RELATED POSTS <span class="text-danger">/</span>
+      <span class="text-succes">/</span> RELATED POSTS <span class="text-succes">/</span>
     </h6>
 
     <div class="row g-3">
@@ -179,7 +179,7 @@ layout: default
 
       {% if relatedCount < maxRelated %}
       <div class="col-6 col-md-3">
-        <a href="{{ post.url | relative_url }}" class="text-decoration-none text-danger">
+        <a href="{{ post.url | relative_url }}" class="text-decoration-none text-succes">
 
           {% if post.image %}
           <img class='img-fluid rounded-0 mb-2 ' src="{{ post.image | relative_url }}"
@@ -209,7 +209,7 @@ layout: default
       {% for post in site.posts limit:8 %}
       {% if post.url != page.url %}
       <div class="col-6 col-md-3">
-        <a href="{{ post.url | relative_url }}" class="text-decoration-none text-danger">
+        <a href="{{ post.url | relative_url }}" class="text-decoration-none text-succes">
           {% if post.image %}
           <img class="img-fluid rounded-0 mb-2" src="{{ post.image | relative_url }}">
           {% endif %}
