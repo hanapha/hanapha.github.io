@@ -1,0 +1,74 @@
+<div class="readmore-list bg-light rounded-0 border border-1 my-4 p-4">
+
+  <h6 class="fw-bold text-uppercase mb-3">
+    <span class="text-danger">/</span> READ MORE <span class="text-danger">/</span>
+  </h6>
+
+  {% assign related_posts = site.posts | where_exp: "post", "post.url != page.url" %}
+  {% assign count = 0 %}
+  {% assign found = false %}
+
+  <!-- PRIORITY: TAG MATCH -->
+  {% if page.tags and page.tags.size > 0 %}
+
+  {% for post in related_posts %}
+
+  {% assign match = false %}
+
+  {% if post.tags %}
+
+  {% for tag in post.tags %}
+  {% if page.tags contains tag %}
+  {% assign match = true %}
+  {% break %}
+  {% endif %}
+  {% endfor %}
+
+  {% endif %}
+
+  {% if match %}
+
+  {% assign found = true %}
+
+  <div class="card mb-1 rounded-0  border-0 shadow-none">
+    <div class="card-body py-1">
+
+      <a href="{{ post.url | relative_url }}" class="text-decoration-none text-danger">
+        {{ post.title }}
+      </a>
+
+    </div>
+  </div>
+
+  {% assign count = count | plus: 1 %}
+
+  {% if count == 5 %}
+  {% break %}
+  {% endif %}
+
+  {% endif %}
+
+  {% endfor %}
+
+  {% endif %}
+
+  <!-- FALLBACK -->
+  {% if found == false %}
+
+  {% for post in related_posts limit:5 %}
+
+  <div class="card mb-1 border-0 rounded-0 shadow-none">
+    <div class="card-body py-1">
+
+      <a href="{{ post.url | relative_url }}" class="text-decoration-none text-danger">
+        {{ post.title }}
+      </a>
+
+    </div>
+  </div>
+
+  {% endfor %}
+
+  {% endif %}
+
+</div>

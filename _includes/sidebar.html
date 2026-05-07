@@ -1,0 +1,93 @@
+<div class="col-lg-4 mt-4 mt-lg-0 w-100 sidebar">
+
+  <!-- RECENT POSTS -->
+  <section class="card rounded-0 border-0 shadow-none bg-light mb-4">
+    <div class="card-body">
+      <div class="widget-title">
+        <h6 class="fw-bold">RECENT</h6>
+      </div>
+      {% for post in site.posts limit:10 %}
+      {% if post.url != page.url %}
+      <div class="d-flex mb-3">
+
+        {% if post.image %}
+        <div class="me-2">
+          <a href="{{ post.url | relative_url }}">
+            <img src="{{ post.image | relative_url }}" style="min-width: 120px; height: 75px; object-fit: cover;"
+              loading="lazy">
+          </a>
+        </div>
+        {% endif %}
+
+        <div>
+          <a href="{{ post.url | relative_url }}" class="text-decoration-none text-dark">
+            <small class="fw-semibold d-block">
+              {{ post.title | truncate: 50 }}
+            </small>
+          </a>
+        </div>
+
+      </div>
+      {% endif %}
+      {% endfor %}
+
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="card rounded-0 border-0 shadow-none bg-light mb-4">
+    <div class="card-body">
+      <div class="widget-title">
+        <h6 class="fw-bold">CATEGORIES</h6>
+      </div>
+      <ul class="list-unstyled mb-0">
+        {% for category in site.categories %}
+        <li class="mb-2 d-flex justify-content-between">
+          <a href="/categories/#{{ category[0] | slugify | downcase }}"
+            class="text-capitalize text-decoration-none">
+            {{ category[0] }}
+          </a>
+          <span class="badge bg-light text-dark">
+            {{ category[1].size }}
+          </span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+
+  <!-- STICKY WIDGET -->
+  <section id="sidebar-sticky" class="col-lg-4 mt-4 mt-lg-0 w-100">
+    <div class="card rounded-0 border-0 shadow-none bg-light">
+      <div class="card-body">
+        <div class="widget-title">
+          <h6 class="fw-bold">SPONSOR</h6>
+        </div>
+        <p class="small text-muted mb-2 text-center">
+          {% include ad.html %}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES CLOUD -->
+  <section class="card rounded-0 border-0 shadow-none bg-light mb-4">
+    <div class="card-body">
+      <div class="widget-title">
+        <h6 class="fw-bold">TAGS</h6>
+      </div>
+      <div class="d-flex flex-wrap gap-1">
+        {% assign sorted_categories = site.categories | sort %}
+        {% for category in sorted_categories %}
+        {% if category[0] != "" %}
+        <a href="/categories/#{{ category[0] | slugify | downcase }}"
+          class="small text-decoration-none border border-1 text-capitalize px-2 py-1 rounded">
+          {{ category[0] }}
+        </a>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+</div>

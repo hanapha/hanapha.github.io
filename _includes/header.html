@@ -1,0 +1,102 @@
+<header class="bg-white">
+
+    <!-- TOP MENU -->
+    <div class="border-bottom border-3 border-light">
+        <ul class="nav small text-uppercase fw-bold gap-3">
+            <li class="nav-item small">
+                <a class="nav-link px-0 text-secondary" href="/">Home</a>
+            </li>
+            <li class="nav-item small">
+                <a class="nav-link px-0 text-secondary" href="/about">
+                    About
+                </a>
+            </li>
+            <li class="nav-item small">
+                <a class="nav-link px-0 text-secondary" href="/privacy">
+                    Privacy
+                </a>
+            </li>
+            <li class="nav-item small">
+                <a class="nav-link px-0 text-secondary" href="/contact">
+                    Contact
+                </a>
+            </li>
+            <li class="nav-item small">
+                <a class="nav-link px-0 text-secondary" href="/sitemap">
+                    Sitemap
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- LOGO -->
+    <div class="py-4">
+        <a href="/" class="text-decoration-none">
+            <h4 class="text-danger fw-bold text-uppercase m-0">
+                {{ site.title }}
+            </h4>
+        </a>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-danger border-5 py-0">
+        <!-- MOBILE BUTTON -->
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- MENU -->
+        <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav me-auto text-uppercase fw-bold small">
+                <li class="nav-item border border-danger">
+                    <a class="nav-link text-white active bg-danger px-2" href="/">
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item border border-dark">
+                    <a class="nav-link text-white px-2" href="/categories/#abstract">
+                        Abstract
+                    </a>
+                </li>
+                <li class="nav-item border border-dark">
+                    <a class="nav-link text-white px-2" href="/categories/#aesthetic">
+                        Aesthetic
+                    </a>
+                </li>
+                <li class="nav-item border border-dark">
+                    <a class="nav-link text-white px-2" href="/categories/#background">
+                        Background
+                    </a>
+                </li>
+                <li class="nav-item border border-dark">
+                    <a class="nav-link text-white px-2" href="/categories/#landscape">
+                        Landscape
+                    </a>
+                </li>
+                <li class="nav-item border border-dark">
+                    <a class="nav-link text-white px-2" href="/categories/#nature">
+                        Nature
+                    </a>
+                </li>
+                <li class="nav-item border border-dark">
+                    <a class="nav-link text-white px-2" href="/categories/#wallpaper">
+                        Wallpaper
+                    </a>
+                </li>
+            </ul>
+
+            <!-- SEARCH -->
+            <form class="d-flex border border-left border-dark" action="/search/" method="get">
+                <input class="form-control rounded-0 border-0" type="search" name="q" placeholder="Search...">
+                <button class="btn btn-danger rounded-0 px-2" type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </form>
+        </div>
+    </nav>
+</header>
+
+<!-- AD -->
+<div class="my-4 text-center overflow-hidden">
+    {% include ad.html %}
+</div>

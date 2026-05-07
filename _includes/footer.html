@@ -1,0 +1,35 @@
+<footer class='footer container'>
+  <div class='gmr-bgstripes'>
+    <span class='gmr-bgstripe gmr-color1'></span><span class='gmr-bgstripe gmr-color2'></span>
+    <span class='gmr-bgstripe gmr-color3'></span><span class='gmr-bgstripe gmr-color4'></span>
+    <span class='gmr-bgstripe gmr-color5'></span><span class='gmr-bgstripe gmr-color6'></span>
+    <span class='gmr-bgstripe gmr-color7'></span><span class='gmr-bgstripe gmr-color8'></span>
+    <span class='gmr-bgstripe gmr-color9'></span><span class='gmr-bgstripe gmr-color10'></span>
+    <span class='gmr-bgstripe gmr-color11'></span><span class='gmr-bgstripe gmr-color12'></span>
+    <span class='gmr-bgstripe gmr-color13'></span><span class='gmr-bgstripe gmr-color14'></span>
+    <span class='gmr-bgstripe gmr-color15'></span><span class='gmr-bgstripe gmr-color16'></span>
+    <span class='gmr-bgstripe gmr-color17'></span><span class='gmr-bgstripe gmr-color18'></span>
+    <span class='gmr-bgstripe gmr-color19'></span><span class='gmr-bgstripe gmr-color20'></span>
+  </div>
+  <!--* navigasi *-->
+  <nav class='footer-navmenu'>
+    <ul>
+      <li><a href='/about/'>About</a></li>
+      <li><a href='/contact/'>Contact</a></li>
+      <li><a href='/privacy/'>Privacy Policy</a></li>
+      <li><a href='/disclaimer/'>Disclaimer</a></li>
+      <li><a href='/sitemap/'>Sitemap</a></li>
+    </ul>
+  </nav>
+  <div class="credit col-12 pt-4 text-center">
+    Copyright © {{ site.time | date: "%Y" }}
+    {% if site.copyright.name %}
+    <a href="{{site.copyright.link}}" class='text-warning text-decoration-none text-capitalize fw-bolder'
+      target="_blank">
+      {{site.copyright.name}}
+    </a>
+    {% else %}
+    {{ site.title }}
+    {% endif %}
+  </div>
+</footer>

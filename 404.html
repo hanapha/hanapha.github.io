@@ -1,0 +1,47 @@
+---
+title: "404"
+layout: default
+permalink: /404.html
+---
+
+{% assign random_posts = site.posts | sample: 12 %}
+{% if random_posts == empty %}
+{% assign random_posts = site.posts %}
+{% endif %}
+
+{% for post in random_posts %}
+<div class="col-12 col-md-6 col-lg-4">
+    <div class="card modern-card h-100 border-0">
+        <a href="{{ post.url | relative_url }}" class="text-decoration-none text-dark">
+            {% if post.image %}
+            <div class="overflow-hidden position-relative">
+                <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" class="card-img rounded-0"
+                    style="aspect-ratio: 16/9; object-fit: cover;" loading="lazy">
+            </div>
+            {% endif %}
+
+            <div class="card-body py-3 px-0">
+                <h4 class="fw-semibold mb-2 text-capitalize">
+                    {{ post.title }}
+                </h4>
+                {% if post.categories.size > 0 %}
+                <a href="{{ '/categories/' | append: post.categories.first | append: '/' | relative_url }}"
+                    class="text-danger small text-capitalize fw-semibold text-decoration-none d-block mb-2">
+                    {{ post.categories | first }}
+                </a>
+                {% endif %}
+
+                <p class="text-muted excerpt">
+                    {{ post.excerpt | strip_html | truncate: 100 }}
+                </p>
+            </div>
+        </a>
+    </div>
+</div>
+{% endfor %}
+
+<div class="justify-content-center text-center my-4">
+    <a href="{{ '/' | relative_url }}" class="btn btn-primary rounded-0">
+        &laquo; Back to Home
+    </a>
+</div>

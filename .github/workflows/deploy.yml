@@ -1,0 +1,30 @@
+name: Jekyll Deploy Clean
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2"
+          bundler-cache: false
+
+      - name: Install bundler
+        run: gem install bundler
+
+      - name: Clean
+        run: rm -rf Gemfile.lock vendor _site .jekyll-cache
+
+      - name: Install deps
+        run: bundle install
+
+      - name: Build
+        run: bundle exec jekyll build

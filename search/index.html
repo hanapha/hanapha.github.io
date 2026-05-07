@@ -1,0 +1,132 @@
+---
+layout: default
+title: Search
+permalink: /search/
+---
+
+<div class="my-5">
+
+  <h6 class="fw-bold text-uppercase mb-3">
+    <span class="text-danger">/</span> SEARCH RESULTS <span class="text-danger">/</span>
+  </h6>
+
+  <div id="search-info" class="mb-3 text-muted small"></div>
+
+  <div class="row g-4" id="search-result"></div>
+
+</div>
+
+<script>
+
+/* =========================
+   GET QUERY SAFE
+========================= */
+function getQuery() {
+  const params = new URLSearchParams(window.location.search);
+  return (params.get("q") || "").trim().toLowerCase();
+}
+
+/* =========================
+   POSTS DATA (SAFE JEKYLL)
+========================= */
+const allPosts = [
+  {% for post in site.posts %}
+  {
+    title: {{ post.title | jsonify }},
+    url: {{ post.url | relative_url | jsonify }},
+    image: {{ post.image | default: "/images/default.jpg" | relative_url | jsonify }},
+    date: {{ post.date | date: "%b %-d, %Y" | jsonify }},
+    excerpt: {{ post.excerpt | strip_html | truncate: 100 | jsonify }},
+    content: {{ post.content | strip_html | jsonify }},
+    category: {{ post.categories[0] | default: "Uncategorized" | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+];
+
+/* =========================
+   RENDER FUNCTION
+========================= */
+function render(results) {
+  const container = document.getElementById("search-result");
+
+  if (!results.length) {
+    container.innerHTML = `
+      <div class="col-12 text-center text-muted py-5">
+        No results found.
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = results.map(p => `
+    <div class="col-12 col-md-4">
+      <div class="card border-0 h-100">
+
+        <a href="${p.url}" class="text-decoration-none text-dark">
+
+          <img src="${p.image}"
+               class="w-100 rounded-0"
+               style="aspect-ratio:16/9; object-fit:cover;"
+               loading="lazy">
+
+          <div class="mt-3">
+
+            <div class="small text-danger fw-semibold mb-1 text-capitalize">
+              ${p.category}
+            </div>
+
+            <h4 class="fw-bold mb-1">
+              ${p.title}
+            </h4>
+
+            <small class="text-muted d-block mb-1">
+              ${p.date}
+            </small>
+
+            <p class="text-muted small mb-0">
+              ${p.excerpt}
+            </p>
+
+          </div>
+
+        </a>
+
+      </div>
+    </div>
+  `).join("");
+}
+
+/* =========================
+   SEARCH ENGINE (FIXED)
+========================= */
+function runSearch() {
+
+  const query = getQuery();
+  const info = document.getElementById("search-info");
+
+  if (!query) {
+    info.innerText = "Type a keyword to search...";
+    document.getElementById("search-result").innerHTML = "";
+    return;
+  }
+
+  const results = allPosts.filter(p => {
+    return (
+      p.title.toLowerCase().includes(query) ||
+      p.excerpt.toLowerCase().includes(query) ||
+      p.content.toLowerCase().includes(query) ||
+      p.category.toLowerCase().includes(query)
+    );
+  });
+
+  info.innerText = `${results.length} result(s) for "${query}"`;
+
+  render(results);
+}
+
+/* =========================
+   RUN
+========================= */
+runSearch();
+
+</script>

@@ -1,0 +1,194 @@
+---
+layout: default
+---
+
+{% assign now = site.time | date: "%s" %}
+
+<div class="col-lg-8 col-12">
+
+  <!-- FEATURED -->
+  {% if page.url == "/" or page.url == "/index.html" %}
+  {% assign featured_post = site.tags.featured.first %}
+  {% if featured_post %}
+
+  <div class="featured-post position-relative overflow-hidden mb-4" style="aspect-ratio: 16/9;">
+    <a href="{{ featured_post.url | relative_url }}" class="text-decoration-none text-white">
+      <img src="{{ featured_post.image | relative_url }}" alt="{{ featured_post.title }}"
+        class="img-fluid w-100 featured-img">
+      <div class="featured-overlay">
+        {% if featured_post.categories %}
+        <span class="featured-label">
+          {{ featured_post.categories | first }}
+        </span>
+        {% endif %}
+        <h3 class="featured-title">
+          {{ featured_post.title }}
+        </h3>
+      </div>
+    </a>
+  </div>
+
+  <!-- AD -->
+  <div class="my-4 text-center overflow-hidden">
+    {% include adnativ.html %}
+  </div>
+
+  <!-- LATEST POST -->
+  <div class="latest-post my-4">
+    <h6 class="fw-bold text-uppercase text-white">LATEST P0ST</h6>
+  </div>
+
+  {% endif %}
+  {% endif %}
+
+
+  <!-- POST GRID -->
+  <div class="row g-3">
+    {% assign visible_count = 0 %}
+    {% for post in paginator.posts %}
+    {% assign publish_time = post.publish_at | date: "%s" %}
+    {% if post.publish_at == nil or publish_time <= now %}
+    {% assign visible_count = visible_count | plus: 1 %}
+
+    <div class="col-12 col-sm-6" data-category="{{ post.categories | join: ' ' }}">
+      <div class="card border-0 rounded-0 h-100 shadow-none">
+        <a href="{{ post.url | relative_url }}" class="text-decoration-none text-dark">
+
+          {% if post.image %}
+          <div class="overflow-hidden position-relative">
+
+            {% assign post_time = post.date | date: "%s" %}
+            {% assign diff = now | minus: post_time %}
+
+            <img src="{{ post.image | relative_url }}" class="card-img rounded-0"
+              style="aspect-ratio: 16/9; object-fit: cover;" loading="lazy">
+          </div>
+          {% endif %}
+
+          <div class="card-body py-3 px-0">
+            <h4 class="fw-bold mb-2 text-capitalize">
+              {{ post.title }}
+            </h4>
+
+            {% if post.categories.size > 0 %}
+            <a href="{{ '/categories/' | append: post.categories.first | append: '/' | relative_url }}"
+              class="text-danger small text-capitalize fw-semibold text-decoration-none d-block mb-2">
+              {{ post.categories | first }}
+            </a>
+            {% endif %}
+
+            <p class="text-muted excerpt">
+              {{ post.excerpt | strip_html | truncate: 100 }}
+            </p>
+          </div>
+
+        </a>
+
+      </div>
+
+    </div>
+
+    {% endif %}
+    {% endfor %}
+
+    {% if visible_count == 0 %}
+    <div class="col-12 text-center text-muted py-5">
+      No posts available yet.
+    </div>
+    {% endif %}
+  </div>
+  
+</div>
+
+<!-- SIDEBAR -->
+<div class="col-lg-4">
+  {% include sidebar.html %}
+</div>
+
+<!-- AD -->
+<div class="my-4 text-center overflow-hidden">
+  {% include ad.html %}
+</div>
+
+<!-- PAGINATION -->
+<div class="my-4">
+  {% if paginator.total_pages > 1 %}
+  <nav>
+    <ul class="pagination justify-content-center">
+
+      <!-- PREV -->
+      {% if paginator.previous_page %}
+      <li class="page-item">
+        <a class="page-link rounded-0" href="{{ paginator.previous_page_path | relative_url }}">&laquo;</a>
+      </li>
+      {% else %}
+      <li class="page-item disabled">
+        <span class="page-link rounded-0">&laquo;</span>
+      </li>
+      {% endif %}
+
+      {% assign total = paginator.total_pages %}
+      {% assign current = paginator.page %}
+      {% assign delta = 2 %}
+
+      {% assign start = current | minus: delta %}
+      {% assign end = current | plus: delta %}
+
+      {% if start < 1 %}{% assign start = 1 %}{% endif %}
+      {% if end > total %}{% assign end = total %}{% endif %}
+
+      {% if start > 1 %}
+      <li class="page-item">
+        <a class="page-link rounded-0" href="{{ '/' | relative_url }}">1</a>
+      </li>
+
+      {% if start > 2 %}
+      <li class="page-item disabled">
+        <span class="page-link rounded-0">...</span>
+      </li>
+      {% endif %}
+      {% endif %}
+
+      {% for page in (start..end) %}
+      {% if page == current %}
+      <li class="page-item active">
+        <span class="page-link rounded-0">{{ page }}</span>
+      </li>
+      {% else %}
+      <li class="page-item">
+        <a class="page-link rounded-0" href="{{ site.paginate_path | relative_url | replace: ':num', page }}">
+          {{ page }}
+        </a>
+      </li>
+      {% endif %}
+      {% endfor %}
+
+      {% if end < total %}
+      {% if end < total | minus: 1 %}
+      <li class="page-item disabled">
+        <span class="page-link rounded-0">...</span>
+      </li>
+      {% endif %}
+
+      <li class="page-item">
+        <a class="page-link rounded-0" href="{{ site.paginate_path | relative_url | replace: ':num', total }}">
+          {{ total }}
+        </a>
+      </li>
+      {% endif %}
+
+      <!-- NEXT -->
+      {% if paginator.next_page %}
+      <li class="page-item">
+        <a class="page-link rounded-0" href="{{ paginator.next_page_path | relative_url }}">&raquo;</a>
+      </li>
+      {% else %}
+      <li class="page-item disabled">
+        <span class="page-link rounded-0">&raquo;</span>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+  {% endif %}
+
+</div>

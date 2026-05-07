@@ -1,0 +1,311 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+  background: #eaeced;
+  font-family: "Roboto", Arial, sans-serif;
+  color: #444;
+  font-size: 1rem;
+  text-align: left;
+  line-height: 1.5;
+  padding: 0;
+  margin: 0;
+  overflow-y: scroll;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+}
+
+.wrapper {
+  padding: 1.5rem;
+  margin: 0 auto;
+  overflow: hidden;
+  margin-top: 1.5rem;
+}
+
+.wrapper,
+.footer {
+  max-width: 1080px;
+  overflow: hidden;
+}
+
+/* FEATURED POST */
+.featured-post {
+  margin-bottom: 30px;
+}
+
+.featured-img {
+  object-fit: cover;
+  transition: .3s;
+}
+
+.featured-post:hover .featured-img {
+  transform: scale(1.05);
+}
+
+.featured-overlay {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.75)
+}
+
+.featured-label {
+  display: inline-block;
+  background: #d94b4b;
+  color: #fff;
+  padding: 4px 10px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  position: absolute;
+  top: -12px;
+}
+
+.featured-title {
+  margin: 0;
+  line-height: 1.4;
+  font-weight: 700;
+  color: #333;
+}
+
+/* LATEST POST */
+.latest-post {
+  background: #f3f3f3;
+  margin: 0 0 15px;
+  overflow: hidden
+}
+
+.latest-post h6 {
+  background: #C94A4A;
+  display: inline-block;
+  position: relative;
+  line-height: 28px;
+  margin: 0;
+  padding: 0 15px;
+ 
+}
+
+.latest-post h6:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: -12px;
+  border-top: 28px solid transparent;
+  border-left: 12px solid #C94A4A;
+  border-left: .75rem solid #C94A4A
+}
+
+
+/* WIDGET */
+.widget-title {
+  border-bottom: 3px solid #e5e5e5;
+  margin-bottom: 20px;
+}
+
+.widget-title h6 {
+  display: inline-block;
+  margin: 0 0 -3px;
+  padding-bottom: 6px;
+  text-transform: uppercase;
+  color: #333;
+  border-bottom: 3px solid #2a9d8f;
+}
+
+/* SHARE */
+.share .btn {
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: 0.2s ease;
+}
+
+.share .btn:hover {
+  transform: translateY(-2px);
+}
+
+
+/* STRIPES */
+.gmr-bgstripes {
+  width: 100%;
+  height: 4px;
+  overflow: hidden;
+  background: #333
+}
+
+.gmr-bgstripe {
+  width: 5%;
+  height: 4px;
+  float: left
+}
+
+.gmr-color1 {
+  background: #008299
+}
+
+.gmr-color2 {
+  background: #2672ec
+}
+
+.gmr-color3 {
+  background: #8c0095
+}
+
+.gmr-color4 {
+  background: #5133ab
+}
+
+.gmr-color5 {
+  background: #ac193d
+}
+
+.gmr-color6 {
+  background: #d24726
+}
+
+.gmr-color7 {
+  background: #008a00
+}
+
+.gmr-color8 {
+  background: #094ab2
+}
+
+.gmr-color9 {
+  background: #006ac1
+}
+
+.gmr-color10 {
+  background: #ff2e12
+}
+
+.gmr-color11 {
+  background: #1faeff
+}
+
+.gmr-color12 {
+  background: #91d100
+}
+
+.gmr-color13 {
+  background: #cea539
+}
+
+.gmr-color14 {
+  background: #7f6e94
+}
+
+.gmr-color15 {
+  background: #4617b4
+}
+
+.gmr-color16 {
+  background: #ad103c
+}
+
+.gmr-color17 {
+  background: #004d60
+}
+
+.gmr-color18 {
+  background: #569ce3
+}
+
+.gmr-color19 {
+  background: #e56c19
+}
+
+.gmr-color20 {
+  background: #1b58b8
+}
+
+/* Footer */
+.footer {
+  background: #2c3e50;
+}
+
+.credit {
+  color: #ecf0f1;
+  font-size: 13px;
+  padding: 15px 0;
+  margin: 0 auto;
+  text-align: center
+}
+
+.credit a {
+  color: #fff
+}
+
+.credit a:hover {
+  color: #bdc3c7
+}
+
+.credit i {
+  color: red;
+  margin: auto 5px
+}
+
+span.credit {
+  color: yellow
+}
+
+/* footer navigasi */
+.footer-navmenu {
+  padding: 15px 0px;
+  font-weight: 500;
+  font-size: 15px;
+  color: #ffffff;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-navmenu ul {
+  list-style: none;
+  margin: 0;
+}
+
+.footer-navmenu ul li {
+  display: inline-block;
+  margin: 6px 0;
+}
+
+.footer-navmenu ul li:after {
+  content: "/";
+}
+
+.footer-navmenu ul li:last-child:after {
+  content: "";
+}
+
+.footer-navmenu ul li a {
+  color: #ffffff;
+  margin: 0 10px;
+}
+
+.footer-navmenu ul li a:hover {
+  color: #ffffff;
+  border-bottom: 2px solid #f8cb00;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px) {
+  .wrapper {
+    padding: 1rem;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width:480px) {
+  .wrapper {
+    padding: .5rem;
+  }
+}

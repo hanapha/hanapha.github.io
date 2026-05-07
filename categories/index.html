@@ -1,0 +1,129 @@
+---
+layout: default
+title: Categories
+permalink: /categories/
+---
+
+<div class="my-5">
+
+  <h6 class="fw-bold text-uppercase mb-3">
+    <span class="text-danger">/</span>
+    <span id="category-title">ALL CATEGORIES</span>
+    <span class="text-danger">/</span>
+  </h6>
+
+  <div class="row g-4" id="post-list"></div>
+
+</div>
+
+<script>
+/* =========================
+   GET HASH SAFE
+========================= */
+function getHash() {
+  return (window.location.hash || "")
+    .replace("#", "")
+    .toLowerCase()
+    .trim();
+}
+
+/* =========================
+   SAFE JEKYLL DATA (NO ERROR JSON)
+========================= */
+const allPosts = [
+  {% for post in site.posts %}
+  {
+    title: {{ post.title | jsonify }},
+    url: {{ post.url | relative_url | jsonify }},
+    image: {{ post.image | default: "/images/default.jpg" | relative_url | jsonify }},
+    date: {{ post.date | date: "%b %-d, %Y" | jsonify }},
+    excerpt: {{ post.excerpt | strip_html | truncate: 100 | jsonify }},
+    categories: [
+      {% for cat in post.categories %}
+        "{{ cat | slugify | downcase }}"{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ],
+    category_name: {{ post.categories[0] | default: "Uncategorized" | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+];
+
+/* =========================
+   RENDER FUNCTION
+========================= */
+function render(posts) {
+  const container = document.getElementById("post-list");
+
+  if (!posts.length) {
+    container.innerHTML = `
+      <div class="col-12 text-center text-muted py-5">
+        No posts found in this category.
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = posts.map(p => `
+    <div class="col-12 col-md-4">
+      <div class="card border-0 h-100">
+
+        <a href="${p.url}" class="text-decoration-none text-dark">
+
+          <img src="${p.image}"
+               class="w-100 rounded-0"
+               style="aspect-ratio:16/9; object-fit:cover;"
+               loading="lazy">
+
+          <div class="mt-3">
+
+            <div class="small text-danger fw-semibold mb-1 text-capitalize">
+              ${p.category_name}
+            </div>
+
+            <h4 class="fw-bold mb-1">
+              ${p.title}
+            </h4>
+
+            <small class="text-muted d-block mb-1">
+              ${p.date}
+            </small>
+
+            <p class="text-muted small mb-0">
+              ${p.excerpt}
+            </p>
+            
+          </div>
+
+        </a>
+
+      </div>
+    </div>
+  `).join("");
+}
+
+/* =========================
+   FILTER FUNCTION
+========================= */
+function filterPosts() {
+  const hash = getHash();
+
+  const filtered = hash
+    ? allPosts.filter(p => p.categories.includes(hash))
+    : allPosts;
+
+  document.getElementById("category-title").innerText =
+    hash ? hash.toUpperCase() : "ALL CATEGORIES";
+
+  render(filtered);
+}
+
+/* =========================
+   INIT LOAD
+========================= */
+filterPosts();
+
+/* =========================
+   HASH CHANGE EVENT
+========================= */
+window.addEventListener("hashchange", filterPosts);
+</script>
