@@ -14,10 +14,10 @@ future: false
 default-image: logo.jpg
 logo: logo.jpg
 
-built-by: Maginve
+built-by: Hanapha
 
 copyright:
-  name: Maginve
+  name: Hanapha
   link: "https://hanapha.com"
 
 markdown: kramdown
