@@ -25,10 +25,11 @@ window.addEventListener("load", () => {
                 el.innerHTML = html;
             });
     }
-    loadAd("adbanner", "{{ '/adbanner.html'}}");
-    loadAd("adnativ", "{{ '/adnativ.html'}}");
-    loadAd("ad", "{{ '/ad.html'}}");
+    loadAd("adbanner", "/adbanner.html");
+    loadAd("adnativ", "/adnativ.html");
+    loadAd("ad", "/ad.html");
 });
+
 
 /** Blank Target External Links */
 $(document.links).filter(function () {
