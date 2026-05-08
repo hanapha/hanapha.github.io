@@ -1,8 +1,8 @@
-# Maginve Wallpaper Website
+# hanapha Wallpaper Website
 
 A curated collection of high-quality **HD, Full HD, and 4K wallpapers** designed to enhance your screen with beautiful and modern visuals.
 
-🌐 Live Site: [Maginve](https://maginve.com/) 
+🌐 Live Site: [hanapha](https://hanapha.com/) 
 
 ---
 
@@ -59,8 +59,8 @@ New wallpapers are added regularly to keep the collection fresh and trending.
 
 For suggestions, feedback, or inquiries:
 
-- 📧 Email: [support@maginve.com](https://maginve.com/) 
-- 🌐 Website: [Maginve](https://maginve.com/) 
+- 📧 Email: [support@hanapha.com](https://hanapha.com/) 
+- 🌐 Website: [hanapha](https://hanapha.com/) 
 
 ---
 

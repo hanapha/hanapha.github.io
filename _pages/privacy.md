@@ -4,7 +4,7 @@ title: Privacy
 permalink: /privacy/
 ---
 
-Welcome to **Maginve**. Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your information when you use our website.
+Welcome to **hanapha**. Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your information when you use our website.
 
 ###### Information We Collect
 
@@ -53,4 +53,4 @@ We may update this Privacy Policy at any time. Changes will be posted on this pa
 
 If you have any questions, contact us at:
 
-**Email:** [support@maginve.com](https://maginve.com/)
+**Email:** [support@hanapha.com](https://hanapha.com/)

@@ -4,7 +4,7 @@ title: Disclaimer
 permalink: /disclaimer/
 ---
 
-All information provided on this website (Maginve) is published in good faith and for general informational purposes only.
+All information provided on this website (hanapha) is published in good faith and for general informational purposes only.
 
 ###### Accuracy of Information
 
