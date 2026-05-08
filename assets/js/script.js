@@ -17,14 +17,44 @@ document.addEventListener("DOMContentLoaded", function () {
 /** ad place */
 window.addEventListener("load", function () {
 
-    document.getElementById("adbanner").innerHTML =
-        document.getElementById("adbanner-source").innerHTML;
+  function injectAd(targetId, templateId) {
 
-    document.getElementById("adnativ").innerHTML =
-        document.getElementById("adnativ-source").innerHTML;
+    const target = document.getElementById(targetId);
+    const template = document.getElementById(templateId);
 
-    document.getElementById("ad").innerHTML =
-        document.getElementById("ad-source").innerHTML;
+    if (!target || !template) return;
+
+    // clone template
+    const clone = template.content.cloneNode(true);
+
+    // append html first
+    target.appendChild(clone);
+
+    // rerun scripts
+    target.querySelectorAll("script").forEach(oldScript => {
+
+      const newScript = document.createElement("script");
+
+      // copy attributes
+      [...oldScript.attributes].forEach(attr => {
+        newScript.setAttribute(attr.name, attr.value);
+      });
+
+      // inline script
+      newScript.textContent = oldScript.textContent;
+
+      // replace old script
+      oldScript.parentNode.replaceChild(newScript, oldScript);
+
+    });
+
+  }
+
+  injectAd("adbanner", "tpl-adbanner");
+
+  injectAd("adnativ", "tpl-adnativ");
+
+  injectAd("ad", "tpl-ad");
 
 });
 
