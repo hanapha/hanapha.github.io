@@ -15,30 +15,31 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /** ad place */
-window.addEventListener("load", () => {
+window.addEventListener("load", function () {
 
-  const base = "{{ site.baseurl }}";
+  document.getElementById("adbanner").innerHTML = `
+    {% capture adbanner %}
+      {% include adbanner.html %}
+    {% endcapture %}
+    {{ adbanner | strip_newlines | replace: '`', '\`' }}
+  `;
 
-  function loadAd(id, file) {
+  document.getElementById("adnativ").innerHTML = `
+    {% capture adnativ %}
+      {% include adnativ.html %}
+    {% endcapture %}
+    {{ adnativ | strip_newlines | replace: '`', '\`' }}
+  `;
 
-    const el = document.getElementById(id);
-
-    if (!el) return;
-
-    fetch(base + file)
-      .then(res => res.text())
-      .then(html => {
-        el.innerHTML = html;
-      })
-      .catch(err => console.log(err));
-
-  }
-
-  loadAd("adbanner", "/adbanner.html");
-  loadAd("adnativ", "/adnativ.html");
-  loadAd("ad", "/ad.html");
+  document.getElementById("ad").innerHTML = `
+    {% capture ad %}
+      {% include ad.html %}
+    {% endcapture %}
+    {{ ad | strip_newlines | replace: '`', '\`' }}
+  `;
 
 });
+
 
 
 /** Blank Target External Links */
