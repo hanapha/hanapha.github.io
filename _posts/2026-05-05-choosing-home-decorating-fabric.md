@@ -4,7 +4,7 @@ title: "Choosing Home Decorating Fabric"
 date: 2026-05-05
 author: admin
 categories: decoration
-image: 
+image: assets/images/5.jpg
 ---
 
 **Choosing Home Decorating Fabric** - An important aspect of home decorating is choosing home decorating fabric. When picking a theme such as Victorian, Modern or Oriental, the choice of fabric makes a difference to the overall theme. There are many kinds of home decorating fabric. If you are looking for fabric that compliments a particular theme, perhaps doing a little research regarding the theme would be helpful. This sort of information can be found in home decorating magazines, books and also the Internet on home decorating websites.

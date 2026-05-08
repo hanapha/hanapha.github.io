@@ -4,7 +4,7 @@ title: "Asian Inspired Home Decorating"
 date: 2026-05-03
 author: admin
 categories: decoration
-image: 
+image: assets/images/3.jpg
 ---
 
 **Asian Inspired Home Decorating** - There are very few themes for decorating a home that capture the imagination quite like an Asian inspired theme. There are many reasons for this one of which is the rich colors, fabrics, and textures that are the hallmark of these themes. There is a simplistic elegance about Asian decor that is almost impossible to imitate in other methods. It is simply put, stunning to walk into a room or a home that has been decorated in an Asian inspired motif. 

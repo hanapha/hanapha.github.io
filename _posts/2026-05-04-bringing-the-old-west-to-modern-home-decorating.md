@@ -4,7 +4,7 @@ title: "Bringing The Old West To Modern Home Decorating"
 date: 2026-05-04
 author: admin
 categories: decoration
-image: 
+image: assets/images/4.jpg
 ---
 
 

@@ -4,7 +4,7 @@ title: "Home Decorating For Summer"
 date: 2026-05-08
 author: admin
 categories: decoration
-image: 
+image: assets/images/22.jpg
 ---
 
 Summer is the perfect time of year to wear your true patriotic colors. This is the time of year to enjoy watermelon, fried chicken, corn on the cob, and apple pie. It is the time of year when days are long, nights are hot, and watching fireflies light up the night sky is one of the many joys that should not be forgot. Summer home decorating styles should keep all of these things in mind and so much more.

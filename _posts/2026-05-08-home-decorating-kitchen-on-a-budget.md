@@ -4,7 +4,7 @@ title: "Home Decorating Kitchen On A Budget"
 date: 2026-05-08
 author: admin
 categories: decoration
-image: 
+image: assets/images/25.jpg
 ---
 
 Decorating a home can be a trying thing to do with the best of budgets. The fact that you do not happen to have large lots of money lying around however should not prevent you from having a lovely kitchen to call your own. The kitchen is after all, the heart of any home and you want this room to be one that invites everyone to come, congregate, and pitch in (one can always dream right?). This is the reason that you want your kitchen to shine above all other rooms in your home though. The kitchen should radiate warmth and home to all who enter.

@@ -4,7 +4,7 @@ title: "Home Decorating Pictures"
 date: 2026-05-08
 author: admin
 categories: decoration
-image: 
+image: assets/images/28.jpg
 ---
 
 

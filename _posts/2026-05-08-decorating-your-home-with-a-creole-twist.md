@@ -4,7 +4,7 @@ title: "Decorating Your Home With A Creole Twist"
 date: 2026-05-08
 author: admin
 categories: decoration
-image: 
+image: assets/images/12.jpg
 ---
 
 **Decorating Your Home With a Creole Twist** - Of all the styles of architecture and decorating around the world very few have taken the best of all the others and made it a little bit better in quite the way that the style often referred to as "French Creole" has managed to do. The truth is that while this style of architecture that New Orleans is famous for is really heavily borrowed from many other cultures and yet uniquely New Orleans at the same time. 

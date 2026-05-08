@@ -4,7 +4,7 @@ title: "Fall For Home Decorating"
 date: 2026-05-08
 author: admin
 categories: decoration
-image: 
+image: assets/images/13.jpg
 ---
 
 **Fall for Home Decorating** - Autumn is the time of year in which you can literally smell the changes. Leaves are burning, peanuts are roasting, and most people are just beginning to fill a hint of a chill in the air. More than smelling the changes that are coming you can see them. Leaves begin to take on brilliant hues and the colors are spectacular to watch and witness. This is the time of year that thoughts begin to turn to football, hiking, and the upcoming holidays (for there are quite a few on the horizon). 

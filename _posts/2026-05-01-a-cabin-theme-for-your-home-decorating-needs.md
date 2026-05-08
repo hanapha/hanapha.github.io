@@ -4,7 +4,7 @@ title: "A Cabin Theme For Your Home Decorating Needs"
 date: 2026-05-01
 author: admin
 categories: decoration
-image: 
+image: assets/images/1.jpg
 tag: featured
 ---
 

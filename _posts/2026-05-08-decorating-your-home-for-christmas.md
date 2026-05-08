@@ -4,7 +4,7 @@ title: "Decorating Your Home For Christmas"
 date: 2026-05-08
 author: admin
 categories: decoration
-image: 
+image: assets/images/10.jpg
 ---
 
 **Decorating your Home for Christmas** - Christmas is an extremely busy time of year. By the time you get you shopping done, gifts wrapped and your cookies and cakes baked, It's likely you don't have the energy left to put into extravagant decorating. Although less than energetic, you still want your home decorated for Christmas. After all, Christmas is just not the same without lights and decorations.

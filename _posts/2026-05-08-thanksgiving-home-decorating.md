@@ -4,7 +4,7 @@ title: "Thanksgiving Home Decorating"
 date: 2026-05-08
 author: admin
 categories: decoration
-image: 
+image: assets/images/45.jpg
 ---
 
 **Thanksgiving Home Decorating** - Thanksgiving is a time of year in which families from all across the nation gather together and enjoy the presence of each other and give thanks for the fact that we live in this great country and have the means with which to celebrate in this manner. It is a great time that is representative of the hand of friendship that was extended to us in the past and the season of harvest.

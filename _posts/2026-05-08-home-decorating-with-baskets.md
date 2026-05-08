@@ -4,7 +4,7 @@ title: "Home Decorating With Baskets"
 date: 2026-05-08
 author: admin
 categories: decoration
-image: 
+image: assets/images/31.jpg
 ---
 
 

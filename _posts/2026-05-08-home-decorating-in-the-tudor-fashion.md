@@ -4,7 +4,7 @@ title: "Home Decorating In The Tudor Fashion"
 date: 2026-05-08
 author: admin
 categories: decoration
-image: 
+image: assets/images/24.jpg
 ---
 
 Tudor style home exteriors are rather easy to identify. Many people drive by them quite regularly with jaws dropped and eyes wide at the simple beauty and elegance of this style of architecture. From humble cottages to grand castles the Tudor style of architecture is very memorable indeed. When decorating the interior of a home in the Tudor fashion there is no set in stone rules though there are some touches that are the hallmarks of Tudor style and beauty. 

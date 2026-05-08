@@ -4,7 +4,7 @@ title: "Home Decorating For Spring"
 date: 2026-05-08
 author: admin
 categories: decoration
-image: 
+image: assets/images/21.jpg
 ---
 
 

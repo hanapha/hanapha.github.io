@@ -4,7 +4,7 @@ title: "A Patriotic Home Decorating Theme"
 date: 2026-05-02
 author: admin
 categories: decoration
-image: 
+image: assets/images/2.jpg
 ---
 
 **A Patriotic Home Decorating Theme** - Are you hard core red, white, and blue? If so, then your country needs you to stand up and present your true colors to the world. This can be easily accomplished by celebrating everything American with your home decorating plans. Believe it or not patriotic is the thing to be in post 9-11 America and the way you decorate your home can let the world know exactly where your true convictions lie. 

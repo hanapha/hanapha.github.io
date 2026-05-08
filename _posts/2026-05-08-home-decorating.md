@@ -4,7 +4,7 @@ title: "Home Decorating"
 date: 2026-05-08
 author: admin
 categories: decoration
-image: 
+image: assets/images/35.jpg
 ---
 
 Utter the two words home decorating in a crowd or women and the place will go mad. These two words seem to breathe fire in women's bellies. Most women love the idea of home decorating. When discussed in a crowd, there will likely be all sorts of ideas and tips passed around. For some strange reason the female population enjoy making changes, especially to their homes. The idea of getting rid of the old and bringing in the new gets women all excited. 

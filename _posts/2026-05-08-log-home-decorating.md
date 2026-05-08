@@ -4,7 +4,7 @@ title: "Log Home Decorating"
 date: 2026-05-08
 author: admin
 categories: decoration
-image: 
+image: assets/images/40.jpg
 ---
 
 **Log Home Decorating** - Log home decorating is perhaps on of the more fun decorating projects. Using a cottage theme, log home decorating provides you an opportunity to draw from nature and implement some of your favourite objects. If you are a person who spends a lot of time at your cottage or log home, no doubt you've started a collection of treasures to display. Family photos and handmade ornaments are popular accessories for log home decorating. Any object reflecting family memories are great for a log home or cottage.

@@ -4,7 +4,7 @@ title: "Home Interior Decorating"
 date: 2026-05-08
 author: admin
 categories: decoration
-image: 
+image: assets/images/36.jpg
 ---
 
 Home interior decorating is a perfect opportunity for you to express yourself. Home interior decorating allows you to showcase your interests; interests in furniture, art and even different cultures. Every decorating style is different, with some being elaborate while others are plain. However, there is a home interior decorating style to suit your personality as well as your budget.
