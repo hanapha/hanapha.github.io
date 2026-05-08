@@ -42,7 +42,6 @@ layout: default
     </header>
 
     <!-- IMAGE -->
-    {% if page.image %}
     <div class="mb-4">
       <a href="https://aridjaya.com">
         <img
@@ -50,7 +49,6 @@ layout: default
           alt="{{ page.title }}" class="img-fluid w-100" loading="lazy">
       </a>
     </div>
-    {% endif %}
 
     <!-- AD -->
     <div class="my-4 text-center overflow-hidden">
@@ -182,17 +180,14 @@ layout: default
       {% if relatedCount < maxRelated %}
       <div class="col-6 col-md-3">
         <a href="{{ post.url | relative_url }}" class="text-decoration-none text-success">
-
-          {% if post.image %}
+          <!-- IMAGE -->
           <img class="img-fluid rounded-0 mb-2"
             src="{% if post.image %}{{ post.image | relative_url }}{% else %}{{ '/assets/images/default.jpg' | relative_url }}{% endif %}"
             style="aspect-ratio: 16/9; object-fit: cover;" loading="lazy" alt="{{ post.title }}" />
-          {% endif %}
-
+          <!-- TITLE -->
           <small class="d-block fw-bold">
             {{ post.title | truncate: 45 }}
           </small>
-
         </a>
       </div>
 
@@ -213,10 +208,14 @@ layout: default
       {% if post.url != page.url %}
       <div class="col-6 col-md-3">
         <a href="{{ post.url | relative_url }}" class="text-decoration-none text-success">
-          {% if post.image %}
-          <img class="img-fluid rounded-0 mb-2" src="{{ post.image | relative_url }}">
-          {% endif %}
-          <small>{{ post.title | truncate: 45 }}</small>
+          <!-- IMAGE -->
+          <img class="img-fluid rounded-0 mb-2"
+            src="{% if post.image %}{{ post.image | relative_url }}{% else %}{{ '/assets/images/default.jpg' | relative_url }}{% endif %}"
+            style="aspect-ratio: 16/9; object-fit: cover;" loading="lazy" alt="{{ post.title }}" />
+          <!-- TITLE -->
+          <small class="d-block fw-bold">
+            {{ post.title | truncate: 45 }}
+          </small>
         </a>
       </div>
       {% endif %}

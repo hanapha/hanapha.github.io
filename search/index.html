@@ -34,7 +34,13 @@ const allPosts = [
   {
     title: {{ post.title | jsonify }},
     url: {{ post.url | relative_url | jsonify }},
-    image: {{ post.image | default: "/images/default.jpg" | relative_url | jsonify }},
+
+    image: {% if post.image %}
+      {{ post.image | relative_url | jsonify }}
+    {% else %}
+      {{ '/assets/images/default.jpg' | relative_url | jsonify }}
+    {% endif %},
+
     date: {{ post.date | date: "%b %-d, %Y" | jsonify }},
     excerpt: {{ post.excerpt | strip_html | truncate: 100 | jsonify }},
     content: {{ post.content | strip_html | jsonify }},
@@ -65,7 +71,7 @@ function render(results) {
         <a href="${p.url}" class="text-decoration-none text-dark">
 
         <img 
-          src="${p.image || '/assets/images/default.jpg'}"
+          src="${p.image}"
           class="w-100 rounded-0"
           style="aspect-ratio:16/9; object-fit:cover;"
           loading="lazy"

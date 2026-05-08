@@ -9,8 +9,7 @@
       {% for post in site.posts limit:10 %}
       {% if post.url != page.url %}
       <div class="d-flex mb-3">
-
-        {% if post.image %}
+        <!-- IMAGE -->
         <div class="me-2">
           <a href="{{ post.url | relative_url }}">
             <img
@@ -18,8 +17,6 @@
               style="min-width: 120px; height: 75px; object-fit: cover;" loading="lazy" alt="{{ post.title }}">
           </a>
         </div>
-        {% endif %}
-
         <div>
           <a href="{{ post.url | relative_url }}" class="text-decoration-none text-dark">
             <small class="fw-semibold d-block">

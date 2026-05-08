@@ -35,14 +35,22 @@ const allPosts = [
   {
     title: {{ post.title | jsonify }},
     url: {{ post.url | relative_url | jsonify }},
-    image: {{ post.image | default: "/images/default.jpg" | relative_url | jsonify }},
+
+    image: {% if post.image %}
+      {{ post.image | relative_url | jsonify }}
+    {% else %}
+      {{ '/assets/images/default.jpg' | relative_url | jsonify }}
+    {% endif %},
+
     date: {{ post.date | date: "%b %-d, %Y" | jsonify }},
     excerpt: {{ post.excerpt | strip_html | truncate: 100 | jsonify }},
+
     categories: [
       {% for cat in post.categories %}
         "{{ cat | slugify | downcase }}"{% unless forloop.last %},{% endunless %}
       {% endfor %}
     ],
+
     category_name: {{ post.categories[0] | default: "Uncategorized" | jsonify }}
   }{% unless forloop.last %},{% endunless %}
   {% endfor %}
@@ -69,12 +77,12 @@ function render(posts) {
 
         <a href="${p.url}" class="text-decoration-none text-dark">
 
-          <img 
-            src="${p.image ? p.image : '/assets/images/default.jpg'}"
-            class="w-100 rounded-0"
-            style="aspect-ratio:16/9; object-fit:cover;"
-            loading="lazy"
-            alt="${p.title || 'Image'}">
+        <img 
+          src="${p.image}"
+          class="w-100 rounded-0"
+          style="aspect-ratio:16/9; object-fit:cover;"
+          loading="lazy"
+          alt="${p.title || 'Image'}">
 
           <div class="mt-3">
 
