@@ -17,18 +17,22 @@ layout: compress
   </div>
   {% include footer.html %}
 
-  <!-- HIDDEN ADS SOURCE -->
-  <template id="tpl-adbanner">
-    {% include adbanner.html %}
-  </template>
+  <!-- HIDDEN TEMPLATE -->
+  <div hidden>
 
-  <template id="tpl-adnativ">
-    {% include adnativ.html %}
-  </template>
+    <div id="tpl-ad">
+      {% include ad.html %}
+    </div>
 
-  <template id="tpl-ad">
-    {% include ad.html %}
-  </template>
+    <div id="tpl-banner">
+      {% include adbanner.html %}
+    </div>
+
+    <div id="tpl-native">
+      {% include adnativ.html %}
+    </div>
+
+  </div>
 
   <!-- JS, Popper.js, and jQuery -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

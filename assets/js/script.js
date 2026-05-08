@@ -17,44 +17,47 @@ document.addEventListener("DOMContentLoaded", function () {
 /** ad place */
 window.addEventListener("load", function () {
 
-  function injectAd(targetId, templateId) {
+  $(".ad-slot").each(function(index) {
 
-    const target = document.getElementById(targetId);
-    const template = document.getElementById(templateId);
+    const type = $(this).data("ad");
 
-    if (!target || !template) return;
+    let template;
 
-    // clone template
-    const clone = template.content.cloneNode(true);
+    if (type === "banner") {
+      template = $("#tpl-banner").html();
+    }
 
-    // append html first
-    target.appendChild(clone);
+    else if (type === "native") {
+      template = $("#tpl-native").html();
+    }
+
+    else {
+      template = $("#tpl-ad").html();
+    }
+
+    // unique wrapper
+    const wrapper = document.createElement("div");
+
+    wrapper.innerHTML = template;
+
+    this.appendChild(wrapper);
 
     // rerun scripts
-    target.querySelectorAll("script").forEach(oldScript => {
+    wrapper.querySelectorAll("script").forEach(oldScript => {
 
       const newScript = document.createElement("script");
 
-      // copy attributes
-      [...oldScript.attributes].forEach(attr => {
+      Array.from(oldScript.attributes).forEach(attr => {
         newScript.setAttribute(attr.name, attr.value);
       });
 
-      // inline script
       newScript.textContent = oldScript.textContent;
 
-      // replace old script
       oldScript.parentNode.replaceChild(newScript, oldScript);
 
     });
 
-  }
-
-  injectAd("adbanner", "tpl-adbanner");
-
-  injectAd("adnativ", "tpl-adnativ");
-
-  injectAd("ad", "tpl-ad");
+  });
 
 });
 
