@@ -4,13 +4,6 @@ body {
   background: #e9ecef;
   font-family: "Roboto", Arial, sans-serif;
   color: #444;
-  font-size: 1rem;
-  text-align: left;
-  line-height: 1.5;
-  padding: 0;
-  margin: 0;
-  overflow-y: scroll;
-  position: relative;
 }
 
 a {

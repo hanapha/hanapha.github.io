@@ -13,8 +13,9 @@
         {% if post.image %}
         <div class="me-2">
           <a href="{{ post.url | relative_url }}">
-            <img src="{{ post.image | relative_url }}" style="min-width: 120px; height: 75px; object-fit: cover;"
-              loading="lazy">
+            <img
+              src="{% if post.image %}{{ post.image | relative_url }}{% else %}{{ '/assets/images/default.jpg' | relative_url }}{% endif %}"
+              style="min-width: 120px; height: 75px; object-fit: cover;" loading="lazy" alt="{{ post.title }}">
           </a>
         </div>
         {% endif %}
@@ -43,8 +44,7 @@
       <ul class="list-unstyled mb-0">
         {% for category in site.categories %}
         <li class="mb-2 d-flex justify-content-between">
-          <a href="/categories/#{{ category[0] | slugify | downcase }}"
-            class="text-capitalize text-decoration-none">
+          <a href="/categories/#{{ category[0] | slugify | downcase }}" class="text-capitalize text-decoration-none">
             {{ category[0] }}
           </a>
           <span class="badge bg-light text-dark">

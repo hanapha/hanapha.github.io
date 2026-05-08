@@ -45,7 +45,9 @@ layout: default
     {% if page.image %}
     <div class="mb-4">
       <a href="https://aridjaya.com">
-        <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" class="img-fluid w-100" loading="lazy">
+        <img
+          src="{% if page.image %}{{ page.image | relative_url }}{% else %}{{ '/assets/images/default.jpg' | relative_url }}{% endif %}"
+          alt="{{ page.title }}" class="img-fluid w-100" loading="lazy">
       </a>
     </div>
     {% endif %}
@@ -69,7 +71,7 @@ layout: default
       <div class="my-4 text-center overflow-hidden">
         {% include ad.html %}
       </div>
-      
+
       {% endif %}
       {% endfor %}
     </div>
@@ -182,8 +184,9 @@ layout: default
         <a href="{{ post.url | relative_url }}" class="text-decoration-none text-success">
 
           {% if post.image %}
-          <img class='img-fluid rounded-0 mb-2 ' src="{{ post.image | relative_url }}"
-            style="aspect-ratio: 16/9; object-fit: cover;" loading="lazy" />
+          <img class="img-fluid rounded-0 mb-2"
+            src="{% if post.image %}{{ post.image | relative_url }}{% else %}{{ '/assets/images/default.jpg' | relative_url }}{% endif %}"
+            style="aspect-ratio: 16/9; object-fit: cover;" loading="lazy" alt="{{ post.title }}" />
           {% endif %}
 
           <small class="d-block fw-bold">
