@@ -29,69 +29,6 @@ layout: compress
 
   {% include analytics.html %}
 
-  <script>
-    /** MENU */
-    document.addEventListener("DOMContentLoaded", function () {
-      const toggle = document.querySelector(".toggleMenu");
-      const menu = document.querySelector(".nav-menu2");
-      toggle.addEventListener("click", function (e) {
-        e.preventDefault();
-
-        if (menu.style.display === "block") {
-          menu.style.display = "none";
-        } else {
-          menu.style.display = "block";
-        }
-      });
-
-    });
-
-    /** ad place */
-    window.addEventListener("load", function () {
-
-      document.getElementById("adbanner").innerHTML = `
-    {% capture adbanner %}
-      {% include adbanner.html %}
-    {% endcapture %}
-    {{ adbanner | strip_newlines | replace: '`
-      ', '\
-      `' }}
-  `;
-
-      document.getElementById("adnativ").innerHTML = `
-    {% capture adnativ %}
-      {% include adnativ.html %}
-    {% endcapture %}
-    {{ adnativ | strip_newlines | replace: '`
-      ', '\
-      `' }}
-  `;
-
-      document.getElementById("ad").innerHTML = `
-    {% capture ad %}
-      {% include ad.html %}
-    {% endcapture %}
-    {{ ad | strip_newlines | replace: '`
-      ', '\
-      `' }}
-  `;
-
-    });
-
-
-
-    /** Blank Target External Links */
-    $(document.links).filter(function () {
-      return this.hostname != window.location.hostname;
-    }).attr('target', '_blank');
-
-    // Set the overflow property on the body element to prevent scrolling
-    document.body.style.overflow = "hidden";
-    // Use a timer to enable scrolling after 5 seconds
-    setTimeout(function () {
-      document.body.style.overflow = "auto";
-    }, 3000); // 3000 milliseconds = 3 seconds
-  </script>
 </body>
 
 </html>
