@@ -15,7 +15,10 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /** ad place */
-
+$("#ad").appendTo(".ad");
+$("#adbanner").appendTo(".adbanner");
+$("#adnativ").appendTo(".adnativ");
+$("#adsidebar").appendTo(".adsidebar");
 
 /** Blank Target External Links */
 $(document.links).filter(function () {
