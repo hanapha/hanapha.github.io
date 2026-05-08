@@ -17,32 +17,14 @@ document.addEventListener("DOMContentLoaded", function () {
 /** ad place */
 window.addEventListener("load", function () {
 
-    document.getElementById("adbanner").innerHTML = `
-    {% capture adbanner %}
-      {% include adbanner.html %}
-    {% endcapture %}
-    {{ adbanner | strip_newlines | replace: '`
-    ', '\
-    `' }}
-  `;
+    document.getElementById("adbanner").innerHTML =
+        document.getElementById("adbanner-source").innerHTML;
 
-    document.getElementById("adnativ").innerHTML = `
-    {% capture adnativ %}
-      {% include adnativ.html %}
-    {% endcapture %}
-    {{ adnativ | strip_newlines | replace: '`
-    ', '\
-    `' }}
-  `;
+    document.getElementById("adnativ").innerHTML =
+        document.getElementById("adnativ-source").innerHTML;
 
-    document.getElementById("ad").innerHTML = `
-    {% capture ad %}
-      {% include ad.html %}
-    {% endcapture %}
-    {{ ad | strip_newlines | replace: '`
-    ', '\
-    `' }}
-  `;
+    document.getElementById("ad").innerHTML =
+        document.getElementById("ad-source").innerHTML;
 
 });
 
