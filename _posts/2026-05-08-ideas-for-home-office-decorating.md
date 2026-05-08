@@ -3,7 +3,7 @@ layout: post
 title: "Ideas For Home Office Decorating"
 date: 2026-05-08
 author: admin
-categories: decoration
+categories: decor
 image: assets/images/38.jpg
 ---
 

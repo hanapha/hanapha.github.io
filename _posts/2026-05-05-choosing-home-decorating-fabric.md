@@ -3,7 +3,7 @@ layout: post
 title: "Choosing Home Decorating Fabric"
 date: 2026-05-05
 author: admin
-categories: decoration
+categories: decor
 image: assets/images/5.jpg
 ---
 

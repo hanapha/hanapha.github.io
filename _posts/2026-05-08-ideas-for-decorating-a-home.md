@@ -3,7 +3,7 @@ layout: post
 title: "Ideas For Decorating A Home"
 date: 2026-05-08
 author: admin
-categories: decoration
+categories: decor
 image: assets/images/37.jpg
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title: "Christmas Home Decorating"
 date: 2026-05-07
 author: admin
-categories: decoration
+categories: decor
 image: assets/images/6.jpg
 ---
 

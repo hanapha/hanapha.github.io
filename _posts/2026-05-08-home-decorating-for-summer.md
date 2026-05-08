@@ -3,7 +3,7 @@ layout: post
 title: "Home Decorating For Summer"
 date: 2026-05-08
 author: admin
-categories: decoration
+categories: decor
 image: assets/images/22.jpg
 ---
 

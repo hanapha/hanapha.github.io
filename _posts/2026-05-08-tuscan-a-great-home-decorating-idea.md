@@ -3,7 +3,7 @@ layout: post
 title: "Tuscan A Great Home Decorating Idea"
 date: 2026-05-08
 author: admin
-categories: decoration
+categories: decor
 image: assets/images/46.jpg
 ---
 

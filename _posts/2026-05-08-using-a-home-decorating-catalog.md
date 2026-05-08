@@ -3,7 +3,7 @@ layout: post
 title: "Using A Home Decorating Catalog"
 date: 2026-05-08
 author: admin
-categories: decoration
+categories: decor
 image: assets/images/48.jpg
 ---
 

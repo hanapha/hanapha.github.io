@@ -3,7 +3,7 @@ layout: post
 title: "Helpful Home Decorating Tips"
 date: 2026-05-08
 author: admin
-categories: decoration
+categories: decor
 image: assets/images/15.jpg
 ---
 

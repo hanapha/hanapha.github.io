@@ -3,7 +3,7 @@ layout: post
 title: "Decorating Your Home With A Creole Twist"
 date: 2026-05-08
 author: admin
-categories: decoration
+categories: decor
 image: assets/images/12.jpg
 ---
 

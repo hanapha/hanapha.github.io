@@ -3,7 +3,7 @@ layout: post
 title: "Home Decorating With A Nautical Theme"
 date: 2026-05-08
 author: admin
-categories: decoration
+categories: decor
 image: assets/images/30.jpg
 ---
 

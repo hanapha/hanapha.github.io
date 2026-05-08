@@ -3,7 +3,7 @@ layout: post
 title: "Home Decorating With A Moroccan Theme"
 date: 2026-05-08
 author: admin
-categories: decoration
+categories: decor
 image: assets/images/29.jpg
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title: "Decorating The Interior Of Your Home"
 date: 2026-05-08
 author: admin
-categories: decoration
+categories: decor
 image: assets/images/9.jpg
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title: "Decorating Your Home Gym"
 date: 2026-05-08
 author: admin
-categories: decoration
+categories: decor
 image: assets/images/11.jpg
 ---
 
