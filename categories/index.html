@@ -69,10 +69,12 @@ function render(posts) {
 
         <a href="${p.url}" class="text-decoration-none text-dark">
 
-          <img src="${p.image}"
-               class="w-100 rounded-0"
-               style="aspect-ratio:16/9; object-fit:cover;"
-               loading="lazy">
+          <img 
+            src="${p.image ? p.image : '/assets/images/default.jpg'}"
+            class="w-100 rounded-0"
+            style="aspect-ratio:16/9; object-fit:cover;"
+            loading="lazy"
+            alt="${p.title || 'Image'}">
 
           <div class="mt-3">
 
