@@ -3,7 +3,7 @@ layout: post
 title: "A Cabin Theme For Your Home Decorating Needs"
 date: 2026-05-01
 author: admin
-categories: home, decor
+categories: decoration
 image: 
 tag: featured
 ---

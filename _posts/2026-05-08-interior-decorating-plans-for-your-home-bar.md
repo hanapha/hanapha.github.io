@@ -3,7 +3,7 @@ layout: post
 title: "Interior Decorating Plans For Your Home Bar"
 date: 2026-05-08
 author: admin
-categories: home, decor
+categories: decoration
 image: 
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title: "A Patriotic Home Decorating Theme"
 date: 2026-05-02
 author: admin
-categories: home, decor
+categories: decoration
 image: 
 ---
 

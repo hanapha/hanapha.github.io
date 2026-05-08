@@ -3,7 +3,7 @@ layout: post
 title: "Home Decorating Old World Style"
 date: 2026-05-08
 author: admin
-categories: home, decor
+categories: decoration
 image: 
 ---
 

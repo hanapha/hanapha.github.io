@@ -3,7 +3,7 @@ layout: post
 title: "Asian Inspired Home Decorating"
 date: 2026-05-03
 author: admin
-categories: home, decor
+categories: decoration
 image: 
 ---
 

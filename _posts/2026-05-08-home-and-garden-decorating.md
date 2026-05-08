@@ -3,7 +3,7 @@ layout: post
 title: "Home And Garden Decorating"
 date: 2026-05-08
 author: admin
-categories: home, decor
+categories: decoration
 image: 
 ---
 

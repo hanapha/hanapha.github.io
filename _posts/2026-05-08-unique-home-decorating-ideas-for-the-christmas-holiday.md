@@ -3,7 +3,7 @@ layout: post
 title: "Unique Home Decorating Ideas For The Christmas Holiday"
 date: 2026-05-08
 author: admin
-categories: home, decor
+categories: decoration
 image: 
 ---
 
