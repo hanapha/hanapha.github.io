@@ -18,8 +18,8 @@
           </a>
         </div>
         <div>
-          <a href="{{ post.url | relative_url }}" class="text-decoration-none text-dark">
-            <small class="fw-semibold d-block">
+          <a href="{{ post.url | relative_url }}" class="text-decoration-none text-dark link-success">
+            <small class="fw-semibold d-block text-dark link-success">
               {{ post.title | truncate: 50 }}
             </small>
           </a>
@@ -41,7 +41,7 @@
       <ul class="list-unstyled mb-0">
         {% for category in site.categories %}
         <li class="mb-2 d-flex justify-content-between">
-          <a href="/categories/#{{ category[0] | slugify | downcase }}" class="text-capitalize text-decoration-none">
+          <a href="/categories/#{{ category[0] | slugify | downcase }}" class="text-capitalize text-decoration-none text-primary link-success">
             {{ category[0] }}
           </a>
           <span class="badge bg-light text-dark">
@@ -64,7 +64,7 @@
       </div>
   </section>
 
-  <!-- CATEGORIES CLOUD -->
+  <!-- TAGS -->
   <section class="card rounded-0 border-0 shadow-none bg-light mb-4">
     <div class="card-body">
       <div class="widget-title">
@@ -75,7 +75,7 @@
         {% for category in sorted_categories %}
         {% if category[0] != "" %}
         <a href="/categories/#{{ category[0] | slugify | downcase }}"
-          class="text-muted link-success text-decoration-none border border-1 rounded-0 text-capitalize px-2 py-1 rounded">
+          class="small text-primary link-success text-decoration-none border border-1 rounded-0 text-capitalize px-2 py-1 rounded">
           {{ category[0] }}
         </a>
         {% endif %}
@@ -84,28 +84,28 @@
     </div>
   </section>
 
-  <!-- PARTNER SIDEBAR -->
+  <!-- PARTNER -->
   <section class="card rounded-0 border-0 shadow-none bg-light mb-4">
     <div class="card-body">
       <div class="widget-title">
-        <h6 class="fw-bold">PARTNER LINK</h6>
+        <h6 class="fw-bold">PARTNER</h6>
       </div>
       <div class="card-body p-0">
         <ul class="list-style">
           <li><a href="https://aridjaya.com" target="_blank"
-              class="d-block py-1 text-decoration-none border-bottom text-danger link-primary">
+              class="d-block py-1 text-decoration-none border-bottom text-danger link-primary fw-semibold">
               Aridjaya</a></li>
           <li><a href="https://indonesiya.com" target="_blank"
-              class="d-block py-1 text-decoration-none border-bottom text-danger link-primary">
+              class="d-block py-1 text-decoration-none border-bottom text-danger link-primary fw-semibold">
               Indonesiya</a></li>
           <li><a href="https://maginve.com" target="_blank"
-              class="d-block py-1 text-decoration-none border-bottom text-danger link-primary">
+              class="d-block py-1 text-decoration-none border-bottom text-danger link-primary fw-semibold">
               Maginve</a></li>
           <li><a href="https://asninfo.id" target="_blank"
-              class="d-block py-1 text-decoration-none border-bottom text-danger link-primary">
+              class="d-block py-1 text-decoration-none border-bottom text-danger link-primary fw-semibold">
               ASN Info</a></li>
           <li><a href="https://hanapha.com" target="_blank"
-              class="d-block py-1 text-decoration-none text-danger link-primary">Hanapha</a></li>
+              class="d-block py-1 text-decoration-none text-danger link-primary fw-semibold">Hanapha</a></li>
         </ul>
       </div>
     </div>
