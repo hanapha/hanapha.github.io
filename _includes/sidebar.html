@@ -14,7 +14,7 @@
           <a href="{{ post.url | relative_url }}">
             <img
               src="{% if post.image %}{{ post.image | relative_url }}{% else %}{{ '/assets/images/default.jpg' | relative_url }}{% endif %}"
-              style="min-width: 120px; height: 75px; object-fit: cover;" loading="lazy" alt="{{ post.title }}">
+              style="width: 120px; height: 75px; object-fit: cover;" loading="lazy" alt="{{ post.title }}">
           </a>
         </div>
         <div>
