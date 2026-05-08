@@ -5,6 +5,7 @@ date: 2026-05-01
 author: admin
 categories: home, decor
 image: 
+tag: featured
 ---
 
 **A Cabin Theme for Your Home Decorating Needs** - When it comes to home decorating there is one thing that must be said-people seem to long for the simple life and cabin living. Of all the styles of decorating and decor this is one that seems to be repeated most often but in different ways. Seriously there are all kinds of 'cabin' decor websites, magazines, brochures, books, and how to videos all over the place than probably any other style of decorating.
