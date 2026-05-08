@@ -54,19 +54,17 @@ layout: default
       <div class="card border-0 rounded-0 h-100 shadow-none">
         <a href="{{ post.url | relative_url }}" class="text-decoration-none text-dark">
 
-          {% if post.image %}
           <div class="overflow-hidden position-relative">
 
             {% assign post_time = post.date | date: "%s" %}
             {% assign diff = now | minus: post_time %}
 
-            <img src="{{ post.image | relative_url }}" class="card-img rounded-0"
-              style="aspect-ratio: 16/9; object-fit: cover;" loading="lazy">
-            {% else %}
-            <img src="{{ '/assets/images/default.jpg' | relative_url }}" class="card-img rounded-0"
-              style="aspect-ratio: 16/9; object-fit: cover;" loading="lazy">
+            <img
+              src="{% if post.image %}{{ post.image | relative_url }}{% else %}{{ '/assets/images/default.jpg' | relative_url }}{% endif %}"
+              class="card-img rounded-0" style="aspect-ratio: 16/9; object-fit: cover;" loading="lazy"
+              alt="{{ post.title }}">
+
           </div>
-          {% endif %}
 
           <div class="card-body py-3 px-0">
             <h4 class="fw-bold mb-2 text-capitalize">
@@ -86,9 +84,7 @@ layout: default
           </div>
 
         </a>
-
       </div>
-
     </div>
 
     {% endif %}
