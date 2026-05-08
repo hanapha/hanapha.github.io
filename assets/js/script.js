@@ -15,52 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /** ad place */
-window.addEventListener("load", function () {
-
-  $(".ad-slot").each(function(index) {
-
-    const type = $(this).data("ad");
-
-    let template;
-
-    if (type === "banner") {
-      template = $("#tpl-banner").html();
-    }
-
-    else if (type === "native") {
-      template = $("#tpl-native").html();
-    }
-
-    else {
-      template = $("#tpl-ad").html();
-    }
-
-    // unique wrapper
-    const wrapper = document.createElement("div");
-
-    wrapper.innerHTML = template;
-
-    this.appendChild(wrapper);
-
-    // rerun scripts
-    wrapper.querySelectorAll("script").forEach(oldScript => {
-
-      const newScript = document.createElement("script");
-
-      Array.from(oldScript.attributes).forEach(attr => {
-        newScript.setAttribute(attr.name, attr.value);
-      });
-
-      newScript.textContent = oldScript.textContent;
-
-      oldScript.parentNode.replaceChild(newScript, oldScript);
-
-    });
-
-  });
-
-});
-
 
 
 /** Blank Target External Links */
