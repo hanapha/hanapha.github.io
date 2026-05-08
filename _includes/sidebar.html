@@ -54,16 +54,14 @@
   </section>
 
   <!-- STICKY WIDGET -->
-  <section id="sidebar-sticky" class="col-lg-4 mt-4 mt-lg-0 w-100">
-    <div class="card rounded-0 border-0 shadow-none bg-light">
-      <div class="card-body">
-        <div class="widget-title">
-          <h6 class="fw-bold">SPONSOR</h6>
-        </div>
-        <p class="small text-muted mb-2 text-center">
-          {% include ad.html %}
-        </p>
+  <section class="card rounded-0 border-0 shadow-none bg-light mb-4">
+    <div class="card-body">
+      <div class="widget-title">
+        <h6 class="fw-bold">SPONSOR</h6>
       </div>
+      <p class="small text-muted mb-2 text-center">
+      <div id="ad"></div>
+      </p>
     </div>
   </section>
 
@@ -84,6 +82,29 @@
         {% endif %}
         {% endfor %}
       </div>
+    </div>
+  </section>
+
+  <!-- PARTNER SIDEBAR -->
+  <section class="card rounded-0 border-0 shadow-none bg-light mb-4">
+    <div class="widget-title">
+      <h6 class="fw-bold">PARTNER LINK</h6>
+    </div>
+    <div class="card-body p-0">
+      <a href="https://aridjaya.com" target="_blank"
+        class="d-block px-3 py-2 text-decoration-none border-bottom text-dark">
+        Aridjaya</a>
+      <a href="https://indonesiya.com" target="_blank"
+        class="d-block px-3 py-2 text-decoration-none border-bottom text-dark">
+        Indonesiya</a>
+      <a href="https://maginve.com" target="_blank"
+        class="d-block px-3 py-2 text-decoration-none border-bottom text-dark">
+        Maginve</a>
+      <a href="https://asninfo.id" target="_blank"
+        class="d-block px-3 py-2 text-decoration-none border-bottom text-dark">
+        ASN Info</a>
+      <a href="https://hanapha.com" target="_blank" class="d-block px-3 py-2 text-decoration-none text-dark">
+        Hanapha</a>
     </div>
   </section>
 
