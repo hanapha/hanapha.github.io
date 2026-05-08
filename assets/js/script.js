@@ -16,18 +16,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /** ad place */
 window.addEventListener("load", () => {
-  function loadAd(id, file) {
-    const el = document.getElementById(id);
-    if (!el) return;
-    fetch(file)
-      .then(res => res.text())
-      .then(html => {
-        el.innerHTML = html;
-      });
-  }
-  loadAd("adbanner", "{{ '/adbanner.html' | relative_url }}");
-  loadAd("adnativ", "{{ '/adnativ.html' | relative_url }}");
-  loadAd("ad", "{{ '/ad.html' | relative_url }}");
+    function loadAd(id, file) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        fetch(file)
+            .then(res => res.text())
+            .then(html => {
+                el.innerHTML = html;
+            });
+    }
+    loadAd("adbanner", "{{ '/adbanner.html'}}");
+    loadAd("adnativ", "{{ '/adnativ.html'}}");
+    loadAd("ad", "{{ '/ad.html'}}");
 });
 
 /** Blank Target External Links */
