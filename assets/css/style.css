@@ -302,3 +302,198 @@ span.credit {
     padding: .5rem;
   }
 }
+
+
+@media (min-width: 768px) and (max-width: 979px) {
+    .ai-viewport-1 {
+        display: none !important;
+    }
+
+    .ai-viewport-2 {
+        display: inherit !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .ai-viewport-1 {
+        display: none !important;
+    }
+
+    .ai-viewport-3 {
+        display: inherit !important;
+    }
+}
+
+@media only screen and (min-width:769px) {
+    body {
+        overflow: auto
+    }
+
+    #d_co {
+        bottom: 0;
+        left: 0;
+        right: 0;
+        font-family: sans-serif;
+        margin: 0 auto 1.5em;
+        max-height: 155px;
+        position: fixed;
+        text-align: center;
+        width: 728px;
+        max-width: 728px;
+        z-index: 98
+    }
+
+    #d_ttl {
+        border-bottom: 1px solid #bbb;
+        font-size: 11px;
+        letter-spacing: 3px;
+        margin: 0 0 2px 0
+    }
+
+    #d_sp {
+        outline: 1px solid #bbb;
+        display: inline-block;
+        position: relative;
+        background: #eee;
+        min-height: 105px
+    }
+
+    #d_ads {
+        min-width: 728px;
+        max-height: 90px
+    }
+
+    #d_x {
+        background: linear-gradient(to right, #802102 31%, #dd0001 32%, #dd0001 100%);
+        border: 2px solid #fff;
+        color: #fff;
+        font-size: 12px;
+        left: 20px;
+        outline: solid 1px #000;
+        padding: 4px 4px;
+        pointer-events: none;
+        position: absolute;
+        top: 45%;
+        z-index: 99
+    }
+
+    #d_x::first-letter {
+        background: #fff;
+        color: #000;
+        margin-right: 5px;
+        padding: 0 3px
+    }
+
+    #stickyAdsMobile {
+        display: none !important;
+        visibility: hidden;
+    }
+}
+
+@media only screen and (max-width:768px) {
+    body {
+        overflow: hidden
+    }
+
+    #m_ttl {
+        border: 1px solid #bbb;
+        font-size: 11px;
+        letter-spacing: 3px;
+        margin: 2px 0 1px 0
+    }
+
+    #m_co {
+        bottom: 0;
+        font-family: sans-serif;
+        left: 0;
+        margin-bottom: 1px;
+        max-height: 140px !important;
+        pointer-events: none;
+        position: fixed;
+        text-align: right;
+        width: 100%;
+        z-index: 98
+    }
+
+    #m_ads {
+        background: #eee;
+        max-height: 100px;
+        pointer-events: auto;
+        text-align: center
+    }
+
+    #m_x {
+        background: linear-gradient(to right, #802102 32%, #dd0001 32%, #dd0001 100%);
+        border: 2px solid #fff;
+        color: #fff;
+        display: inline-block;
+        font-size: 12px;
+        margin-right: 2em;
+        outline: 1px #000 solid;
+        padding: 1px 4px;
+        z-index: 99
+    }
+
+    #m_x::first-letter {
+        background: #fff;
+        color: #000;
+        margin-right: 6px;
+        padding: 0 3px
+    }
+
+    #t_co {
+        max-height: 130px;
+        top: 0;
+        left: 0;
+        font-family: sans-serif;
+        position: fixed;
+        text-align: center;
+        width: 100%;
+        z-index: 98
+    }
+
+    #t_ttl {
+        border-top: 1px solid #bbb;
+        font-size: 11px;
+        letter-spacing: 3px;
+        margin: 0;
+    }
+
+    #t_sp {
+        margin-top: 0.2em;
+        outline: 1px solid #bbb;
+        position: relative;
+        background: #eee;
+    }
+
+    #t_ads {
+        max-height: 90px;
+        vertical-align: middle;
+    }
+
+    #t_x {
+        background: linear-gradient(to right, #802102 31%, #dd0001 32%, #dd0001 100%);
+        border: 2px solid #fff;
+        color: #fff;
+        font-size: 12px;
+        right: 5%;
+        outline: solid 1px #000;
+        padding: 4px 4px;
+        pointer-events: none;
+        position: absolute;
+        top: 15%;
+        z-index: 99
+    }
+
+    #t_x::first-letter {
+        background: #fff;
+        color: #000;
+        margin-right: 5px;
+        padding: 0 3px
+    }
+
+    #stickyAdsLepi {
+        display: none !important;
+        visibility: hidden;
+    }
+}
