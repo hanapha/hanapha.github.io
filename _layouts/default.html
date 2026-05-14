@@ -29,7 +29,23 @@ layout: compress
   <script src="/assets/js/script.js"></script>
 
   {% include analytics.html %}
-  
+
+  <script>
+    const API_KEY = "67eef21d47bd4f219d24e921b76d701f";
+    window.addEventListener("load", function () {
+      const url = encodeURIComponent(location.href);
+      // Bing
+      fetch(
+        `https://api.indexnow.org/indexnow?url=${url}&key=${API_KEY}`
+      );
+      // Yandex
+      fetch(
+        `https://yandex.com/indexnow?url=${url}&key=${API_KEY}`
+      );
+      console.log("Submitted to Bing + Yandex");
+    });
+  </script>
+
   <script src="https://hanapha.com/banner/socialbar.js"></script>
 </body>
 
