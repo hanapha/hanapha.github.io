@@ -1,0 +1,141 @@
+---
+layout: page
+title: TV Size Distance Calculator
+description: Calculate the ideal TV viewing distance based on screen size for a better home entertainment experience.
+categories: furniture
+permalink: /converters/tv-size-distance-calculator/
+---
+
+<p class="text-muted mb-4">
+    Calculate the recommended viewing distance for your TV based on screen size.
+    Perfect for living rooms, home theaters, and entertainment setups.
+</p>
+
+<div class="card shadow-none bg-light border rounded-3">
+    <div class="card-body p-4">
+
+        <!-- TV SIZE -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">
+                TV Screen Size
+            </label>
+
+            <div class="input-group input-group-lg">
+                <input type="number" id="tvSize" class="form-control" placeholder="Example: 55">
+
+                <span class="input-group-text">
+                    inch
+                </span>
+            </div>
+        </div>
+
+        <!-- BUTTON -->
+        <button class="btn btn-dark btn-lg w-100" onclick="calculateDistance()">
+            Calculate Distance
+        </button>
+
+        <!-- RESULT -->
+        <div class="alert alert-light border mt-4 d-none" id="resultBox">
+
+            <h5 class="fw-bold mb-3">
+                Recommended Viewing Distance
+            </h5>
+
+            <div id="resultText"></div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- INFO -->
+<div class="my-3">
+
+    <h4 class="fw-bold mb-3">
+        Popular TV Sizes
+    </h4>
+
+    <ul class="mb-0">
+        <li>43 inch TV → 1.8 – 2.7 meters</li>
+        <li>50 inch TV → 2 – 3 meters</li>
+        <li>55 inch TV → 2.1 – 3.4 meters</li>
+        <li>65 inch TV → 2.5 – 4 meters</li>
+        <li>75 inch TV → 3 – 4.5 meters</li>
+    </ul>
+
+</div>
+
+<!-- FAQ -->
+<div class="card-body my-3">
+
+    <h4 class="fw-bold mb-3">
+        FAQ
+    </h4>
+
+    <h6 class="fw-semibold">
+        What is the ideal TV viewing distance?
+    </h6>
+
+    <p class="text-muted">
+        The ideal viewing distance depends on your TV size and screen resolution.
+        Sitting too close or too far may reduce viewing comfort.
+    </p>
+
+    <h6 class="fw-semibold">
+        Why is viewing distance important?
+    </h6>
+
+    <p class="text-muted mb-0">
+        Proper distance helps improve picture quality, reduce eye strain,
+        and create a better entertainment experience.
+    </p>
+
+</div>
+
+<script>
+    function calculateDistance() {
+
+        let tvSize = parseFloat(
+            document.getElementById("tvSize").value
+        );
+
+        if (isNaN(tvSize) || tvSize <= 0) {
+
+            alert("Please enter a valid TV size");
+            return;
+        }
+
+        // Recommended distance
+        let minDistance = (tvSize * 1.2 * 2.54 / 100).toFixed(2);
+        let maxDistance = (tvSize * 2 * 2.54 / 100).toFixed(2);
+
+        document
+            .getElementById("resultBox")
+            .classList.remove("d-none");
+
+        document
+            .getElementById("resultText")
+            .innerHTML = `
+      <p class="mb-2">
+        For a <strong>${tvSize}-inch TV</strong>,
+        the recommended viewing distance is:
+      </p>
+
+      <h4 class="fw-bold">
+        ${minDistance} m – ${maxDistance} m
+      </h4>
+    `;
+    }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "TV Size Distance Calculator",
+        "url": "{{ page.url | absolute_url }}",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All"
+    }
+</script>

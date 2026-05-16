@@ -1,0 +1,221 @@
+---
+layout: page
+title: Dining Table Size Calculator
+description: Calculate the ideal dining table size based on room dimensions and number of seats.
+categories: furniture
+permalink: /converters/dining-table-size-calculator/
+---
+
+<p class="text-muted mb-4">
+    Find the ideal dining table dimensions for your room size and seating needs.
+    Perfect for kitchens, dining rooms, apartments, and modern interior layouts.
+</p>
+
+<div class="card shadow-none bg-light border rounded-3">
+    <div class="card-body p-4">
+
+        <!-- ROOM WIDTH -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">
+                Room Width
+            </label>
+
+            <div class="input-group input-group-lg">
+                <input type="number" id="roomWidth" class="form-control" placeholder="Example: 4">
+
+                <span class="input-group-text">
+                    meters
+                </span>
+            </div>
+        </div>
+
+        <!-- ROOM LENGTH -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">
+                Room Length
+            </label>
+
+            <div class="input-group input-group-lg">
+                <input type="number" id="roomLength" class="form-control" placeholder="Example: 5">
+
+                <span class="input-group-text">
+                    meters
+                </span>
+            </div>
+        </div>
+
+        <!-- NUMBER OF SEATS -->
+        <div class="mb-4">
+            <label class="form-label fw-semibold">
+                Number of Seats
+            </label>
+
+            <select id="seats" class="form-select form-select-lg">
+
+                <option value="2">2 Seats</option>
+                <option value="4">4 Seats</option>
+                <option value="6">6 Seats</option>
+                <option value="8">8 Seats</option>
+                <option value="10">10 Seats</option>
+
+            </select>
+        </div>
+
+        <!-- BUTTON -->
+        <button class="btn btn-dark btn-lg w-100" onclick="calculateTable()">
+            Calculate Table Size
+        </button>
+
+        <!-- RESULT -->
+        <div class="alert alert-light border mt-4 d-none" id="resultBox">
+
+            <h5 class="fw-bold mb-3">
+                Recommended Dining Table Size
+            </h5>
+
+            <div id="resultText"></div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- INFO -->
+<div class="my-3">
+
+    <h4 class="fw-bold mb-3">
+        Standard Dining Table Sizes
+    </h4>
+
+    <ul class="mb-0">
+        <li>2 Seats → 80–100 cm</li>
+        <li>4 Seats → 120–140 cm</li>
+        <li>6 Seats → 160–180 cm</li>
+        <li>8 Seats → 200–240 cm</li>
+    </ul>
+
+</div>
+
+<!-- FAQ -->
+<div class="my-3">
+
+    <h4 class="fw-bold mb-3">
+        FAQ
+    </h4>
+
+    <h6 class="fw-semibold">
+        How much space should be around a dining table?
+    </h6>
+
+    <p class="text-muted">
+        Ideally, leave at least 90 cm of clearance around the table
+        for comfortable movement and chair spacing.
+    </p>
+
+    <h6 class="fw-semibold">
+        What shape dining table is best?
+    </h6>
+
+    <p class="text-muted mb-0">
+        Round tables work well in small spaces, while rectangular tables
+        are ideal for larger dining rooms and bigger families.
+    </p>
+
+</div>
+
+<script>
+    function calculateTable() {
+
+        let roomWidth = parseFloat(
+            document.getElementById("roomWidth").value
+        );
+
+        let roomLength = parseFloat(
+            document.getElementById("roomLength").value
+        );
+
+        let seats = parseInt(
+            document.getElementById("seats").value
+        );
+
+        if (
+            isNaN(roomWidth) ||
+            isNaN(roomLength) ||
+            roomWidth <= 0 ||
+            roomLength <= 0
+        ) {
+            alert("Please enter valid room dimensions");
+            return;
+        }
+
+        let tableLength;
+        let tableWidth = 90;
+
+        switch (seats) {
+
+            case 2:
+                tableLength = 100;
+                break;
+
+            case 4:
+                tableLength = 140;
+                break;
+
+            case 6:
+                tableLength = 180;
+                break;
+
+            case 8:
+                tableLength = 220;
+                break;
+
+            case 10:
+                tableLength = 280;
+                break;
+        }
+
+        let remainingWidth =
+            ((roomWidth * 100) - tableWidth) / 2;
+
+        let remainingLength =
+            ((roomLength * 100) - tableLength) / 2;
+
+        document
+            .getElementById("resultBox")
+            .classList.remove("d-none");
+
+        document
+            .getElementById("resultText")
+            .innerHTML = `
+      <p class="mb-2">
+        Recommended table size for
+        <strong>${seats} seats</strong>:
+      </p>
+
+      <h4 class="fw-bold mb-3">
+        ${tableLength} cm × ${tableWidth} cm
+      </h4>
+
+      <p class="mb-1">
+        Remaining clearance space:
+      </p>
+
+      <ul class="mb-0">
+        <li>Side clearance: ${remainingWidth.toFixed(0)} cm</li>
+        <li>End clearance: ${remainingLength.toFixed(0)} cm</li>
+      </ul>
+    `;
+    }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Dining Table Size Calculator",
+        "url": "{{ page.url | absolute_url }}",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All"
+    }
+</script>
