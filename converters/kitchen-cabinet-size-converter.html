@@ -1,0 +1,174 @@
+---
+layout: page
+title: Kitchen Cabinet Size Converter
+description: Convert kitchen cabinet dimensions between centimeters, inches, feet, and meters for accurate kitchen
+planning.
+categories: furniture
+permalink: /converters/kitchen-cabinet-size-converter/
+---
+
+<p class="text-muted mb-4">
+    Convert kitchen cabinet measurements between centimeters, inches,
+    feet, and meters for better kitchen design and renovation planning.
+</p>
+
+<div class="card shadow-none bg-light border rounded-3">
+    <div class="card-body p-4">
+
+        <!-- VALUE -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Cabinet Size</label>
+            <input type="number" id="value" class="form-control form-control-lg" placeholder="Example: 120">
+        </div>
+
+        <!-- FROM -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">From Unit</label>
+            <select id="fromUnit" class="form-select form-select-lg">
+                <option value="cm">Centimeters (cm)</option>
+                <option value="inch">Inches (inch)</option>
+                <option value="feet">Feet (ft)</option>
+                <option value="meter">Meters (m)</option>
+            </select>
+        </div>
+
+        <!-- TO -->
+        <div class="mb-4">
+            <label class="form-label fw-semibold">To Unit</label>
+            <select id="toUnit" class="form-select form-select-lg">
+                <option value="inch">Inches (inch)</option>
+                <option value="cm">Centimeters (cm)</option>
+                <option value="feet">Feet (ft)</option>
+                <option value="meter">Meters (m)</option>
+            </select>
+        </div>
+
+        <!-- BUTTON -->
+        <button class="btn btn-dark btn-lg w-100" onclick="convertCabinet()">
+            Convert Size
+        </button>
+
+        <!-- RESULT -->
+        <div class="alert alert-light border mt-4 d-none" id="resultBox">
+            <h5 class="fw-bold mb-2">Conversion Result</h5>
+            <div id="resultText"></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- INFO -->
+<div class="my-3">
+    <h4 class="fw-bold mb-3">Standard Kitchen Cabinet Sizes</h4>
+    <ul class="mb-0">
+        <li>Base Cabinet Height → 85–90 cm</li>
+        <li>Wall Cabinet Depth → 30–35 cm</li>
+        <li>Base Cabinet Depth → 60 cm</li>
+        <li>Tall Cabinet Height → 210–240 cm</li>
+    </ul>
+</div>
+
+<!-- FAQ -->
+<div class="my-3">
+    <h4 class="fw-bold mb-3">FAQ</h4>
+    <h6 class="fw-semibold">
+        Why convert kitchen cabinet sizes?
+    </h6>
+    <p class="text-muted">
+        Cabinet dimensions may vary depending on country standards
+        and manufacturer specifications.
+    </p>
+    <h6 class="fw-semibold">
+        What is the standard kitchen cabinet depth?
+    </h6>
+    <p class="text-muted mb-0">
+        Most standard base cabinets are around 60 cm deep,
+        while wall cabinets are typically 30–35 cm deep.
+    </p>
+</div>
+
+<script>
+    function convertCabinet() {
+
+        let value = parseFloat(
+            document.getElementById("value").value
+        );
+
+        let from = document.getElementById("fromUnit").value;
+        let to = document.getElementById("toUnit").value;
+
+        if (isNaN(value) || value <= 0) {
+
+            alert("Please enter a valid size");
+            return;
+        }
+
+        let cm;
+
+        switch (from) {
+
+            case "cm":
+                cm = value;
+                break;
+
+            case "inch":
+                cm = value * 2.54;
+                break;
+
+            case "feet":
+                cm = value * 30.48;
+                break;
+
+            case "meter":
+                cm = value * 100;
+                break;
+        }
+
+        let result;
+
+        switch (to) {
+
+            case "cm":
+                result = cm;
+                break;
+
+            case "inch":
+                result = cm / 2.54;
+                break;
+
+            case "feet":
+                result = cm / 30.48;
+                break;
+
+            case "meter":
+                result = cm / 100;
+                break;
+        }
+
+        result = result.toFixed(2);
+
+        document
+            .getElementById("resultBox")
+            .classList.remove("d-none");
+
+        document
+            .getElementById("resultText")
+            .innerHTML = `
+      <strong>${value} ${from}</strong>
+      =
+      <strong>${result} ${to}</strong>
+    `;
+    }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Kitchen Cabinet Size Converter",
+        "url": "{{ page.url | absolute_url }}",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All"
+    }
+</script>

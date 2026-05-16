@@ -1,0 +1,188 @@
+---
+layout: page
+title: Closet Organizer Calculator
+description: Calculate closet storage space and organize shelves, drawers, and hanging areas efficiently.
+categories: furniture
+permalink: /converters/closet-organizer-calculator/
+---
+
+<p class="text-muted mb-4">
+    Calculate the ideal closet layout based on closet dimensions,
+    shelves, drawers, and hanging storage space.
+</p>
+
+<div class="card shadow-none bg-light border rounded-3">
+    <div class="card-body p-4">
+
+        <!-- CLOSET WIDTH -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">
+                Closet Width
+            </label>
+            <div class="input-group input-group-lg">
+                <input type="number" id="closetWidth" class="form-control" placeholder="Example: 200">
+                <span class="input-group-text">cm</span>
+            </div>
+        </div>
+
+        <!-- CLOSET HEIGHT -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">
+                Closet Height
+            </label>
+            <div class="input-group input-group-lg">
+                <input type="number" id="closetHeight" class="form-control" placeholder="Example: 240">
+                <span class="input-group-text">cm</span>
+            </div>
+        </div>
+
+        <!-- NUMBER OF SHELVES -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">
+                Number of Shelves
+            </label>
+            <select id="shelves" class="form-select form-select-lg">
+                <option value="2">2 Shelves</option>
+                <option value="4">4 Shelves</option>
+                <option value="6">6 Shelves</option>
+                <option value="8">8 Shelves</option>
+            </select>
+        </div>
+
+        <!-- DRAWERS -->
+        <div class="mb-4">
+            <label class="form-label fw-semibold">
+                Number of Drawers
+            </label>
+            <select id="drawers" class="form-select form-select-lg">
+                <option value="0">0 Drawers</option>
+                <option value="2">2 Drawers</option>
+                <option value="4">4 Drawers</option>
+                <option value="6">6 Drawers</option>
+            </select>
+        </div>
+
+        <!-- BUTTON -->
+        <button class="btn btn-dark btn-lg w-100" onclick="calculateCloset()">
+            Calculate Storage Layout
+        </button>
+
+        <!-- RESULT -->
+        <div class="alert alert-light border mt-4 d-none" id="resultBox">
+            <h5 class="fw-bold mb-3">
+                Closet Layout Recommendation
+            </h5>
+            <div id="resultText"></div>
+        </div>
+    </div>
+</div>
+
+<!-- INFO -->
+<div class="my-3">
+    <h4 class="fw-bold mb-3">Closet Organization Tips</h4>
+    <ul class="mb-0">
+        <li>Leave at least 90 cm hanging height for shirts.</li>
+        <li>Use drawers for accessories and folded clothes.</li>
+        <li>Keep shelves between 30–40 cm apart.</li>
+        <li>Use upper shelves for seasonal storage.</li>
+    </ul>
+</div>
+
+<!-- FAQ -->
+<div class="my-3">
+    <h4 class="fw-bold mb-3">FAQ</h4>
+    <h6 class="fw-semibold">
+        What is the ideal closet depth?
+    </h6>
+    <p class="text-muted">
+        Most closets are around 55–65 cm deep
+        for comfortable clothing storage.
+    </p>
+    <h6 class="fw-semibold">
+        How many shelves should a closet have?
+    </h6>
+    <p class="text-muted mb-0">
+        The ideal number depends on storage needs,
+        but 4–6 shelves work well for most closets.
+    </p>
+</div>
+
+<script>
+    function calculateCloset() {
+
+        let width = parseFloat(
+            document.getElementById("closetWidth").value
+        );
+
+        let height = parseFloat(
+            document.getElementById("closetHeight").value
+        );
+
+        let shelves = parseInt(
+            document.getElementById("shelves").value
+        );
+
+        let drawers = parseInt(
+            document.getElementById("drawers").value
+        );
+
+        if (
+            isNaN(width) ||
+            isNaN(height) ||
+            width <= 0 ||
+            height <= 0
+        ) {
+
+            alert("Please enter valid closet dimensions");
+            return;
+        }
+
+        let shelfSpacing = (height / (shelves + 1)).toFixed(0);
+
+        let hangingArea = (height * 0.4).toFixed(0);
+
+        let drawerSpace = drawers * 20;
+
+        document
+            .getElementById("resultBox")
+            .classList.remove("d-none");
+
+        document
+            .getElementById("resultText")
+            .innerHTML = `
+      <ul class="mb-0">
+        <li>
+          Recommended shelf spacing:
+          <strong>${shelfSpacing} cm</strong>
+        </li>
+
+        <li>
+          Suggested hanging area:
+          <strong>${hangingArea} cm</strong>
+        </li>
+
+        <li>
+          Estimated drawer usage:
+          <strong>${drawerSpace} cm</strong>
+        </li>
+
+        <li>
+          Closet width:
+          <strong>${width} cm</strong>
+        </li>
+      </ul>
+    `;
+    }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Closet Organizer Calculator",
+        "url": "{{ page.url | absolute_url }}",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All"
+    }
+</script>

@@ -1,0 +1,141 @@
+---
+layout: page
+title: Coffee Table Height Calculator
+description: Calculate the ideal coffee table height based on sofa height and living room layout.
+categories: furniture
+permalink: /converters/coffee-table-height-calculator/
+---
+
+<p class="text-muted mb-4">
+    Find the ideal coffee table height based on your sofa dimensions
+    for a comfortable and balanced living room setup.
+</p>
+
+<div class="card shadow-none bg-light border rounded-3">
+    <div class="card-body p-4">
+
+        <!-- SOFA HEIGHT -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Sofa Seat Height</label>
+            <div class="input-group input-group-lg">
+                <input type="number" id="sofaHeight" class="form-control" placeholder="Example: 45">
+                <span class="input-group-text">cm</span>
+            </div>
+        </div>
+
+        <!-- STYLE -->
+        <div class="mb-4">
+            <label class="form-label fw-semibold">Coffee Table Style</label>
+            <select id="style" class="form-select form-select-lg">
+                <option value="standard">Standard Height</option>
+                <option value="low">Modern Low Profile</option>
+                <option value="high">Traditional Higher Table</option>
+            </select>
+        </div>
+
+        <!-- BUTTON -->
+        <button class="btn btn-dark btn-lg w-100" onclick="calculateCoffeeTable()">
+            Calculate Height
+        </button>
+
+        <!-- RESULT -->
+        <div class="alert alert-light border mt-4 d-none" id="resultBox">
+            <h5 class="fw-bold mb-3">Recommended Coffee Table Height</h5>
+            <div id="resultText"></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- INFO -->
+<div class="my-3">
+    <h4 class="fw-bold mb-3">Coffee Table Guidelines</h4>
+    <ul class="mb-0">
+        <li>Coffee tables should generally match sofa seat height.</li>
+        <li>Leave 40–45 cm space between sofa and coffee table.</li>
+        <li>Low-profile tables work well in modern interiors.</li>
+        <li>Traditional living rooms often use taller tables.</li>
+    </ul>
+</div>
+
+<!-- FAQ -->
+<div class="my-3">
+    <h4 class="fw-bold mb-3">FAQ</h4>
+    <h6 class="fw-semibold">
+        What is the ideal coffee table height?
+    </h6>
+    <p class="text-muted">
+        Most coffee tables are between 40–45 cm high,
+        depending on sofa height and room style.
+    </p>
+    <h6 class="fw-semibold">
+        Should a coffee table be lower than the sofa?
+    </h6>
+    <p class="text-muted mb-0">
+        Yes, a coffee table is usually the same height
+        or slightly lower than the sofa seat.
+    </p>
+</div>
+
+<script>
+    function calculateCoffeeTable() {
+
+        let sofaHeight = parseFloat(
+            document.getElementById("sofaHeight").value
+        );
+
+        let style = document.getElementById("style").value;
+
+        if (isNaN(sofaHeight) || sofaHeight <= 0) {
+
+            alert("Please enter a valid sofa height");
+            return;
+        }
+
+        let recommendedHeight;
+
+        switch (style) {
+
+            case "low":
+                recommendedHeight = sofaHeight - 5;
+                break;
+
+            case "high":
+                recommendedHeight = sofaHeight + 3;
+                break;
+
+            default:
+                recommendedHeight = sofaHeight;
+        }
+
+        document
+            .getElementById("resultBox")
+            .classList.remove("d-none");
+
+        document
+            .getElementById("resultText")
+            .innerHTML = `
+      <p class="mb-2">
+        Based on a sofa height of
+        <strong>${sofaHeight} cm</strong>,
+        the recommended coffee table height is:
+      </p>
+
+      <h4 class="fw-bold">
+        ${recommendedHeight} cm
+      </h4>
+    `;
+    }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Coffee Table Height Calculator",
+        "url": "{{ page.url | absolute_url }}",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All"
+    }
+</script>
