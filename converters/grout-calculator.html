@@ -1,0 +1,238 @@
+---
+layout: default
+title: Grout Calculator
+description: Calculate how much grout is needed for tile installation based on tile size, joint width, and total area.
+permalink: /converters/grout-calculator/
+---
+
+<p class="text-muted mb-4">
+  Estimate the amount of grout needed
+  for tile flooring, walls, backsplashes, and bathroom projects.
+</p>
+
+<div class="card shadow-none bg-light border-0 rounded-4">
+  <div class="card-body p-4">
+
+    <!-- TOTAL AREA -->
+    <div class="mb-3">
+      <label class="form-label fw-semibold">
+        Total Tile Area
+      </label>
+
+      <div class="input-group input-group-lg">
+        <input type="number" id="tileArea" class="form-control" placeholder="Example: 20">
+
+        <span class="input-group-text">
+          m²
+        </span>
+      </div>
+    </div>
+
+    <!-- TILE LENGTH -->
+    <div class="mb-3">
+      <label class="form-label fw-semibold">
+        Tile Length
+      </label>
+
+      <div class="input-group input-group-lg">
+        <input type="number" id="tileLength" class="form-control" placeholder="Example: 30">
+
+        <span class="input-group-text">
+          cm
+        </span>
+      </div>
+    </div>
+
+    <!-- TILE WIDTH -->
+    <div class="mb-3">
+      <label class="form-label fw-semibold">
+        Tile Width
+      </label>
+
+      <div class="input-group input-group-lg">
+        <input type="number" id="tileWidth" class="form-control" placeholder="Example: 30">
+
+        <span class="input-group-text">
+          cm
+        </span>
+      </div>
+    </div>
+
+    <!-- JOINT WIDTH -->
+    <div class="mb-4">
+      <label class="form-label fw-semibold">
+        Grout Joint Width
+      </label>
+
+      <div class="input-group input-group-lg">
+        <input type="number" id="jointWidth" class="form-control" placeholder="Example: 3">
+
+        <span class="input-group-text">
+          mm
+        </span>
+      </div>
+    </div>
+
+    <!-- BUTTON -->
+    <button class="btn btn-dark btn-lg w-100" onclick="calculateGrout()">
+      Calculate Grout
+    </button>
+
+    <!-- RESULT -->
+    <div class="alert alert-light border mt-4 d-none" id="resultBox">
+
+      <h5 class="fw-bold mb-3">
+        Grout Estimate
+      </h5>
+
+      <div id="resultText"></div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- TIPS -->
+<div class="card shadow-none bg-light border-0 rounded-4 mt-4">
+  <div class="card-body p-4">
+
+    <h4 class="fw-bold mb-3">
+      Grouting Tips
+    </h4>
+
+    <ul class="mb-0">
+      <li>Smaller grout joints require less grout.</li>
+      <li>Textured tiles may consume more grout.</li>
+      <li>Always buy extra grout for repairs.</li>
+      <li>Choose grout color that complements tile style.</li>
+    </ul>
+
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="card shadow-none bg-light border-0 rounded-4 mt-4">
+  <div class="card-body p-4">
+
+    <h4 class="fw-bold mb-3">
+      FAQ
+    </h4>
+
+    <h6 class="fw-semibold">
+      How much extra grout should I buy?
+    </h6>
+
+    <p class="text-muted">
+      Most installers recommend buying
+      10–15% extra grout for waste and future maintenance.
+    </p>
+
+    <h6 class="fw-semibold">
+      Does tile size affect grout usage?
+    </h6>
+
+    <p class="text-muted mb-0">
+      Yes, smaller tiles usually require more grout
+      because they create more grout lines.
+    </p>
+
+  </div>
+</div>
+
+<script>
+  function calculateGrout() {
+
+    let tileArea = parseFloat(
+      document.getElementById("tileArea").value
+    );
+
+    let tileLength = parseFloat(
+      document.getElementById("tileLength").value
+    );
+
+    let tileWidth = parseFloat(
+      document.getElementById("tileWidth").value
+    );
+
+    let jointWidth = parseFloat(
+      document.getElementById("jointWidth").value
+    );
+
+    if (
+      isNaN(tileArea) ||
+      isNaN(tileLength) ||
+      isNaN(tileWidth) ||
+      isNaN(jointWidth) ||
+      tileArea <= 0 ||
+      tileLength <= 0 ||
+      tileWidth <= 0 ||
+      jointWidth <= 0
+    ) {
+
+      alert("Please enter valid dimensions");
+      return;
+    }
+
+    // SIMPLE GROUT FORMULA
+
+    let groutAmount =
+      (
+        tileArea *
+        ((tileLength + tileWidth) / (tileLength * tileWidth)) *
+        jointWidth *
+        0.2
+      );
+
+    // ADD 10% EXTRA
+
+    groutAmount =
+      groutAmount * 1.1;
+
+    groutAmount =
+      groutAmount.toFixed(1);
+
+    document
+      .getElementById("resultBox")
+      .classList.remove("d-none");
+
+    document
+      .getElementById("resultText")
+      .innerHTML = `
+      <p>
+        <strong>Total Tile Area:</strong>
+        ${tileArea} m²
+      </p>
+
+      <p>
+        <strong>Tile Size:</strong>
+        ${tileLength} × ${tileWidth} cm
+      </p>
+
+      <p>
+        <strong>Grout Joint Width:</strong>
+        ${jointWidth} mm
+      </p>
+
+      <h4 class="fw-bold">
+        ${groutAmount} kg of Grout Needed
+      </h4>
+
+      <p class="mt-3 mb-0 text-muted">
+        Includes approximately 10% extra grout
+        for waste and touch-ups.
+      </p>
+    `;
+  }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Grout Calculator",
+    "url": "{{ page.url | absolute_url }}",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All"
+  }
+</script>

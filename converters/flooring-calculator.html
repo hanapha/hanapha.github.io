@@ -1,0 +1,248 @@
+---
+layout: default
+title: Flooring Calculator
+description: Calculate how much flooring material you need based on room dimensions and flooring plank or tile size.
+permalink: /converters/flooring-calculator/
+---
+
+<p class="text-muted mb-4">
+  Estimate the amount of flooring material needed
+  for your room based on floor dimensions and material size.
+</p>
+
+<div class="card shadow-none bg-light border-0 rounded-4">
+  <div class="card-body p-4">
+
+    <!-- ROOM LENGTH -->
+    <div class="mb-3">
+      <label class="form-label fw-semibold">
+        Room Length
+      </label>
+
+      <div class="input-group input-group-lg">
+        <input type="number" id="roomLength" class="form-control" placeholder="Example: 5">
+
+        <span class="input-group-text">
+          meters
+        </span>
+      </div>
+    </div>
+
+    <!-- ROOM WIDTH -->
+    <div class="mb-3">
+      <label class="form-label fw-semibold">
+        Room Width
+      </label>
+
+      <div class="input-group input-group-lg">
+        <input type="number" id="roomWidth" class="form-control" placeholder="Example: 4">
+
+        <span class="input-group-text">
+          meters
+        </span>
+      </div>
+    </div>
+
+    <!-- FLOORING TYPE -->
+    <div class="mb-3">
+      <label class="form-label fw-semibold">
+        Flooring Type
+      </label>
+
+      <select id="floorType" class="form-select form-select-lg">
+
+        <option value="tile">
+          Tile
+        </option>
+
+        <option value="vinyl">
+          Vinyl Plank
+        </option>
+
+        <option value="wood">
+          Hardwood
+        </option>
+
+        <option value="laminate">
+          Laminate
+        </option>
+
+      </select>
+    </div>
+
+    <!-- MATERIAL SIZE -->
+    <div class="mb-4">
+      <label class="form-label fw-semibold">
+        Material Coverage Per Box
+      </label>
+
+      <div class="input-group input-group-lg">
+        <input type="number" id="coverage" class="form-control" placeholder="Example: 2">
+
+        <span class="input-group-text">
+          m²
+        </span>
+      </div>
+    </div>
+
+    <!-- BUTTON -->
+    <button class="btn btn-dark btn-lg w-100" onclick="calculateFlooring()">
+      Calculate Flooring
+    </button>
+
+    <!-- RESULT -->
+    <div class="alert alert-light border mt-4 d-none" id="resultBox">
+
+      <h5 class="fw-bold mb-3">
+        Flooring Estimate
+      </h5>
+
+      <div id="resultText"></div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- TIPS -->
+<div class="card shadow-none bg-light border-0 rounded-4 mt-4">
+  <div class="card-body p-4">
+
+    <h4 class="fw-bold mb-3">
+      Flooring Tips
+    </h4>
+
+    <ul class="mb-0">
+      <li>Add 5–10% extra material for cutting waste.</li>
+      <li>Diagonal patterns may require more flooring.</li>
+      <li>Measure every room carefully before ordering.</li>
+      <li>Different flooring materials have unique durability levels.</li>
+    </ul>
+
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="card shadow-none bg-light border-0 rounded-4 mt-4">
+  <div class="card-body p-4">
+
+    <h4 class="fw-bold mb-3">
+      FAQ
+    </h4>
+
+    <h6 class="fw-semibold">
+      How much extra flooring should I buy?
+    </h6>
+
+    <p class="text-muted">
+      Most professionals recommend purchasing
+      5–10% additional material for cuts and mistakes.
+    </p>
+
+    <h6 class="fw-semibold">
+      Which flooring type is best for homes?
+    </h6>
+
+    <p class="text-muted mb-0">
+      Vinyl, laminate, and hardwood are popular choices
+      depending on budget and durability needs.
+    </p>
+
+  </div>
+</div>
+
+<script>
+  function calculateFlooring() {
+
+    let roomLength = parseFloat(
+      document.getElementById("roomLength").value
+    );
+
+    let roomWidth = parseFloat(
+      document.getElementById("roomWidth").value
+    );
+
+    let floorType =
+      document.getElementById("floorType").value;
+
+    let coverage = parseFloat(
+      document.getElementById("coverage").value
+    );
+
+    if (
+      isNaN(roomLength) ||
+      isNaN(roomWidth) ||
+      isNaN(coverage) ||
+      roomLength <= 0 ||
+      roomWidth <= 0 ||
+      coverage <= 0
+    ) {
+
+      alert("Please enter valid dimensions");
+      return;
+    }
+
+    // ROOM AREA
+
+    let roomArea =
+      roomLength * roomWidth;
+
+    // WASTE FACTOR
+
+    let wasteFactor = 1.1;
+
+    // TOTAL AREA
+
+    let totalArea =
+      roomArea * wasteFactor;
+
+    // BOXES NEEDED
+
+    let boxesNeeded =
+      Math.ceil(totalArea / coverage);
+
+    document
+      .getElementById("resultBox")
+      .classList.remove("d-none");
+
+    document
+      .getElementById("resultText")
+      .innerHTML = `
+      <p>
+        <strong>Flooring Type:</strong>
+        ${floorType}
+      </p>
+
+      <p>
+        <strong>Total Floor Area:</strong>
+        ${roomArea.toFixed(1)} m²
+      </p>
+
+      <p>
+        <strong>Total Area with Waste:</strong>
+        ${totalArea.toFixed(1)} m²
+      </p>
+
+      <h4 class="fw-bold">
+        ${boxesNeeded} Boxes Needed
+      </h4>
+
+      <p class="mt-3 mb-0 text-muted">
+        Includes an estimated 10% extra material
+        for cutting and installation waste.
+      </p>
+    `;
+  }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Flooring Calculator",
+    "url": "{{ page.url | absolute_url }}",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All"
+  }
+</script>

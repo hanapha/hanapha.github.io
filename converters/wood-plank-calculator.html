@@ -1,0 +1,241 @@
+---
+layout: default
+title: Wood Plank Calculator
+description: Calculate how many wood planks are needed based on room size, plank dimensions, and installation waste.
+permalink: /converters/wood-plank-calculator/
+---
+
+
+<p class="text-muted mb-4">
+  Estimate the number of wood planks required
+  for flooring, wall panels, or deck installations.
+</p>
+
+<div class="card shadow-none bg-light border-0 rounded-4">
+  <div class="card-body p-4">
+
+    <!-- AREA LENGTH -->
+    <div class="mb-3">
+      <label class="form-label fw-semibold">
+        Area Length
+      </label>
+
+      <div class="input-group input-group-lg">
+        <input type="number" id="areaLength" class="form-control" placeholder="Example: 5">
+
+        <span class="input-group-text">
+          meters
+        </span>
+      </div>
+    </div>
+
+    <!-- AREA WIDTH -->
+    <div class="mb-3">
+      <label class="form-label fw-semibold">
+        Area Width
+      </label>
+
+      <div class="input-group input-group-lg">
+        <input type="number" id="areaWidth" class="form-control" placeholder="Example: 4">
+
+        <span class="input-group-text">
+          meters
+        </span>
+      </div>
+    </div>
+
+    <!-- PLANK LENGTH -->
+    <div class="mb-3">
+      <label class="form-label fw-semibold">
+        Wood Plank Length
+      </label>
+
+      <div class="input-group input-group-lg">
+        <input type="number" id="plankLength" class="form-control" placeholder="Example: 1.2">
+
+        <span class="input-group-text">
+          meters
+        </span>
+      </div>
+    </div>
+
+    <!-- PLANK WIDTH -->
+    <div class="mb-4">
+      <label class="form-label fw-semibold">
+        Wood Plank Width
+      </label>
+
+      <div class="input-group input-group-lg">
+        <input type="number" id="plankWidth" class="form-control" placeholder="Example: 0.2">
+
+        <span class="input-group-text">
+          meters
+        </span>
+      </div>
+    </div>
+
+    <!-- BUTTON -->
+    <button class="btn btn-dark btn-lg w-100" onclick="calculateWoodPlanks()">
+      Calculate Wood Planks
+    </button>
+
+    <!-- RESULT -->
+    <div class="alert alert-light border mt-4 d-none" id="resultBox">
+
+      <h5 class="fw-bold mb-3">
+        Wood Plank Estimate
+      </h5>
+
+      <div id="resultText"></div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- TIPS -->
+<div class="card shadow-none bg-light border-0 rounded-4 mt-4">
+  <div class="card-body p-4">
+
+    <h4 class="fw-bold mb-3">
+      Installation Tips
+    </h4>
+
+    <ul class="mb-0">
+      <li>Add extra planks for cutting waste and repairs.</li>
+      <li>Diagonal layouts usually require more material.</li>
+      <li>Acclimate wood planks before installation.</li>
+      <li>Measure room dimensions carefully for accuracy.</li>
+    </ul>
+
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="card shadow-none bg-light border-0 rounded-4 mt-4">
+  <div class="card-body p-4">
+
+    <h4 class="fw-bold mb-3">
+      FAQ
+    </h4>
+
+    <h6 class="fw-semibold">
+      How many extra planks should I buy?
+    </h6>
+
+    <p class="text-muted">
+      It is recommended to buy 5–10% extra
+      to cover installation waste and future repairs.
+    </p>
+
+    <h6 class="fw-semibold">
+      Can this calculator be used for wall panels?
+    </h6>
+
+    <p class="text-muted mb-0">
+      Yes, the calculator works for flooring,
+      wall cladding, decking, and wood panel projects.
+    </p>
+
+  </div>
+</div>
+
+<script>
+  function calculateWoodPlanks() {
+
+    let areaLength = parseFloat(
+      document.getElementById("areaLength").value
+    );
+
+    let areaWidth = parseFloat(
+      document.getElementById("areaWidth").value
+    );
+
+    let plankLength = parseFloat(
+      document.getElementById("plankLength").value
+    );
+
+    let plankWidth = parseFloat(
+      document.getElementById("plankWidth").value
+    );
+
+    if (
+      isNaN(areaLength) ||
+      isNaN(areaWidth) ||
+      isNaN(plankLength) ||
+      isNaN(plankWidth) ||
+      areaLength <= 0 ||
+      areaWidth <= 0 ||
+      plankLength <= 0 ||
+      plankWidth <= 0
+    ) {
+
+      alert("Please enter valid dimensions");
+      return;
+    }
+
+    // AREA
+
+    let totalArea =
+      areaLength * areaWidth;
+
+    // PLANK AREA
+
+    let plankArea =
+      plankLength * plankWidth;
+
+    // ADD 10% WASTE
+
+    let adjustedArea =
+      totalArea * 1.1;
+
+    // TOTAL PLANKS
+
+    let planksNeeded =
+      Math.ceil(adjustedArea / plankArea);
+
+    document
+      .getElementById("resultBox")
+      .classList.remove("d-none");
+
+    document
+      .getElementById("resultText")
+      .innerHTML = `
+      <p>
+        <strong>Total Area:</strong>
+        ${totalArea.toFixed(2)} m²
+      </p>
+
+      <p>
+        <strong>Adjusted Area with Waste:</strong>
+        ${adjustedArea.toFixed(2)} m²
+      </p>
+
+      <p>
+        <strong>Single Plank Coverage:</strong>
+        ${plankArea.toFixed(2)} m²
+      </p>
+
+      <h4 class="fw-bold">
+        ${planksNeeded} Wood Planks Needed
+      </h4>
+
+      <p class="mt-3 mb-0 text-muted">
+        Includes approximately 10% additional material
+        for cutting and installation waste.
+      </p>
+    `;
+  }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Wood Plank Calculator",
+    "url": "{{ page.url | absolute_url }}",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All"
+  }
+</script>
