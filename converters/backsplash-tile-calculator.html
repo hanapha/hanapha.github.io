@@ -1,27 +1,27 @@
 ---
 layout: page
 title: Backsplash Tile Calculator
-description: Calculate how many backsplash tiles are needed for your kitchen or bathroom wall area.
+description: Calculate how many backsplash tiles are needed.
 categories: renovation
 permalink: /converters/backsplash-tile-calculator/
 ---
 
 <p class="text-muted mb-4">
-  Estimate the number of backsplash tiles needed
-  based on wall dimensions and tile size.
+  Estimate the number of backsplash tiles required
+  for kitchens, bathrooms, and wall accent installations.
 </p>
 
-<div class="card shadow-none bg-light border-0 rounded-4">
+<div class="card border-0 bg-light shadow-none rounded-4">
   <div class="card-body p-4">
 
-    <!-- WALL LENGTH -->
+    <!-- WALL WIDTH -->
     <div class="mb-3">
       <label class="form-label fw-semibold">
-        Wall Length
+        Wall Width
       </label>
 
       <div class="input-group input-group-lg">
-        <input type="number" id="wallLength" class="form-control" placeholder="Example: 3">
+        <input type="number" id="wallWidth" class="form-control" placeholder="Example: 3">
 
         <span class="input-group-text">
           meters
@@ -86,8 +86,7 @@ permalink: /converters/backsplash-tile-calculator/
         Tile Estimate
       </h5>
 
-      <div id="resultText">
-      </div>
+      <div id="resultText"></div>
 
     </div>
 
@@ -95,7 +94,7 @@ permalink: /converters/backsplash-tile-calculator/
 </div>
 
 <!-- TIPS -->
-<div class="card shadow-none bg-light border-0 rounded-4 mt-4">
+<div class="card border-0 bg-light shadow-none rounded-4 mt-4">
   <div class="card-body p-4">
 
     <h4 class="fw-bold mb-3">
@@ -103,17 +102,17 @@ permalink: /converters/backsplash-tile-calculator/
     </h4>
 
     <ul class="mb-0">
-      <li>Add 10% extra tiles for cuts and breakage.</li>
-      <li>Measure outlet and window areas separately.</li>
-      <li>Smaller tiles may require more grout lines.</li>
-      <li>Glossy tiles reflect more kitchen lighting.</li>
+      <li>Add 10% extra tiles for cuts and waste.</li>
+      <li>Pattern layouts may require additional material.</li>
+      <li>Measure outlets and fixtures separately.</li>
+      <li>Use waterproof grout in wet areas.</li>
     </ul>
 
   </div>
 </div>
 
 <!-- FAQ -->
-<div class="card shadow-none bg-light border-0 rounded-4 mt-4">
+<div class="card border-0 bg-light shadow-none rounded-4 mt-4">
   <div class="card-body p-4">
 
     <h4 class="fw-bold mb-3">
@@ -121,21 +120,21 @@ permalink: /converters/backsplash-tile-calculator/
     </h4>
 
     <h6 class="fw-semibold">
-      How many extra tiles should I buy?
+      How many backsplash tiles do I need?
     </h6>
 
     <p class="text-muted">
-      Most installers recommend purchasing
-      10% extra material for cuts and replacements.
+      The required number depends on wall size,
+      tile dimensions, and installation pattern.
     </p>
 
     <h6 class="fw-semibold">
-      Can this calculator be used for bathroom walls?
+      Should I buy extra tiles?
     </h6>
 
     <p class="text-muted mb-0">
-      Yes, it works for kitchen backsplashes,
-      bathroom walls, and decorative tile areas.
+      Yes, extra tiles help cover cutting waste,
+      repairs, and future replacements.
     </p>
 
   </div>
@@ -144,8 +143,8 @@ permalink: /converters/backsplash-tile-calculator/
 <script>
   function calculateBacksplashTiles() {
 
-    let wallLength = parseFloat(
-      document.getElementById("wallLength").value
+    let wallWidth = parseFloat(
+      document.getElementById("wallWidth").value
     );
 
     let wallHeight = parseFloat(
@@ -161,11 +160,11 @@ permalink: /converters/backsplash-tile-calculator/
     );
 
     if (
-      isNaN(wallLength) ||
+      isNaN(wallWidth) ||
       isNaN(wallHeight) ||
       isNaN(tileLength) ||
       isNaN(tileWidth) ||
-      wallLength <= 0 ||
+      wallWidth <= 0 ||
       wallHeight <= 0 ||
       tileLength <= 0 ||
       tileWidth <= 0
@@ -178,14 +177,14 @@ permalink: /converters/backsplash-tile-calculator/
     // WALL AREA
 
     let wallArea =
-      wallLength * wallHeight;
+      wallWidth * wallHeight;
 
     // TILE AREA
 
     let tileArea =
       tileLength * tileWidth;
 
-    // ADD 10% EXTRA
+    // ADD 10% WASTE
 
     let adjustedArea =
       wallArea * 1.1;
@@ -203,7 +202,7 @@ permalink: /converters/backsplash-tile-calculator/
       .getElementById("resultText")
       .innerHTML = `
       <p>
-        <strong>Total Wall Area:</strong>
+        <strong>Backsplash Area:</strong>
         ${wallArea.toFixed(2)} m²
       </p>
 
@@ -222,7 +221,7 @@ permalink: /converters/backsplash-tile-calculator/
       </h4>
 
       <p class="mt-3 mb-0 text-muted">
-        Includes approximately 10% additional tiles
+        Includes approximately 10% additional material
         for cutting and installation waste.
       </p>
     `;
