@@ -1,0 +1,180 @@
+---
+layout: page
+title: Paint Calculator
+description: Calculate how much paint you need for walls, ceilings, and rooms based on room dimensions and paint
+coverage.
+categories: interior
+permalink: /converters/paint-calculator/
+---
+
+<p class="text-muted mb-4">
+    Estimate how much paint you need for your room
+    based on wall dimensions, paint coverage, and number of coats.
+</p>
+
+<div class="card shadow-none bg-light border rounded-3">
+    <div class="card-body p-4">
+
+        <!-- ROOM LENGTH -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Room Length</label>
+            <div class="input-group input-group-lg">
+                <input type="number" id="length" class="form-control" placeholder="Example: 5">
+                <span class="input-group-text">meters</span>
+            </div>
+        </div>
+
+        <!-- ROOM WIDTH -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Room Width</label>
+            <div class="input-group input-group-lg">
+                <input type="number" id="width" class="form-control" placeholder="Example: 4">
+                <span class="input-group-text">meters</span>
+            </div>
+        </div>
+
+        <!-- WALL HEIGHT -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Wall Height</label>
+            <div class="input-group input-group-lg">
+                <input type="number" id="height" class="form-control" placeholder="Example: 3">
+                <span class="input-group-text">meters</span>
+            </div>
+        </div>
+
+        <!-- COATS -->
+        <div class="mb-4">
+            <label class="form-label fw-semibold">Number of Coats</label>
+            <select id="coats" class="form-select form-select-lg">
+                <option value="1">1 Coat</option>
+                <option value="2" selected>2 Coats</option>
+                <option value="3">3 Coats</option>
+            </select>
+        </div>
+
+        <!-- BUTTON -->
+        <button class="btn btn-dark btn-lg w-100" onclick="calculatePaint()">
+            Calculate Paint Needed
+        </button>
+
+        <!-- RESULT -->
+        <div class="alert alert-light border mt-4 d-none" id="resultBox">
+            <h5 class="fw-bold mb-3">Paint Estimate</h5>
+            <div id="resultText"></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- INFO -->
+<div class="my-3">
+    <h4 class="fw-bold mb-3">Paint Coverage Tips</h4>
+    <ul class="mb-0">
+        <li>1 liter of paint typically covers 10 m².</li>
+        <li>Dark colors may require additional coats.</li>
+        <li>Always prepare extra paint for touch-ups.</li>
+        <li>Primer may improve paint coverage.</li>
+    </ul>
+</div>
+
+<!-- FAQ -->
+<div class="my-3">
+    <h4 class="fw-bold mb-3">FAQ</h4>
+    <h6 class="fw-semibold">
+        How much paint do I need for a room?
+    </h6>
+    <p class="text-muted">
+        The amount depends on wall size, paint coverage,
+        and the number of coats applied.
+    </p>
+    <h6 class="fw-semibold">
+        Should I apply two coats of paint?
+    </h6>
+    <p class="text-muted mb-0">
+        Yes, two coats generally provide better color consistency
+        and durability.
+    </p>
+</div>
+
+<script>
+    function calculatePaint() {
+
+        let length = parseFloat(
+            document.getElementById("length").value
+        );
+
+        let width = parseFloat(
+            document.getElementById("width").value
+        );
+
+        let height = parseFloat(
+            document.getElementById("height").value
+        );
+
+        let coats = parseInt(
+            document.getElementById("coats").value
+        );
+
+        if (
+            isNaN(length) ||
+            isNaN(width) ||
+            isNaN(height) ||
+            length <= 0 ||
+            width <= 0 ||
+            height <= 0
+        ) {
+
+            alert("Please enter valid room dimensions");
+            return;
+        }
+
+        // WALL AREA
+        let wallArea =
+            2 * (length + width) * height;
+
+        // TOTAL AREA
+        let totalArea =
+            wallArea * coats;
+
+        // COVERAGE
+        let paintNeeded =
+            totalArea / 10;
+
+        paintNeeded =
+            paintNeeded.toFixed(1);
+
+        document
+            .getElementById("resultBox")
+            .classList.remove("d-none");
+
+        document
+            .getElementById("resultText")
+            .innerHTML = `
+      <p>
+        <strong>Total Paint Area:</strong>
+        ${totalArea.toFixed(1)} m²
+      </p>
+
+      <h4 class="fw-bold">
+        ${paintNeeded} Liters of Paint Needed
+      </h4>
+
+      <p class="mt-3 mb-0 text-muted">
+        Estimate based on average paint coverage
+        of 10 m² per liter.
+      </p>
+    `;
+    }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Paint Calculator",
+        "url": "{{ page.url | absolute_url }}",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All"
+    }
+</script>

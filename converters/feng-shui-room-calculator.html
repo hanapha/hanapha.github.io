@@ -1,0 +1,193 @@
+---
+layout: page
+title: Feng Shui Room Calculator
+description: Calculate Feng Shui room recommendations based on room direction, purpose, and energy balance.
+categories: interior
+permalink: /converters/feng-shui-room-calculator/
+---
+
+<p class="text-muted mb-4">
+    Discover Feng Shui recommendations for room layout,
+    colors, and energy balance based on room direction and purpose.
+</p>
+
+<div class="card shadow-none bg-light border rounded-3">
+    <div class="card-body p-4">
+
+        <!-- ROOM TYPE -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Room Type</label>
+            <select id="roomType" class="form-select form-select-lg">
+                <option value="bedroom">Bedroom</option>
+                <option value="living">Living Room</option>
+                <option value="office">Home Office</option>
+                <option value="kitchen">Kitchen</option>
+            </select>
+        </div>
+
+        <!-- ROOM DIRECTION -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Room Direction</label>
+            <select id="direction" class="form-select form-select-lg">
+                <option value="north">North</option>
+                <option value="south">South</option>
+                <option value="east">East</option>
+                <option value="west">West</option>
+            </select>
+        </div>
+
+        <!-- ENERGY GOAL -->
+        <div class="mb-4">
+            <label class="form-label fw-semibold">Desired Energy</label>
+            <select id="energy" class="form-select form-select-lg">
+                <option value="calm">Calm & Relaxation</option>
+                <option value="focus">Focus & Productivity</option>
+                <option value="wealth">Wealth & Prosperity</option>
+                <option value="social">Social & Positive Energy</option>
+            </select>
+        </div>
+
+        <!-- BUTTON -->
+        <button class="btn btn-dark btn-lg w-100" onclick="calculateFengShui()">
+            Generate Feng Shui Advice
+        </button>
+
+        <!-- RESULT -->
+        <div class="alert alert-light border mt-4 d-none" id="resultBox">
+            <h5 class="fw-bold mb-3">Feng Shui Recommendation</h5>
+            <div id="resultText"></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- INFO -->
+<div class="my-3">
+    <h4 class="fw-bold mb-3">Feng Shui Tips</h4>
+    <ul class="mb-0">
+        <li>Keep pathways clear for positive energy flow.</li>
+        <li>Use natural lighting whenever possible.</li>
+        <li>Add plants to improve balance and freshness.</li>
+        <li>Avoid excessive clutter in living spaces.</li>
+    </ul>
+</div>
+
+
+<!-- FAQ -->
+<div class="my-3">
+    <h4 class="fw-bold mb-3">FAQ</h4>
+    <h6 class="fw-semibold">
+        What is Feng Shui?
+    </h6>
+    <p class="text-muted">
+        Feng Shui is a traditional practice focused on creating
+        harmony and balance within living spaces.
+    </p>
+    <h6 class="fw-semibold">
+        Why is room direction important?
+    </h6>
+    <p class="text-muted mb-0">
+        Different directions are associated with specific energy elements,
+        influencing mood, productivity, and overall atmosphere.
+    </p>
+</div>
+
+<script>
+    function calculateFengShui() {
+
+        let roomType =
+            document.getElementById("roomType").value;
+
+        let direction =
+            document.getElementById("direction").value;
+
+        let energy =
+            document.getElementById("energy").value;
+
+        let advice = "";
+        let colors = "";
+        let element = "";
+
+        // GENERATOR LOGIC
+
+        if (direction === "north") {
+
+            element = "Water";
+            colors = "Blue, Black, Gray";
+        } else if (direction === "south") {
+
+            element = "Fire";
+            colors = "Red, Orange, Pink";
+        } else if (direction === "east") {
+
+            element = "Wood";
+            colors = "Green, Brown";
+        } else {
+
+            element = "Metal";
+            colors = "White, Silver, Gold";
+        }
+
+        // ENERGY
+
+        switch (energy) {
+
+            case "calm":
+                advice =
+                    "Use soft lighting, calming textures, and avoid excessive decoration.";
+                break;
+
+            case "focus":
+                advice =
+                    "Keep the room organized and position furniture for minimal distractions.";
+                break;
+
+            case "wealth":
+                advice =
+                    "Add plants, mirrors, and natural materials to encourage prosperity.";
+                break;
+
+            case "social":
+                advice =
+                    "Use warm lighting and open seating arrangements to encourage communication.";
+                break;
+        }
+
+        document
+            .getElementById("resultBox")
+            .classList.remove("d-none");
+
+        document
+            .getElementById("resultText")
+            .innerHTML = `
+      <p>
+        <strong>Room Type:</strong> ${roomType}
+      </p>
+
+      <p>
+        <strong>Direction Element:</strong> ${element}
+      </p>
+
+      <p>
+        <strong>Recommended Colors:</strong> ${colors}
+      </p>
+
+      <p class="mb-0">
+        <strong>Feng Shui Advice:</strong>
+        ${advice}
+      </p>
+    `;
+    }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Feng Shui Room Calculator",
+        "url": "{{ page.url | absolute_url }}",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "All"
+    }
+</script>

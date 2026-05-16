@@ -1,0 +1,195 @@
+---
+layout: page
+title: Wallpaper Calculator
+description: Calculate how many wallpaper rolls you need based on wall dimensions and wallpaper roll size.
+categories: interior
+permalink: /converters/wallpaper-calculator/
+---
+
+<p class="text-muted mb-4">
+    Estimate the number of wallpaper rolls needed
+    for your room based on wall dimensions and wallpaper size.
+</p>
+
+<div class="card shadow-none bg-light border rounded-3">
+    <div class="card-body p-4">
+
+        <!-- ROOM LENGTH -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Room Length</label>
+            <div class="input-group input-group-lg">
+                <input type="number" id="length" class="form-control" placeholder="Example: 5">
+                <span class="input-group-text">meters</span>
+            </div>
+        </div>
+
+        <!-- ROOM WIDTH -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Room Width</label>
+            <div class="input-group input-group-lg">
+                <input type="number" id="width" class="form-control" placeholder="Example: 4">
+                <span class="input-group-text">meters</span>
+            </div>
+        </div>
+
+        <!-- WALL HEIGHT -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Wall Height</label>
+            <div class="input-group input-group-lg">
+                <input type="number" id="height" class="form-control" placeholder="Example: 2.8">
+                <span class="input-group-text">meters</span>
+            </div>
+        </div>
+
+        <!-- ROLL WIDTH -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Wallpaper Roll Width</label>
+            <div class="input-group input-group-lg">
+                <input type="number" id="rollWidth" class="form-control" placeholder="Example: 0.53">
+                <span class="input-group-text">meters</span>
+            </div>
+        </div>
+
+        <!-- ROLL LENGTH -->
+        <div class="mb-4">
+            <label class="form-label fw-semibold">Wallpaper Roll Length</label>
+            <div class="input-group input-group-lg">
+                <input type="number" id="rollLength" class="form-control" placeholder="Example: 10">
+                <span class="input-group-text">meters</span>
+            </div>
+        </div>
+
+        <!-- BUTTON -->
+        <button class="btn btn-dark btn-lg w-100" onclick="calculateWallpaper()">
+            Calculate Wallpaper Rolls
+        </button>
+
+        <!-- RESULT -->
+        <div class="alert alert-light border mt-4 d-none" id="resultBox">
+            <h5 class="fw-bold mb-3">Wallpaper Estimate</h5>
+            <div id="resultText"></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- INFO -->
+<div class="my-3">
+    <h4 class="fw-bold mb-3">Wallpaper Tips</h4>
+    <ul class="mb-0">
+        <li>Add extra wallpaper for pattern matching.</li>
+        <li>Measure doors and windows separately if needed.</li>
+        <li>Textured wallpaper may require additional material.</li>
+        <li>Always round up to the next full roll.</li>
+    </ul>
+</div>
+
+<!-- FAQ -->
+<div class="my-3">
+    <h4 class="fw-bold mb-3">FAQ</h4>
+    <h6 class="fw-semibold">
+        How many wallpaper rolls do I need?
+    </h6>
+    <p class="text-muted">
+        The required number depends on room dimensions,
+        wall height, and wallpaper roll size.
+    </p>
+    <h6 class="fw-semibold">
+        Should I buy extra wallpaper?
+    </h6>
+    <p class="text-muted mb-0">
+        Yes, extra rolls help cover mistakes,
+        repairs, and future touch-ups.
+    </p>
+</div>
+
+<script>
+    function calculateWallpaper() {
+
+        let length = parseFloat(
+            document.getElementById("length").value
+        );
+
+        let width = parseFloat(
+            document.getElementById("width").value
+        );
+
+        let height = parseFloat(
+            document.getElementById("height").value
+        );
+
+        let rollWidth = parseFloat(
+            document.getElementById("rollWidth").value
+        );
+
+        let rollLength = parseFloat(
+            document.getElementById("rollLength").value
+        );
+
+        if (
+            isNaN(length) ||
+            isNaN(width) ||
+            isNaN(height) ||
+            isNaN(rollWidth) ||
+            isNaN(rollLength) ||
+            length <= 0 ||
+            width <= 0 ||
+            height <= 0 ||
+            rollWidth <= 0 ||
+            rollLength <= 0
+        ) {
+
+            alert("Please enter valid dimensions");
+            return;
+        }
+
+        // WALL PERIMETER
+        let perimeter =
+            2 * (length + width);
+
+        // WALL AREA
+        let wallArea =
+            perimeter * height;
+
+        // ROLL AREA
+        let rollArea =
+            rollWidth * rollLength;
+
+        // ROLLS NEEDED
+        let rollsNeeded =
+            Math.ceil(wallArea / rollArea);
+
+        document
+            .getElementById("resultBox")
+            .classList.remove("d-none");
+
+        document
+            .getElementById("resultText")
+            .innerHTML = `
+      <p>
+        <strong>Total Wall Area:</strong>
+        ${wallArea.toFixed(1)} m²
+      </p>
+
+      <h4 class="fw-bold">
+        ${rollsNeeded} Wallpaper Rolls Needed
+      </h4>
+
+      <p class="mt-3 mb-0 text-muted">
+        Calculation based on wallpaper roll coverage area.
+      </p>
+    `;
+    }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Wallpaper Calculator",
+        "url": "{{ page.url | absolute_url }}",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All"
+    }
+</script>

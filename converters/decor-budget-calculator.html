@@ -1,0 +1,214 @@
+---
+layout: page
+title: Decor Budget Calculator
+description: Estimate your home decor budget based on room type, furniture, decoration style, and renovation
+preferences.
+categories: interior
+permalink: /converters/decor-budget-calculator/
+---
+
+<p class="text-muted mb-4">
+    Calculate an estimated budget for your home decor project
+    based on room type, style, and furnishing needs.
+</p>
+
+<div class="card shadow-none bg-light border rounded-3">
+    <div class="card-body p-4">
+
+        <!-- ROOM TYPE -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Room Type</label>
+            <select id="room" class="form-select form-select-lg">
+                <option value="living">Living Room</option>
+                <option value="bedroom">Bedroom</option>
+                <option value="kitchen">Kitchen</option>
+                <option value="office">Home Office</option>
+            </select>
+        </div>
+
+        <!-- ROOM SIZE -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Room Size</label>
+            <div class="input-group input-group-lg">
+                <input type="number" id="size" class="form-control" placeholder="Example: 20">
+                <span class="input-group-text">m²</span>
+            </div>
+        </div>
+
+        <!-- STYLE -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Decor Style</label>
+            <select id="style" class="form-select form-select-lg">
+                <option value="basic">Basic</option>
+                <option value="modern">Modern</option>
+                <option value="luxury">Luxury</option>
+            </select>
+        </div>
+
+        <!-- FURNITURE -->
+        <div class="mb-4">
+            <label class="form-label fw-semibold">Furniture Level</label>
+            <select id="furniture" class="form-select form-select-lg">
+                <option value="minimal">Minimal Furniture</option>
+                <option value="standard">Standard Furniture</option>
+                <option value="premium">Premium Furniture</option>
+            </select>
+        </div>
+
+        <!-- BUTTON -->
+        <button class="btn btn-dark btn-lg w-100" onclick="calculateBudget()">
+            Calculate Budget
+        </button>
+
+        <!-- RESULT -->
+        <div class="alert alert-light border mt-4 d-none" id="resultBox">
+            <h5 class="fw-bold mb-3">Estimated Decor Budget</h5>
+            <div id="resultText"></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- INFO -->
+<div class="my-3">
+    <h4 class="fw-bold mb-3">Budget Planning Tips</h4>
+    <ul class="mb-0">
+        <li>Focus on essential furniture first.</li>
+        <li>Use neutral colors for timeless interiors.</li>
+        <li>Mix affordable decor with statement pieces.</li>
+        <li>Allocate extra budget for lighting and storage.</li>
+    </ul>
+</div>
+
+<!-- FAQ -->
+<div class="my-3">
+    <h4 class="fw-bold mb-3">FAQ</h4>
+    <h6 class="fw-semibold">
+        How much should I budget for home decor?
+    </h6>
+    <p class="text-muted">
+        The budget depends on room size, furniture quality,
+        and interior style preferences.
+    </p>
+    <h6 class="fw-semibold">
+        What affects decor costs the most?
+    </h6>
+    <p class="text-muted mb-0">
+        Furniture quality, custom designs, lighting,
+        and premium materials usually have the biggest impact.
+    </p>
+</div>
+
+<script>
+    function calculateBudget() {
+
+        let room = document.getElementById("room").value;
+
+        let size = parseFloat(
+            document.getElementById("size").value
+        );
+
+        let style = document.getElementById("style").value;
+
+        let furniture = document.getElementById("furniture").value;
+
+        if (isNaN(size) || size <= 0) {
+
+            alert("Please enter a valid room size");
+            return;
+        }
+
+        let basePrice = 0;
+
+        // ROOM TYPE
+        switch (room) {
+
+            case "living":
+                basePrice = 120;
+                break;
+
+            case "bedroom":
+                basePrice = 100;
+                break;
+
+            case "kitchen":
+                basePrice = 180;
+                break;
+
+            case "office":
+                basePrice = 110;
+                break;
+        }
+
+        // STYLE MULTIPLIER
+        let styleMultiplier = 1;
+
+        switch (style) {
+
+            case "modern":
+                styleMultiplier = 1.4;
+                break;
+
+            case "luxury":
+                styleMultiplier = 2;
+                break;
+        }
+
+        // FURNITURE MULTIPLIER
+        let furnitureMultiplier = 1;
+
+        switch (furniture) {
+
+            case "standard":
+                furnitureMultiplier = 1.3;
+                break;
+
+            case "premium":
+                furnitureMultiplier = 1.8;
+                break;
+        }
+
+        let total =
+            size *
+            basePrice *
+            styleMultiplier *
+            furnitureMultiplier;
+
+        total = total.toFixed(0);
+
+        document
+            .getElementById("resultBox")
+            .classList.remove("d-none");
+
+        document
+            .getElementById("resultText")
+            .innerHTML = `
+      <p class="mb-2">
+        Estimated decor budget for your
+        <strong>${room}</strong>:
+      </p>
+
+      <h3 class="fw-bold">
+        $${total}
+      </h3>
+
+      <p class="mt-3 mb-0 text-muted">
+        This estimate includes furniture,
+        decor accessories, lighting,
+        and basic styling costs.
+      </p>
+    `;
+    }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Decor Budget Calculator",
+        "url": "{{ page.url | absolute_url }}",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All"
+    }
+</script>

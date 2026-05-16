@@ -1,0 +1,188 @@
+---
+layout: page
+title: Lighting Calculator
+description: Calculate the recommended lighting level and number of bulbs needed based on room size and brightness
+requirements.
+categories: interior
+permalink: /converters/lighting-calculator/
+---
+
+<p class="text-muted mb-4">
+    Estimate the ideal lighting brightness and number of bulbs
+    needed for your room size and lighting preferences.
+</p>
+
+<div class="card shadow-none bg-light border rounded-3">
+    <div class="card-body p-4">
+
+        <!-- ROOM TYPE -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Room Type</label>
+            <select id="roomType" class="form-select form-select-lg">
+                <option value="living">Living Room</option>
+                <option value="bedroom">Bedroom</option>
+                <option value="kitchen">Kitchen</option>
+                <option value="office">Home Office</option>
+                <option value="bathroom">Bathroom</option>
+            </select>
+        </div>
+
+        <!-- ROOM SIZE -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Room Size</label>
+            <div class="input-group input-group-lg">
+                <input type="number" id="roomSize" class="form-control" placeholder="Example: 20">
+                <span class="input-group-text">m²</span>
+            </div>
+        </div>
+
+        <!-- BULB LUMENS -->
+        <div class="mb-4">
+            <label class="form-label fw-semibold">Lumens Per Bulb</label>
+            <select id="lumens" class="form-select form-select-lg">
+                <option value="450">450 Lumens</option>
+                <option value="800" selected>800 Lumens</option>
+                <option value="1100">1100 Lumens</option>
+                <option value="1600">1600 Lumens</option>
+            </select>
+        </div>
+
+        <!-- BUTTON -->
+        <button class="btn btn-dark btn-lg w-100" onclick="calculateLighting()">
+            Calculate Lighting
+        </button>
+
+        <!-- RESULT -->
+        <div class="alert alert-light border mt-4 d-none" id="resultBox">
+            <h5 class="fw-bold mb-3">Lighting Recommendation</h5>
+            <div id="resultText"></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- TIPS -->
+<div class="my-3">
+    <h4 class="fw-bold mb-3">Lighting Tips</h4>
+    <ul class="mb-0">
+        <li>Warm white lighting creates a cozy atmosphere.</li>
+        <li>Cool white lighting improves focus and productivity.</li>
+        <li>Layered lighting improves room comfort.</li>
+        <li>Use dimmable lights for flexible brightness control.</li>
+    </ul>
+</div>
+
+<!-- FAQ -->
+<div class="my-3">
+    <h4 class="fw-bold mb-3">FAQ</h4>
+    <h6 class="fw-semibold">
+        How many lumens do I need per room?
+    </h6>
+    <p class="text-muted">
+        Different rooms require different brightness levels
+        depending on their function and size.
+    </p>
+    <h6 class="fw-semibold">
+        What is the best lighting for living rooms?
+    </h6>
+    <p class="text-muted mb-0">
+        Soft warm lighting is commonly recommended
+        for relaxing and comfortable living spaces.
+    </p>
+</div>
+
+<script>
+    function calculateLighting() {
+
+        let roomType =
+            document.getElementById("roomType").value;
+
+        let roomSize = parseFloat(
+            document.getElementById("roomSize").value
+        );
+
+        let lumens = parseInt(
+            document.getElementById("lumens").value
+        );
+
+        if (
+            isNaN(roomSize) ||
+            roomSize <= 0
+        ) {
+
+            alert("Please enter a valid room size");
+            return;
+        }
+
+        // RECOMMENDED LUX LEVELS
+
+        let lux = 0;
+
+        switch (roomType) {
+
+            case "living":
+                lux = 150;
+                break;
+
+            case "bedroom":
+                lux = 100;
+                break;
+
+            case "kitchen":
+                lux = 300;
+                break;
+
+            case "office":
+                lux = 400;
+                break;
+
+            case "bathroom":
+                lux = 200;
+                break;
+        }
+
+        // TOTAL LUMENS
+
+        let totalLumens =
+            roomSize * lux;
+
+        // NUMBER OF BULBS
+
+        let bulbs =
+            Math.ceil(totalLumens / lumens);
+
+        document
+            .getElementById("resultBox")
+            .classList.remove("d-none");
+
+        document
+            .getElementById("resultText")
+            .innerHTML = `
+      <p>
+        <strong>Recommended Brightness:</strong>
+        ${totalLumens} lumens
+      </p>
+
+      <h4 class="fw-bold">
+        ${bulbs} Bulbs Needed
+      </h4>
+
+      <p class="mt-3 mb-0 text-muted">
+        Based on ${lumens} lumens per bulb
+        for a ${roomSize} m² ${roomType}.
+      </p>
+    `;
+    }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Lighting Calculator",
+        "url": "{{ page.url | absolute_url }}",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All"
+    }
+</script>

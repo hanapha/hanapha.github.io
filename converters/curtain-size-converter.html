@@ -1,0 +1,200 @@
+---
+layout: page
+title: Curtain Size Converter
+description: Convert curtain measurements and calculate the ideal curtain width and length for your windows.
+categories: interior
+permalink: /converters/curtain-size-converter/
+---
+
+<p class="text-muted mb-4">
+    Calculate the ideal curtain dimensions and convert
+    measurements between centimeters, inches, and feet.
+</p>
+
+<div class="card shadow-none bg-light border rounded-3">
+    <div class="card-body p-4">
+
+        <!-- WINDOW WIDTH -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Window Width</label>
+            <div class="input-group input-group-lg">
+                <input type="number" id="windowWidth" class="form-control" placeholder="Example: 150">
+                <span class="input-group-text">cm</span>
+            </div>
+        </div>
+
+        <!-- WINDOW HEIGHT -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Window Height</label>
+            <div class="input-group input-group-lg">
+                <input type="number" id="windowHeight" class="form-control" placeholder="Example: 180">
+                <span class="input-group-text">cm</span>
+            </div>
+        </div>
+
+        <!-- STYLE -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Curtain Style</label>
+            <select id="style" class="form-select form-select-lg">
+                <option value="standard">Standard</option>
+                <option value="full">Full & Elegant</option>
+                <option value="minimal">Minimalist</option>
+            </select>
+        </div>
+
+        <!-- UNIT -->
+        <div class="mb-4">
+            <label class="form-label fw-semibold">Convert To</label>
+            <select id="unit" class="form-select form-select-lg">
+                <option value="cm">Centimeters (cm)</option>
+                <option value="inch">Inches (inch)</option>
+                <option value="feet">Feet (ft)</option>
+            </select>
+        </div>
+
+        <!-- BUTTON -->
+        <button class="btn btn-dark btn-lg w-100" onclick="calculateCurtain()">
+            Calculate Curtain Size
+        </button>
+
+        <!-- RESULT -->
+        <div class="alert alert-light border mt-4 d-none" id="resultBox">
+            <h5 class="fw-bold mb-3">Recommended Curtain Size</h5>
+            <div id="resultText"></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- TIPS -->
+<div class="my-3">
+    <h4 class="fw-bold mb-3">Curtain Measurement Tips</h4>
+    <ul class="mb-0">
+        <li>Use wider curtains for a fuller appearance.</li>
+        <li>Hang curtains higher to make ceilings look taller.</li>
+        <li>Floor-length curtains create a luxurious look.</li>
+        <li>Add extra width for pleated curtain styles.</li>
+    </ul>
+</div>
+
+
+<!-- FAQ -->
+<div class="my-3">
+    <h4 class="fw-bold mb-3">FAQ</h4>
+    <h6 class="fw-semibold">
+        How wide should curtains be?
+    </h6>
+    <p class="text-muted">
+        Curtains are usually 1.5–2 times wider
+        than the window width for better fullness.
+    </p>
+    <h6 class="fw-semibold">
+        Should curtains touch the floor?
+    </h6>
+    <p class="text-muted mb-0">
+        Floor-length curtains are recommended
+        for most modern and elegant interiors.
+    </p>
+</div>
+
+
+<script>
+    function calculateCurtain() {
+
+        let windowWidth = parseFloat(
+            document.getElementById("windowWidth").value
+        );
+
+        let windowHeight = parseFloat(
+            document.getElementById("windowHeight").value
+        );
+
+        let style =
+            document.getElementById("style").value;
+
+        let unit =
+            document.getElementById("unit").value;
+
+        if (
+            isNaN(windowWidth) ||
+            isNaN(windowHeight) ||
+            windowWidth <= 0 ||
+            windowHeight <= 0
+        ) {
+
+            alert("Please enter valid window dimensions");
+            return;
+        }
+
+        let widthMultiplier = 1.5;
+
+        switch (style) {
+
+            case "full":
+                widthMultiplier = 2;
+                break;
+
+            case "minimal":
+                widthMultiplier = 1.2;
+                break;
+        }
+
+        let curtainWidth =
+            windowWidth * widthMultiplier;
+
+        let curtainHeight =
+            windowHeight + 20;
+
+        // CONVERSION
+
+        function convert(value) {
+
+            switch (unit) {
+
+                case "inch":
+                    return (value / 2.54).toFixed(1);
+
+                case "feet":
+                    return (value / 30.48).toFixed(1);
+
+                default:
+                    return value.toFixed(1);
+            }
+        }
+
+        let widthResult = convert(curtainWidth);
+        let heightResult = convert(curtainHeight);
+
+        let unitLabel = unit;
+
+        document
+            .getElementById("resultBox")
+            .classList.remove("d-none");
+
+        document
+            .getElementById("resultText")
+            .innerHTML = `
+      <p>
+        <strong>Recommended Curtain Width:</strong>
+        ${widthResult} ${unitLabel}
+      </p>
+
+      <p class="mb-0">
+        <strong>Recommended Curtain Length:</strong>
+        ${heightResult} ${unitLabel}
+      </p>
+    `;
+    }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Curtain Size Converter",
+        "url": "{{ page.url | absolute_url }}",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All"
+    }
+</script>

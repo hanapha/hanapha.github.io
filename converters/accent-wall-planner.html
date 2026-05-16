@@ -1,0 +1,208 @@
+---
+layout: page
+title: Accent Wall Planner
+description: Plan the perfect accent wall color, placement, and design style for your room layout and interior theme.
+categories: interior
+permalink: /converters/accent-wall-planner/
+---
+
+<p class="text-muted mb-4">
+    Find the ideal accent wall placement, color palette,
+    and style recommendations for your room design.
+</p>
+
+<div class="card shadow-none bg-light border rounded-3">
+    <div class="card-body p-4">
+
+        <!-- ROOM TYPE -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Room Type</label>
+            <select id="roomType" class="form-select form-select-lg">
+                <option value="living">Living Room</option>
+                <option value="bedroom">Bedroom</option>
+                <option value="office">Home Office</option>
+                <option value="dining">Dining Room</option>
+            </select>
+        </div>
+
+        <!-- ROOM STYLE -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Interior Style</label>
+            <select id="style" class="form-select form-select-lg">
+                <option value="modern">Modern</option>
+                <option value="minimalist">Minimalist</option>
+                <option value="scandinavian">Scandinavian</option>
+                <option value="industrial">Industrial</option>
+                <option value="boho">Bohemian</option>
+            </select>
+        </div>
+
+        <!-- MOOD -->
+        <div class="mb-4">
+            <label class="form-label fw-semibold">Preferred Mood</label>
+            <select id="mood" class="form-select form-select-lg">
+                <option value="calm">Calm & Relaxing</option>
+                <option value="bold">Bold & Dramatic</option>
+                <option value="warm">Warm & Cozy</option>
+                <option value="luxury">Elegant & Luxury</option>
+            </select>
+        </div>
+
+        <!-- BUTTON -->
+        <button class="btn btn-dark btn-lg w-100" onclick="generateAccentWall()">
+            Generate Accent Wall Plan
+        </button>
+
+        <!-- RESULT -->
+        <div class="alert alert-light border mt-4 d-none" id="resultBox">
+            <h5 class="fw-bold mb-3">Accent Wall Recommendation</h5>
+            <div id="resultText"></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- TIPS -->
+<div class="my-3">
+    <h4 class="fw-bold mb-3">Accent Wall Tips</h4>
+    <ul class="mb-0">
+        <li>Choose the wall that naturally draws attention first.</li>
+        <li>Use darker tones for dramatic focal points.</li>
+        <li>Wood panels and textured paint add depth.</li>
+        <li>Keep surrounding walls neutral for balance.</li>
+    </ul>
+</div>
+
+<!-- FAQ -->
+<div class="my-3">
+    <h4 class="fw-bold mb-3">FAQ</h4>
+    <h6 class="fw-semibold">
+        What is an accent wall?
+    </h6>
+    <p class="text-muted">
+        An accent wall is a single wall designed with a different
+        color, texture, or material to create a focal point.
+    </p>
+    <h6 class="fw-semibold">
+        Which wall should become an accent wall?
+    </h6>
+    <p class="text-muted mb-0">
+        Usually the first visible wall, TV wall, bed headboard wall,
+        or fireplace wall works best as an accent wall.
+    </p>
+
+</div>
+
+<script>
+    function generateAccentWall() {
+
+        let roomType =
+            document.getElementById("roomType").value;
+
+        let style =
+            document.getElementById("style").value;
+
+        let mood =
+            document.getElementById("mood").value;
+
+        let wall = "";
+        let color = "";
+        let material = "";
+
+        // STYLE LOGIC
+
+        if (style === "modern") {
+
+            material = "Matte Paint or Wood Panels";
+        } else if (style === "minimalist") {
+
+            material = "Soft Matte Paint";
+        } else if (style === "industrial") {
+
+            material = "Concrete Texture or Brick Wall";
+        } else if (style === "boho") {
+
+            material = "Pattern Wallpaper or Natural Wood";
+        } else {
+
+            material = "Light Wood or Neutral Paint";
+        }
+
+        // ROOM TYPE
+
+        switch (roomType) {
+
+            case "living":
+                wall = "TV Wall";
+                break;
+
+            case "bedroom":
+                wall = "Headboard Wall";
+                break;
+
+            case "office":
+                wall = "Desk Background Wall";
+                break;
+
+            case "dining":
+                wall = "Main Dining Wall";
+                break;
+        }
+
+        // MOOD
+
+        switch (mood) {
+
+            case "calm":
+                color = "Soft Beige, Sage Green, Warm White";
+                break;
+
+            case "bold":
+                color = "Dark Navy, Charcoal, Deep Green";
+                break;
+
+            case "warm":
+                color = "Terracotta, Sand, Light Brown";
+                break;
+
+            case "luxury":
+                color = "Black, Dark Gray, Gold Accent";
+                break;
+        }
+
+        document
+            .getElementById("resultBox")
+            .classList.remove("d-none");
+
+        document
+            .getElementById("resultText")
+            .innerHTML = `
+      <p>
+        <strong>Recommended Accent Wall:</strong>
+        ${wall}
+      </p>
+
+      <p>
+        <strong>Suggested Color Palette:</strong>
+        ${color}
+      </p>
+
+      <p class="mb-0">
+        <strong>Recommended Material:</strong>
+        ${material}
+      </p>
+    `;
+    }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Accent Wall Planner",
+        "url": "{{ page.url | absolute_url }}",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "All"
+    }
+</script>

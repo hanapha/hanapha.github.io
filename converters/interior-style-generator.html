@@ -1,0 +1,177 @@
+---
+layout: page
+title: Interior Style Generator
+description: Generate interior design style ideas based on your room preferences, colors, and furniture choices.
+categories: interior
+permalink: /converters/interior-style-generator/
+---
+
+<p class="text-muted mb-4">
+    Discover the perfect interior design style based on your preferences,
+    room atmosphere, and decor choices.
+</p>
+
+<div class="card shadow-none bg-light border rounded-3">
+    <div class="card-body p-4">
+
+        <!-- COLOR -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Favorite Color Palette</label>
+            <select id="color" class="form-select form-select-lg">
+                <option value="neutral">Neutral & Earthy</option>
+                <option value="bright">Bright & Colorful</option>
+                <option value="dark">Dark & Moody</option>
+                <option value="natural">Natural Wood Tones</option>
+            </select>
+        </div>
+
+        <!-- ROOM FEEL -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Preferred Room Feel</label>
+            <select id="feel" class="form-select form-select-lg">
+                <option value="minimal">Clean & Minimal</option>
+                <option value="cozy">Cozy & Warm</option>
+                <option value="luxury">Elegant & Luxury</option>
+                <option value="creative">Artistic & Creative</option>
+            </select>
+        </div>
+
+        <!-- FURNITURE -->
+        <div class="mb-4">
+            <label class="form-label fw-semibold">Furniture Preference</label>
+            <select id="furniture" class="form-select form-select-lg">
+                <option value="modern">Modern Furniture</option>
+                <option value="vintage">Vintage Furniture</option>
+                <option value="wood">Natural Wood Furniture</option>
+                <option value="industrial">Industrial Furniture</option>
+            </select>
+        </div>
+
+        <!-- BUTTON -->
+        <button class="btn btn-dark btn-lg w-100" onclick="generateStyle()">
+            Generate Interior Style
+        </button>
+
+        <!-- RESULT -->
+        <div class="alert alert-light border mt-4 d-none" id="resultBox">
+            <h5 class="fw-bold mb-3">Recommended Interior Style</h5>
+            <div id="resultText"></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- POPULAR STYLES -->
+<div class="my-3">
+    <h4 class="fw-bold mb-3">Popular Interior Styles</h4>
+    <ul class="mb-0">
+        <li>Minimalist</li>
+        <li>Scandinavian</li>
+        <li>Japandi</li>
+        <li>Industrial</li>
+        <li>Bohemian</li>
+        <li>Modern Luxury</li>
+    </ul>
+</div>
+
+<!-- FAQ -->
+<div class="my-3">
+    <h4 class="fw-bold mb-3">FAQ</h4>
+    <h6 class="fw-semibold">
+        What is the most popular interior style?
+    </h6>
+    <p class="text-muted">
+        Minimalist and Scandinavian interiors remain among the most popular
+        due to their clean and timeless appearance.
+    </p>
+    <h6 class="fw-semibold">
+        Can I combine multiple interior styles?
+    </h6>
+    <p class="text-muted mb-0">
+        Yes, many modern homes combine styles such as Japandi,
+        industrial-modern, or boho-minimalist designs.
+    </p>
+</div>
+
+<script>
+    function generateStyle() {
+
+        let color = document.getElementById("color").value;
+        let feel = document.getElementById("feel").value;
+        let furniture = document.getElementById("furniture").value;
+
+        let style = "";
+        let description = "";
+
+        // STYLE LOGIC
+
+        if (
+            color === "neutral" &&
+            feel === "minimal" &&
+            furniture === "wood"
+        ) {
+            style = "Japandi";
+            description =
+                "Japandi combines Japanese simplicity with Scandinavian warmth using natural materials and clean lines.";
+        } else if (
+            color === "neutral" &&
+            feel === "minimal"
+        ) {
+            style = "Scandinavian";
+            description =
+                "Scandinavian interiors focus on simplicity, brightness, and functional furniture.";
+        } else if (
+            color === "dark" &&
+            furniture === "industrial"
+        ) {
+            style = "Industrial";
+            description =
+                "Industrial style features raw textures, metal accents, dark tones, and urban-inspired decor.";
+        } else if (
+            feel === "luxury"
+        ) {
+            style = "Modern Luxury";
+            description =
+                "Modern luxury interiors use elegant materials, premium finishes, and sophisticated color palettes.";
+        } else if (
+            feel === "creative" &&
+            furniture === "vintage"
+        ) {
+            style = "Bohemian";
+            description =
+                "Bohemian style embraces artistic decor, layered textures, and colorful vintage elements.";
+        } else {
+            style = "Modern Minimalist";
+            description =
+                "Modern minimalist interiors prioritize clean layouts, neutral tones, and uncluttered spaces.";
+        }
+
+        document
+            .getElementById("resultBox")
+            .classList.remove("d-none");
+
+        document
+            .getElementById("resultText")
+            .innerHTML = `
+      <h4 class="fw-bold mb-2">
+        ${style}
+      </h4>
+
+      <p class="mb-0">
+        ${description}
+      </p>
+    `;
+    }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Interior Style Generator",
+        "url": "{{ page.url | absolute_url }}",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "All"
+    }
+</script>

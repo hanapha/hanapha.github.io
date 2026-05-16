@@ -1,0 +1,175 @@
+---
+layout: page
+title: Room Mood Color Generator
+description: Generate room color ideas based on mood, atmosphere, and interior design preferences.
+categories: interior
+permalink: /converters/room-mood-color-generator/
+---
+
+<p class="text-muted mb-4">
+    Discover the perfect room color palette based on your preferred mood,
+    atmosphere, and interior style.
+</p>
+
+<div class="card shadow-none bg-light border rounded-3">
+    <div class="card-body p-4">
+
+        <!-- ROOM TYPE -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Room Type</label>
+            <select id="room" class="form-select form-select-lg">
+                <option value="living">Living Room</option>
+                <option value="bedroom">Bedroom</option>
+                <option value="kitchen">Kitchen</option>
+                <option value="office">Home Office</option>
+            </select>
+        </div>
+
+        <!-- MOOD -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Preferred Mood</label>
+            <select id="mood" class="form-select form-select-lg">
+                <option value="calm">Calm & Relaxing</option>
+                <option value="warm">Warm & Cozy</option>
+                <option value="energetic">Bright & Energetic</option>
+                <option value="luxury">Elegant & Luxury</option>
+            </select>
+        </div>
+
+        <!-- STYLE -->
+        <div class="mb-4">
+            <label class="form-label fw-semibold">Interior Style</label>
+            <select id="style" class="form-select form-select-lg">
+                <option value="modern">Modern</option>
+                <option value="minimalist">Minimalist</option>
+                <option value="scandinavian">Scandinavian</option>
+                <option value="industrial">Industrial</option>
+            </select>
+        </div>
+
+        <!-- BUTTON -->
+        <button class="btn btn-dark btn-lg w-100" onclick="generateColor()">
+            Generate Color Palette
+        </button>
+
+        <!-- RESULT -->
+        <div class="alert alert-light border mt-4 d-none" id="resultBox">
+            <h5 class="fw-bold mb-3">Recommended Color Palette</h5>
+            <div id="resultText"></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- COLOR INFO -->
+<div class="my-3">
+    <h4 class="fw-bold mb-3">Popular Interior Color Trends</h4>
+    <ul class="mb-0">
+        <li>Warm Beige & Soft White</li>
+        <li>Sage Green & Natural Wood</li>
+        <li>Charcoal Gray & Black Accents</li>
+        <li>Terracotta & Earth Tones</li>
+        <li>Soft Blue & Neutral Cream</li>
+    </ul>
+</div>
+
+<!-- FAQ -->
+<div class="my-3">
+    <h4 class="fw-bold mb-3">FAQ</h4>
+    <h6 class="fw-semibold">
+        Which colors make a room feel bigger?
+    </h6>
+    <p class="text-muted">
+        Light colors such as white, beige, and soft gray can help
+        make a room appear larger and brighter.
+    </p>
+    <h6 class="fw-semibold">
+        What colors create a cozy atmosphere?
+    </h6>
+    <p class="text-muted mb-0">
+        Warm tones like beige, terracotta, brown, and muted green
+        often create a cozy and welcoming space.
+    </p>
+
+</div>
+
+<script>
+    function generateColor() {
+
+        let room = document.getElementById("room").value;
+        let mood = document.getElementById("mood").value;
+        let style = document.getElementById("style").value;
+
+        let palette = "";
+        let description = "";
+
+        // GENERATOR LOGIC
+
+        if (
+            mood === "calm" &&
+            style === "minimalist"
+        ) {
+            palette = "Soft White, Light Gray, Beige";
+            description =
+                "A calming minimalist palette perfect for peaceful and clean interiors.";
+        } else if (
+            mood === "warm" &&
+            style === "scandinavian"
+        ) {
+            palette = "Warm Beige, Oak Wood, Cream";
+            description =
+                "A cozy Scandinavian-inspired palette with soft natural tones.";
+        } else if (
+            mood === "energetic"
+        ) {
+            palette = "Mustard Yellow, White, Light Blue";
+            description =
+                "Bright colors that create an energetic and lively atmosphere.";
+        } else if (
+            mood === "luxury" &&
+            style === "modern"
+        ) {
+            palette = "Charcoal Gray, Black, Gold Accents";
+            description =
+                "Elegant modern luxury tones with sophisticated contrast.";
+        } else if (
+            style === "industrial"
+        ) {
+            palette = "Concrete Gray, Black, Dark Brown";
+            description =
+                "Industrial-inspired tones with bold and urban textures.";
+        } else {
+            palette = "Sage Green, Warm White, Natural Wood";
+            description =
+                "Balanced natural colors suitable for modern interiors.";
+        }
+
+        document
+            .getElementById("resultBox")
+            .classList.remove("d-none");
+
+        document
+            .getElementById("resultText")
+            .innerHTML = `
+      <h4 class="fw-bold mb-3">
+        ${palette}
+      </h4>
+
+      <p class="mb-0">
+        ${description}
+      </p>
+    `;
+    }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Room Mood Color Generator",
+        "url": "{{ page.url | absolute_url }}",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "All"
+    }
+</script>
