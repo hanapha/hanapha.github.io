@@ -5,217 +5,191 @@ description: Convert sofa dimensions between cm, inches, feet, and meters.
 permalink: /converters/sofa-size-converter/
 ---
 
-<div class="container py-5">
+<p class="text-muted mb-4">
+  Convert sofa dimensions between centimeters, inches, feet, and meters.
+  Useful for interior planning and furniture measurements.
+</p>
 
-  <div class="row justify-content-center">
-    <div class="col-lg-8">
+<div class="card shadow-none bg-light border-0 rounded-3">
+  <div class="card-body p-4">
 
-      <h1 class="fw-bold mb-3">
-        Sofa Size Converter
-      </h1>
+    <!-- INPUT -->
+    <div class="mb-3">
+      <label class="form-label fw-semibold">
+        Enter Sofa Size
+      </label>
 
-      <p class="text-muted mb-4">
-        Convert sofa dimensions between centimeters, inches, feet, and meters.
-        Useful for interior planning and furniture measurements.
-      </p>
+      <input type="number" class="form-control form-control-lg" id="value" placeholder="Example: 220">
+    </div>
 
-      <div class="card shadow-sm border-0 rounded-4">
-        <div class="card-body p-4">
+    <!-- FROM -->
+    <div class="mb-3">
+      <label class="form-label fw-semibold">
+        From Unit
+      </label>
 
-          <!-- INPUT -->
-          <div class="mb-3">
-            <label class="form-label fw-semibold">
-              Enter Sofa Size
-            </label>
+      <select class="form-select form-select-lg" id="fromUnit">
+        <option value="cm">Centimeters (cm)</option>
+        <option value="inch">Inches (inch)</option>
+        <option value="feet">Feet (ft)</option>
+        <option value="meter">Meters (m)</option>
+      </select>
+    </div>
 
-            <input
-              type="number"
-              class="form-control form-control-lg"
-              id="value"
-              placeholder="Example: 220">
-          </div>
+    <!-- TO -->
+    <div class="mb-4">
+      <label class="form-label fw-semibold">
+        To Unit
+      </label>
 
-          <!-- FROM -->
-          <div class="mb-3">
-            <label class="form-label fw-semibold">
-              From Unit
-            </label>
+      <select class="form-select form-select-lg" id="toUnit">
+        <option value="inch">Inches (inch)</option>
+        <option value="cm">Centimeters (cm)</option>
+        <option value="feet">Feet (ft)</option>
+        <option value="meter">Meters (m)</option>
+      </select>
+    </div>
 
-            <select class="form-select form-select-lg" id="fromUnit">
-              <option value="cm">Centimeters (cm)</option>
-              <option value="inch">Inches (inch)</option>
-              <option value="feet">Feet (ft)</option>
-              <option value="meter">Meters (m)</option>
-            </select>
-          </div>
+    <!-- BUTTON -->
+    <button class="btn btn-dark btn-lg w-100" onclick="convertSize()">
+      Convert Size
+    </button>
 
-          <!-- TO -->
-          <div class="mb-4">
-            <label class="form-label fw-semibold">
-              To Unit
-            </label>
+    <!-- RESULT -->
+    <div class="alert alert-light border mt-4 d-none" id="resultBox">
 
-            <select class="form-select form-select-lg" id="toUnit">
-              <option value="inch">Inches (inch)</option>
-              <option value="cm">Centimeters (cm)</option>
-              <option value="feet">Feet (ft)</option>
-              <option value="meter">Meters (m)</option>
-            </select>
-          </div>
+      <h5 class="fw-bold mb-2">
+        Conversion Result
+      </h5>
 
-          <!-- BUTTON -->
-          <button
-            class="btn btn-dark btn-lg w-100"
-            onclick="convertSize()">
-            Convert Size
-          </button>
-
-          <!-- RESULT -->
-          <div
-            class="alert alert-light border mt-4 d-none"
-            id="resultBox">
-
-            <h5 class="fw-bold mb-2">
-              Conversion Result
-            </h5>
-
-            <div id="resultText"></div>
-
-          </div>
-
-        </div>
-      </div>
-
-      <!-- INFO -->
-      <div class="card border-0 shadow-sm rounded-4 mt-4">
-        <div class="card-body p-4">
-
-          <h4 class="fw-bold mb-3">
-            Popular Sofa Dimensions
-          </h4>
-
-          <ul class="mb-0">
-            <li>2-Seater Sofa: 140–180 cm</li>
-            <li>3-Seater Sofa: 180–240 cm</li>
-            <li>L-Shape Sofa: 250–350 cm</li>
-            <li>Loveseat: 120–160 cm</li>
-          </ul>
-
-        </div>
-      </div>
-
-      <!-- FAQ -->
-      <div class="card border-0 shadow-sm rounded-4 mt-4">
-        <div class="card-body p-4">
-
-          <h4 class="fw-bold mb-3">
-            FAQ
-          </h4>
-
-          <h6 class="fw-semibold">
-            What is the standard sofa size?
-          </h6>
-
-          <p class="text-muted">
-            Most standard 3-seater sofas are around 180–240 cm wide.
-          </p>
-
-          <h6 class="fw-semibold">
-            Why convert sofa dimensions?
-          </h6>
-
-          <p class="text-muted mb-0">
-            Furniture dimensions are often listed in different measurement units
-            depending on the country or manufacturer.
-          </p>
-
-        </div>
-      </div>
+      <div id="resultText"></div>
 
     </div>
+
   </div>
+</div>
+
+<!-- INFO -->
+<div class="my-3">
+
+  <h4 class="fw-bold mb-3">
+    Popular Sofa Dimensions
+  </h4>
+
+  <ul class="mb-0">
+    <li>2-Seater Sofa: 140–180 cm</li>
+    <li>3-Seater Sofa: 180–240 cm</li>
+    <li>L-Shape Sofa: 250–350 cm</li>
+    <li>Loveseat: 120–160 cm</li>
+  </ul>
+
+</div>
+
+<!-- FAQ -->
+<div class="my-3">
+
+  <h4 class="fw-bold mb-3">
+    FAQ
+  </h4>
+
+  <h6 class="fw-semibold">
+    What is the standard sofa size?
+  </h6>
+
+  <p class="text-muted">
+    Most standard 3-seater sofas are around 180–240 cm wide.
+  </p>
+
+  <h6 class="fw-semibold">
+    Why convert sofa dimensions?
+  </h6>
+
+  <p class="text-muted mb-0">
+    Furniture dimensions are often listed in different measurement units
+    depending on the country or manufacturer.
+  </p>
 
 </div>
 
 <script>
-function convertSize(){
+  function convertSize() {
 
-  let value = parseFloat(
-    document.getElementById("value").value
-  );
+    let value = parseFloat(
+      document.getElementById("value").value
+    );
 
-  let from = document.getElementById("fromUnit").value;
-  let to = document.getElementById("toUnit").value;
+    let from = document.getElementById("fromUnit").value;
+    let to = document.getElementById("toUnit").value;
 
-  if(isNaN(value)){
-    alert("Please enter a valid number");
-    return;
-  }
+    if (isNaN(value)) {
+      alert("Please enter a valid number");
+      return;
+    }
 
-  let cm;
+    let cm;
 
-  switch(from){
+    switch (from) {
 
-    case "cm":
-      cm = value;
-      break;
+      case "cm":
+        cm = value;
+        break;
 
-    case "inch":
-      cm = value * 2.54;
-      break;
+      case "inch":
+        cm = value * 2.54;
+        break;
 
-    case "feet":
-      cm = value * 30.48;
-      break;
+      case "feet":
+        cm = value * 30.48;
+        break;
 
-    case "meter":
-      cm = value * 100;
-      break;
-  }
+      case "meter":
+        cm = value * 100;
+        break;
+    }
 
-  let result;
+    let result;
 
-  switch(to){
+    switch (to) {
 
-    case "cm":
-      result = cm;
-      break;
+      case "cm":
+        result = cm;
+        break;
 
-    case "inch":
-      result = cm / 2.54;
-      break;
+      case "inch":
+        result = cm / 2.54;
+        break;
 
-    case "feet":
-      result = cm / 30.48;
-      break;
+      case "feet":
+        result = cm / 30.48;
+        break;
 
-    case "meter":
-      result = cm / 100;
-      break;
-  }
+      case "meter":
+        result = cm / 100;
+        break;
+    }
 
-  result = result.toFixed(2);
+    result = result.toFixed(2);
 
-  document
-    .getElementById("resultBox")
-    .classList.remove("d-none");
+    document
+      .getElementById("resultBox")
+      .classList.remove("d-none");
 
-  document
-    .getElementById("resultText")
-    .innerHTML =
+    document
+      .getElementById("resultText")
+      .innerHTML =
       `<strong>${value} ${from}</strong> =
        <strong>${result} ${to}</strong>`;
-}
+  }
 </script>
 
 <!-- SCHEMA -->
 <script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"WebApplication",
-  "name":"Sofa Size Converter",
-  "url":"{{ page.url | absolute_url }}",
-  "applicationCategory":"Utility",
-  "operatingSystem":"All"
-}
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Sofa Size Converter",
+    "url": "{{ page.url | absolute_url }}",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All"
+  }
 </script>
