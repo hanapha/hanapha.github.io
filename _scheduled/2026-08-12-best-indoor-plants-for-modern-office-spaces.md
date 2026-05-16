@@ -30,6 +30,7 @@ Lighting conditions are important for healthy office plants, especially in build
 - Use professional decorative containers.
 - Provide suitable lighting conditions.
 - Keep foliage healthy and dust-free.
+
 Indoor plants improve office spaces by introducing softness, freshness, and natural beauty into professional environments. Greenery balances modern technology and artificial materials while creating calmer atmospheres naturally. Many workers feel more comfortable and focused when surrounded by healthy plants daily. Office gardening therefore supports both emotional well-being and workplace design. Plants become valuable decorative elements in modern professional settings.
 
 Decorating offices with indoor plants is accessible for businesses and remote workers of all experience levels. A few adaptable plants and simple care routines often produce noticeable improvements quickly. Over time, office greenery evolves naturally alongside changing workspace layouts and decorative preferences. Healthy foliage continues enhancing productivity and comfort throughout the year. With thoughtful placement and consistent care, office indoor gardens can remain stylish and inspiring for many years.

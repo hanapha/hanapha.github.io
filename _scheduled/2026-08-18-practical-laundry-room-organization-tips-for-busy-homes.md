@@ -21,6 +21,7 @@ Laundry baskets are another important organizational tool for busy families. Sep
 - Install shelves and cabinets.
 - Use labeled laundry baskets.
 - Keep cleaning supplies organized.
+
 **Lighting** also affects the comfort and usability of laundry rooms. Bright spaces make it easier to identify stains and organize clothing properly. Natural light can create fresher and more welcoming environments naturally. If windows are unavailable, quality ceiling lights can improve visibility effectively. Comfortable workspaces reduce household stress.
 
 Folding stations can make laundry tasks more efficient and organized. Countertops or foldable tables provide practical surfaces for sorting and folding clothes. Organized folding areas also help prevent clean laundry from becoming wrinkled or messy. Functional layouts improve workflow inside the room. Simple additions can create noticeable improvements.

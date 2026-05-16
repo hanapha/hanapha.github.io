@@ -23,6 +23,7 @@ Evening lighting routines are especially important for maintaining healthy sleep
 - Warm color temperature adjustments at night.
 - Gradual brightness transitions for comfort.
 - Integration with bedroom automation systems.
+
 Voice assistant compatibility provides additional convenience for nighttime operation. Homeowners can turn lights off, activate relaxation scenes, or adjust brightness levels using simple spoken commands. Hands-free control is especially useful when preparing for sleep or waking during the night. Accessible operation improves comfort and usability for all household members. Voice-enabled lighting contributes to more relaxing routines.
 
 Energy efficiency is another major advantage of connected lighting automation. Smart systems can turn off unused lights automatically and optimize brightness based on occupancy conditions. Reduced electricity consumption lowers utility expenses while supporting environmentally responsible living practices. Efficient operation combines wellness benefits with sustainability improvements. Smart lighting supports both comfort and conservation goals.

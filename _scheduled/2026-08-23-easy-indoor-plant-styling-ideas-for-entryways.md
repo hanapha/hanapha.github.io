@@ -30,6 +30,7 @@ Lighting conditions influence plant health and decorative impact near entrances 
 - Use containers that match interior style.
 - Provide suitable lighting conditions.
 - Keep foliage healthy and visually clean.
+
 Indoor plants improve entryways by creating fresher, warmer, and more inviting home entrances naturally. Greenery softens architectural lines while enhancing decorative atmosphere effectively. Many homeowners enjoy the welcoming feeling healthy plants provide when entering their homes daily. Indoor gardening therefore combines comfort, decoration, and functionality beautifully. Plants become natural decorative highlights within entry spaces.
 
 Styling entryways with indoor plants is accessible for beginners and experienced decorators alike with simple arrangements and adaptable greenery. Even small decorative changes often create noticeable improvements quickly. Over time, entryway gardens evolve naturally alongside changing interior styles and seasonal preferences. Healthy foliage continues enhancing atmosphere and visual beauty throughout the year. With thoughtful placement and consistent care, indoor entryway plant displays can remain elegant and welcoming for many years.

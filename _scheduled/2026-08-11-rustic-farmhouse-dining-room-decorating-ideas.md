@@ -27,6 +27,7 @@ Textiles are essential for softening rustic dining spaces and adding warmth. Lin
 - **Choose neutral colors** for balance.
 - **Add vintage accessories** for character.
 - **Use warm lighting** for comfort.
+
 Decorative accessories should reflect simplicity and authenticity within farmhouse interiors. Ceramic vases, antique clocks, and woven baskets are commonly used to personalize dining rooms. Fresh flowers or greenery can add freshness and natural beauty to the space. Decorations should feel meaningful rather than excessive or overly polished. Simple decorative choices support the welcoming atmosphere associated with farmhouse design.
 
 Open layouts are often preferred in farmhouse homes because they encourage social interaction and family gatherings. Dining rooms connected to kitchens create better flow and convenience during meals. Large windows help maximize natural lighting and outdoor views. Spacious layouts also make farmhouse interiors feel more relaxed and inviting. Functional planning remains important even within traditional design styles.

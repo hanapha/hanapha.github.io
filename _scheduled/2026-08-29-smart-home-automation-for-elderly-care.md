@@ -23,6 +23,7 @@ Connected health monitoring systems help caregivers track important wellness ind
 - Emergency fall and inactivity detection.
 - Remote health and wellness monitoring.
 - Automated medication reminders.
+
 Smart lighting systems also contribute significantly to elderly safety and comfort. Motion-activated lights reduce the risk of falls during nighttime movement through hallways and bathrooms. Automated brightness adjustments improve visibility without requiring manual controls. Enhanced lighting conditions support safer navigation inside residential environments. Connected illumination improves both convenience and accident prevention.
 
 Remote access allows caregivers and family members to monitor household conditions without constant physical visits. Mobile applications provide updates about security, temperature, and activity patterns in real time. This flexibility helps elderly individuals maintain independence while still receiving support when necessary. Remote supervision reduces stress for both seniors and caregivers. Connected care systems strengthen family communication and awareness.
