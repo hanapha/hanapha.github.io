@@ -1,0 +1,166 @@
+---
+layout: default
+title: Minimalist Score
+description: Calculate how minimalist your room design is based on furniture, decor, and visual simplicity.
+permalink: /converters/minimalist-score/
+---
+
+
+<p class="text-muted mb-4">
+  Check how minimalist your room design is
+  based on furniture quantity and decor elements.
+</p>
+
+<div class="card border-0 shadow-none bg-light rounded-4">
+
+  <div class="card-body p-4">
+
+    <!-- FURNITURE COUNT -->
+    <div class="mb-3">
+
+      <label class="form-label fw-semibold">
+        Number of Furniture Items
+      </label>
+
+      <input type="number" id="furniture" class="form-control form-control-lg" placeholder="Example: 5">
+
+    </div>
+
+    <!-- DECOR ITEMS -->
+    <div class="mb-3">
+
+      <label class="form-label fw-semibold">
+        Decorative Items (Plants, Frames, etc.)
+      </label>
+
+      <input type="number" id="decor" class="form-control form-control-lg" placeholder="Example: 3">
+
+    </div>
+
+    <!-- COLORS -->
+    <div class="mb-4">
+
+      <label class="form-label fw-semibold">
+        Number of Dominant Colors
+      </label>
+
+      <input type="number" id="colors" class="form-control form-control-lg" placeholder="Example: 2">
+
+    </div>
+
+    <!-- BUTTON -->
+    <button class="btn btn-dark btn-lg w-100" onclick="calculateMinimalistScore()">
+
+      Calculate Score
+
+    </button>
+
+    <!-- RESULT -->
+    <div id="resultBox" class="alert alert-light border mt-4 d-none">
+
+      <h5 class="fw-bold mb-3">
+        Minimalist Score Result
+      </h5>
+
+      <div id="resultText"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- TIPS -->
+<div class="card border-0 shadow-none bg-light rounded-4 mt-4">
+
+  <div class="card-body p-4">
+
+    <h4 class="fw-bold mb-3">
+      Minimalist Design Tips
+    </h4>
+
+    <ul class="mb-0">
+      <li>Use fewer furniture pieces for cleaner space.</li>
+      <li>Stick to 2–3 dominant colors only.</li>
+      <li>Reduce unnecessary decorations.</li>
+      <li>Keep surfaces clean and uncluttered.</li>
+    </ul>
+
+  </div>
+
+</div>
+
+
+<script>
+  function calculateMinimalistScore() {
+
+    let furniture =
+      parseFloat(document.getElementById("furniture").value);
+
+    let decor =
+      parseFloat(document.getElementById("decor").value);
+
+    let colors =
+      parseFloat(document.getElementById("colors").value);
+
+    if (
+      isNaN(furniture) ||
+      isNaN(decor) ||
+      isNaN(colors) ||
+      furniture < 0 ||
+      decor < 0 ||
+      colors < 0
+    ) {
+      alert("Please enter valid numbers");
+      return;
+    }
+
+    // BASE SCORE
+    let score = 100;
+
+    // PENALTIES
+    score -= furniture * 6;
+    score -= decor * 4;
+    score -= (colors - 2) * 5;
+
+    if (score > 100) score = 100;
+    if (score < 0) score = 0;
+
+    let label = "";
+    let message = "";
+
+    if (score >= 80) {
+      label = "Highly Minimalist";
+      message = "Your space is very clean, simple, and well balanced.";
+    } else if (score >= 60) {
+      label = "Moderately Minimalist";
+      message = "Good balance, but still has some visual elements.";
+    } else if (score >= 40) {
+      label = "Slightly Cluttered";
+      message = "Try reducing furniture and decorative items.";
+    } else {
+      label = "Overloaded Space";
+      message = "Your space feels busy. Consider simplifying the layout.";
+    }
+
+    document.getElementById("resultBox").classList.remove("d-none");
+
+    document.getElementById("resultText").innerHTML = `
+    <p><strong>Score:</strong> ${score.toFixed(0)} / 100</p>
+    <p><strong>Category:</strong> ${label}</p>
+    <p class="mb-0 text-muted">${message}</p>
+  `;
+  }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Minimalist Score",
+    "url": "{{ page.url | absolute_url }}",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "All"
+  }
+</script>

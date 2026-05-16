@@ -1,0 +1,341 @@
+---
+layout: default
+title: Wall Art Size Preview
+description: Preview recommended wall art sizes and placement based on furniture width and room style.
+permalink: /converters/wall-art-size-preview/
+---
+
+
+
+<p class="text-muted mb-4">
+  Visualize ideal wall art proportions
+  for sofas, beds, dining areas, and interior walls.
+</p>
+
+<div class="card border-0 shadow-none bg-light rounded-4">
+
+  <div class="card-body p-4">
+
+    <!-- ROOM TYPE -->
+    <div class="mb-3">
+
+      <label class="form-label fw-semibold">
+        Room Type
+      </label>
+
+      <select id="roomType" class="form-select form-select-lg">
+
+        <option value="living">
+          Living Room
+        </option>
+
+        <option value="bedroom">
+          Bedroom
+        </option>
+
+        <option value="dining">
+          Dining Room
+        </option>
+
+        <option value="office">
+          Home Office
+        </option>
+
+      </select>
+
+    </div>
+
+    <!-- ART SIZE -->
+    <div class="mb-4">
+
+      <label class="form-label fw-semibold">
+        Wall Art Size
+      </label>
+
+      <select id="artSize" class="form-select form-select-lg">
+
+        <option value="small">
+          Small
+        </option>
+
+        <option value="medium">
+          Medium
+        </option>
+
+        <option value="large">
+          Large
+        </option>
+
+        <option value="gallery">
+          Gallery Wall
+        </option>
+
+      </select>
+
+    </div>
+
+    <!-- BUTTON -->
+    <button class="btn btn-dark btn-lg w-100" onclick="generateArtPreview()">
+
+      Generate Wall Art Preview
+
+    </button>
+
+    <!-- RESULT -->
+    <div id="resultBox" class="d-none mt-4">
+
+      <div class="card border-0 shadow-none bg-light rounded-4 overflow-hidden">
+
+        <!-- WALL -->
+        <div id="wallPreview" style="
+                  height:420px;
+                  background:#f5f5f5;
+                  position:relative;
+                ">
+
+          <!-- FURNITURE -->
+          <div id="furniture" style="
+                    position:absolute;
+                    width:260px;
+                    height:90px;
+                    left:50%;
+                    bottom:40px;
+                    transform:translateX(-50%);
+                    background:#7c7c7c;
+                    border-radius:16px;
+                  ">
+          </div>
+
+          <!-- ART -->
+          <div id="art1" style="
+                    position:absolute;
+                    border:6px solid #ffffff;
+                    background:#c8c8c8;
+                    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+                    display:none;
+                  ">
+          </div>
+
+          <div id="art2" style="
+                    position:absolute;
+                    border:6px solid #ffffff;
+                    background:#d8d8d8;
+                    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+                    display:none;
+                  ">
+          </div>
+
+          <div id="art3" style="
+                    position:absolute;
+                    border:6px solid #ffffff;
+                    background:#bdbdbd;
+                    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+                    display:none;
+                  ">
+          </div>
+
+        </div>
+
+        <div class="card-body p-4">
+
+          <h4 id="resultTitle" class="fw-bold mb-3">
+          </h4>
+
+          <p id="resultDescription" class="text-muted mb-0">
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- TIPS -->
+<div class="card border-0 shadow-none bg-light rounded-4 mt-4">
+
+  <div class="card-body p-4">
+
+    <h4 class="fw-bold mb-3">
+      Wall Art Tips
+    </h4>
+
+    <ul class="mb-0">
+      <li>Wall art should usually cover 60–75% of furniture width.</li>
+      <li>Hang artwork at eye level for best balance.</li>
+      <li>Gallery walls create a more dynamic appearance.</li>
+      <li>Large art pieces work well in minimalist interiors.</li>
+    </ul>
+
+  </div>
+
+</div>
+
+
+
+<script>
+  function generateArtPreview() {
+
+    let roomType =
+      document.getElementById("roomType").value;
+
+    let artSize =
+      document.getElementById("artSize").value;
+
+    let furniture =
+      document.getElementById("furniture");
+
+    let art1 =
+      document.getElementById("art1");
+
+    let art2 =
+      document.getElementById("art2");
+
+    let art3 =
+      document.getElementById("art3");
+
+    // RESET
+
+    [art1, art2, art3].forEach(art => {
+      art.style.display = "none";
+    });
+
+    let title = "";
+    let description = "";
+
+    // ROOM TYPE
+
+    switch (roomType) {
+
+      case "living":
+
+        furniture.style.width = "280px";
+        furniture.style.height = "90px";
+
+        title =
+          "Living Room Wall Art";
+
+        description =
+          "Balanced wall art placement above the sofa area.";
+
+        break;
+
+      case "bedroom":
+
+        furniture.style.width = "320px";
+        furniture.style.height = "110px";
+
+        title =
+          "Bedroom Wall Art";
+
+        description =
+          "Artwork centered above the bed for balanced composition.";
+
+        break;
+
+      case "dining":
+
+        furniture.style.width = "260px";
+        furniture.style.height = "120px";
+
+        title =
+          "Dining Room Wall Art";
+
+        description =
+          "Wall decor designed to enhance dining atmosphere.";
+
+        break;
+
+      case "office":
+
+        furniture.style.width = "240px";
+        furniture.style.height = "80px";
+
+        title =
+          "Office Wall Art";
+
+        description =
+          "Simple wall artwork improves workspace aesthetics.";
+
+        break;
+    }
+
+    // ART SIZE
+
+    if (artSize === "small") {
+
+      art1.style.display = "block";
+
+      art1.style.width = "100px";
+      art1.style.height = "80px";
+      art1.style.left = "50%";
+      art1.style.top = "90px";
+      art1.style.transform = "translateX(-50%)";
+    } else if (artSize === "medium") {
+
+      art1.style.display = "block";
+
+      art1.style.width = "180px";
+      art1.style.height = "110px";
+      art1.style.left = "50%";
+      art1.style.top = "70px";
+      art1.style.transform = "translateX(-50%)";
+    } else if (artSize === "large") {
+
+      art1.style.display = "block";
+
+      art1.style.width = "280px";
+      art1.style.height = "140px";
+      art1.style.left = "50%";
+      art1.style.top = "60px";
+      art1.style.transform = "translateX(-50%)";
+    } else {
+
+      art1.style.display = "block";
+      art2.style.display = "block";
+      art3.style.display = "block";
+
+      art1.style.width = "90px";
+      art1.style.height = "110px";
+      art1.style.left = "180px";
+      art1.style.top = "70px";
+
+      art2.style.width = "90px";
+      art2.style.height = "110px";
+      art2.style.left = "290px";
+      art2.style.top = "70px";
+
+      art3.style.width = "90px";
+      art3.style.height = "110px";
+      art3.style.left = "400px";
+      art3.style.top = "70px";
+    }
+
+    document
+      .getElementById("resultBox")
+      .classList.remove("d-none");
+
+    document
+      .getElementById("resultTitle")
+      .innerText = title;
+
+    document
+      .getElementById("resultDescription")
+      .innerText = description;
+  }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Wall Art Size Preview",
+    "url": "{{ page.url | absolute_url }}",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "All"
+  }
+</script>

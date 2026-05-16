@@ -1,0 +1,256 @@
+---
+layout: default
+title: Mirror Size Calculator
+description: Calculate the ideal mirror size for bathrooms, bedrooms, dining rooms, and interior wall decoration.
+permalink: /converters/mirror-size-calculator/
+---
+
+
+<p class="text-muted mb-4">
+  Find the recommended mirror dimensions
+  based on furniture width and room type.
+</p>
+
+<div class="card border-0 shadow-none bg-light rounded-4">
+  <div class="card-body p-4">
+
+    <!-- ROOM TYPE -->
+    <div class="mb-3">
+      <label class="form-label fw-semibold">
+        Room Type
+      </label>
+
+      <select id="roomType" class="form-select form-select-lg">
+
+        <option value="bathroom">
+          Bathroom
+        </option>
+
+        <option value="bedroom">
+          Bedroom
+        </option>
+
+        <option value="living">
+          Living Room
+        </option>
+
+        <option value="dining">
+          Dining Room
+        </option>
+
+      </select>
+    </div>
+
+    <!-- FURNITURE WIDTH -->
+    <div class="mb-3">
+      <label class="form-label fw-semibold">
+        Furniture Width
+      </label>
+
+      <div class="input-group input-group-lg">
+
+        <input type="number" id="furnitureWidth" class="form-control" placeholder="Example: 120">
+
+        <span class="input-group-text">
+          cm
+        </span>
+
+      </div>
+    </div>
+
+    <!-- MIRROR STYLE -->
+    <div class="mb-4">
+      <label class="form-label fw-semibold">
+        Mirror Style
+      </label>
+
+      <select id="mirrorStyle" class="form-select form-select-lg">
+
+        <option value="standard">
+          Standard
+        </option>
+
+        <option value="full">
+          Full Width
+        </option>
+
+        <option value="minimal">
+          Minimalist
+        </option>
+
+        <option value="decorative">
+          Decorative
+        </option>
+
+      </select>
+    </div>
+
+    <!-- BUTTON -->
+    <button class="btn btn-dark btn-lg w-100" onclick="calculateMirror()">
+      Calculate Mirror Size
+    </button>
+
+    <!-- RESULT -->
+    <div id="resultBox" class="alert alert-light border mt-4 d-none">
+
+      <h5 class="fw-bold mb-3">
+        Recommended Mirror Size
+      </h5>
+
+      <div id="resultText"></div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- TIPS -->
+<div class="card border-0 shadow-none bg-light rounded-4 mt-4">
+
+  <div class="card-body p-4">
+
+    <h4 class="fw-bold mb-3">
+      Mirror Placement Tips
+    </h4>
+
+    <ul class="mb-0">
+      <li>Mirrors can make rooms feel larger and brighter.</li>
+      <li>Bathroom mirrors are usually slightly narrower than the vanity.</li>
+      <li>Round mirrors work well in minimalist interiors.</li>
+      <li>Large mirrors create stronger visual impact.</li>
+    </ul>
+
+  </div>
+
+</div>
+
+<!-- FAQ -->
+<div class="card border-0 shadow-none bg-light rounded-4 mt-4">
+
+  <div class="card-body p-4">
+
+    <h4 class="fw-bold mb-3">
+      FAQ
+    </h4>
+
+    <h6 class="fw-semibold">
+      How wide should a mirror be?
+    </h6>
+
+    <p class="text-muted">
+      Mirrors are commonly 70–90% of the furniture width below them.
+    </p>
+
+    <h6 class="fw-semibold">
+      Should mirrors match furniture width?
+    </h6>
+
+    <p class="text-muted mb-0">
+      Full-width mirrors can create a modern luxury appearance,
+      while smaller mirrors provide balanced proportions.
+    </p>
+
+  </div>
+
+</div>
+
+
+<script>
+  function calculateMirror() {
+
+    let roomType =
+      document.getElementById("roomType").value;
+
+    let furnitureWidth = parseFloat(
+      document.getElementById("furnitureWidth").value
+    );
+
+    let mirrorStyle =
+      document.getElementById("mirrorStyle").value;
+
+    if (
+      isNaN(furnitureWidth) ||
+      furnitureWidth <= 0
+    ) {
+
+      alert("Please enter a valid furniture width");
+      return;
+    }
+
+    let widthMultiplier = 0.8;
+
+    switch (mirrorStyle) {
+
+      case "full":
+        widthMultiplier = 1;
+        break;
+
+      case "minimal":
+        widthMultiplier = 0.7;
+        break;
+
+      case "decorative":
+        widthMultiplier = 0.85;
+        break;
+    }
+
+    let mirrorWidth =
+      furnitureWidth * widthMultiplier;
+
+    let mirrorHeight = 0;
+
+    switch (roomType) {
+
+      case "bathroom":
+        mirrorHeight = mirrorWidth * 0.75;
+        break;
+
+      case "bedroom":
+        mirrorHeight = mirrorWidth * 1.4;
+        break;
+
+      case "living":
+        mirrorHeight = mirrorWidth * 0.8;
+        break;
+
+      case "dining":
+        mirrorHeight = mirrorWidth * 0.9;
+        break;
+    }
+
+    document
+      .getElementById("resultBox")
+      .classList.remove("d-none");
+
+    document
+      .getElementById("resultText")
+      .innerHTML = `
+      <p>
+        <strong>Recommended Width:</strong>
+        ${mirrorWidth.toFixed(1)} cm
+      </p>
+
+      <p>
+        <strong>Recommended Height:</strong>
+        ${mirrorHeight.toFixed(1)} cm
+      </p>
+
+      <p class="mb-0 text-muted">
+        Recommended for ${roomType} interiors
+        using ${mirrorStyle} mirror style.
+      </p>
+    `;
+  }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Mirror Size Calculator",
+    "url": "{{ page.url | absolute_url }}",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "All"
+  }
+</script>

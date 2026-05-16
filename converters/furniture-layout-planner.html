@@ -1,0 +1,316 @@
+---
+layout: default
+title: Furniture Layout Planner
+description: Plan furniture placement and room layout ideas based on room size and furniture arrangement.
+permalink: /converters/furniture-layout-planner/
+---
+
+<p class="text-muted mb-4">
+  Preview simple furniture layout recommendations
+  based on room type and furniture arrangement style.
+</p>
+
+<div class="card border-0 shadow-none bg-light rounded-4">
+  <div class="card-body p-4">
+
+    <!-- ROOM TYPE -->
+    <div class="mb-3">
+      <label class="form-label fw-semibold">
+        Room Type
+      </label>
+
+      <select id="roomType" class="form-select form-select-lg">
+
+        <option value="living">
+          Living Room
+        </option>
+
+        <option value="bedroom">
+          Bedroom
+        </option>
+
+        <option value="office">
+          Home Office
+        </option>
+
+        <option value="dining">
+          Dining Room
+        </option>
+
+      </select>
+    </div>
+
+    <!-- LAYOUT STYLE -->
+    <div class="mb-4">
+      <label class="form-label fw-semibold">
+        Layout Style
+      </label>
+
+      <select id="layoutStyle" class="form-select form-select-lg">
+
+        <option value="minimal">
+          Minimalist
+        </option>
+
+        <option value="modern">
+          Modern
+        </option>
+
+        <option value="compact">
+          Compact Space Saving
+        </option>
+
+        <option value="luxury">
+          Luxury Layout
+        </option>
+
+      </select>
+    </div>
+
+    <!-- BUTTON -->
+    <button class="btn btn-dark btn-lg w-100" onclick="generateLayout()">
+      Generate Layout Plan
+    </button>
+
+    <!-- RESULT -->
+    <div id="resultBox" class="d-none mt-4">
+
+      <div class="card border-0 shadow-none bg-light rounded-4 overflow-hidden">
+
+        <!-- ROOM PREVIEW -->
+        <div id="layoutPreview" style="
+                  height:400px;
+                  position:relative;
+                  background:#f5f5f5;
+                  overflow:hidden;
+                ">
+
+          <!-- FURNITURE ITEMS -->
+          <div id="item1" style="
+                    position:absolute;
+                    border-radius:12px;
+                    display:none;
+                  ">
+          </div>
+
+          <div id="item2" style="
+                    position:absolute;
+                    border-radius:12px;
+                    display:none;
+                  ">
+          </div>
+
+          <div id="item3" style="
+                    position:absolute;
+                    border-radius:12px;
+                    display:none;
+                  ">
+          </div>
+
+        </div>
+
+        <div class="card-body p-4">
+
+          <h4 id="layoutTitle" class="fw-bold mb-3">
+          </h4>
+
+          <p id="layoutDescription" class="text-muted mb-0">
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- TIPS -->
+<div class="card border-0 shadow-none bg-light rounded-4 mt-4">
+  <div class="card-body p-4">
+
+    <h4 class="fw-bold mb-3">
+      Furniture Arrangement Tips
+    </h4>
+
+    <ul class="mb-0">
+      <li>Leave enough walking space between furniture.</li>
+      <li>Large furniture should face the focal point.</li>
+      <li>Use multifunction furniture in compact rooms.</li>
+      <li>Balance furniture size with room dimensions.</li>
+    </ul>
+
+  </div>
+</div>
+
+<script>
+  function generateLayout() {
+
+    let roomType =
+      document.getElementById("roomType").value;
+
+    let layoutStyle =
+      document.getElementById("layoutStyle").value;
+
+    let item1 =
+      document.getElementById("item1");
+
+    let item2 =
+      document.getElementById("item2");
+
+    let item3 =
+      document.getElementById("item3");
+
+    let title = "";
+    let description = "";
+
+    // RESET
+
+    [item1, item2, item3].forEach(item => {
+
+      item.style.display = "block";
+      item.style.background = "#8c8c8c";
+    });
+
+    // LAYOUT GENERATOR
+
+    if (roomType === "living") {
+
+      item1.style.width = "180px";
+      item1.style.height = "80px";
+      item1.style.left = "50px";
+      item1.style.top = "140px";
+
+      item2.style.width = "120px";
+      item2.style.height = "60px";
+      item2.style.left = "280px";
+      item2.style.top = "150px";
+
+      item3.style.width = "80px";
+      item3.style.height = "80px";
+      item3.style.left = "430px";
+      item3.style.top = "140px";
+
+      title =
+        "Living Room Layout";
+
+      description =
+        "Sofa-centered layout with balanced seating and table placement.";
+    } else if (roomType === "bedroom") {
+
+      item1.style.width = "220px";
+      item1.style.height = "120px";
+      item1.style.left = "160px";
+      item1.style.top = "90px";
+
+      item2.style.width = "80px";
+      item2.style.height = "80px";
+      item2.style.left = "90px";
+      item2.style.top = "110px";
+
+      item3.style.width = "120px";
+      item3.style.height = "60px";
+      item3.style.left = "220px";
+      item3.style.top = "250px";
+
+      title =
+        "Bedroom Layout";
+
+      description =
+        "Comfortable bed-centered arrangement with side table and storage area.";
+    } else if (roomType === "office") {
+
+      item1.style.width = "220px";
+      item1.style.height = "70px";
+      item1.style.left = "150px";
+      item1.style.top = "70px";
+
+      item2.style.width = "90px";
+      item2.style.height = "90px";
+      item2.style.left = "220px";
+      item2.style.top = "200px";
+
+      item3.style.width = "100px";
+      item3.style.height = "60px";
+      item3.style.left = "420px";
+      item3.style.top = "90px";
+
+      title =
+        "Home Office Layout";
+
+      description =
+        "Functional workspace layout designed for productivity and comfort.";
+    } else {
+
+      item1.style.width = "180px";
+      item1.style.height = "180px";
+      item1.style.left = "180px";
+      item1.style.top = "90px";
+
+      item2.style.width = "70px";
+      item2.style.height = "70px";
+      item2.style.left = "120px";
+      item2.style.top = "140px";
+
+      item3.style.width = "70px";
+      item3.style.height = "70px";
+      item3.style.left = "380px";
+      item3.style.top = "140px";
+
+      title =
+        "Dining Room Layout";
+
+      description =
+        "Centered dining table layout with comfortable seating arrangement.";
+    }
+
+    // STYLE EFFECT
+
+    if (layoutStyle === "luxury") {
+
+      [item1, item2, item3].forEach(item => {
+        item.style.background = "#4b4b4b";
+      });
+    } else if (layoutStyle === "minimal") {
+
+      [item1, item2, item3].forEach(item => {
+        item.style.background = "#bdbdbd";
+      });
+    } else if (layoutStyle === "compact") {
+
+      item1.style.transform = "scale(0.85)";
+      item2.style.transform = "scale(0.85)";
+      item3.style.transform = "scale(0.85)";
+    } else {
+
+      item1.style.transform = "scale(1)";
+      item2.style.transform = "scale(1)";
+      item3.style.transform = "scale(1)";
+    }
+
+    document
+      .getElementById("resultBox")
+      .classList.remove("d-none");
+
+    document
+      .getElementById("layoutTitle")
+      .innerText = title;
+
+    document
+      .getElementById("layoutDescription")
+      .innerText = description;
+  }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Furniture Layout Planner",
+    "url": "{{ page.url | absolute_url }}",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "All"
+  }
+</script>

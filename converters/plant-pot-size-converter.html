@@ -1,0 +1,171 @@
+---
+layout: default
+title: Plant Pot Size Converter
+description: Convert plant pot sizes and find recommended pot dimensions based on plant type and growth stage.
+permalink: /converters/plant-pot-size-converter/
+---
+
+
+<p class="text-muted mb-4">
+  Find the ideal pot size for your plants based on type and growth stage.
+</p>
+
+<div class="card border-0 shadow-none bg-light rounded-4">
+
+  <div class="card-body p-4">
+
+    <!-- PLANT TYPE -->
+    <div class="mb-3">
+
+      <label class="form-label fw-semibold">
+        Plant Type
+      </label>
+
+      <select id="plantType" class="form-select form-select-lg">
+
+        <option value="succulent">Succulent</option>
+        <option value="herb">Herb Plant</option>
+        <option value="flower">Flowering Plant</option>
+        <option value="indoor">Indoor Plant</option>
+        <option value="tree">Small Tree</option>
+
+      </select>
+
+    </div>
+
+    <!-- CURRENT POT SIZE -->
+    <div class="mb-3">
+
+      <label class="form-label fw-semibold">
+        Current Pot Diameter
+      </label>
+
+      <div class="input-group input-group-lg">
+
+        <input type="number" id="currentPot" class="form-control" placeholder="Example: 10">
+        <span class="input-group-text">cm</span>
+
+      </div>
+
+    </div>
+
+    <!-- GROWTH STAGE -->
+    <div class="mb-4">
+
+      <label class="form-label fw-semibold">
+        Growth Stage
+      </label>
+
+      <select id="stage" class="form-select form-select-lg">
+
+        <option value="small">Small / Seedling</option>
+        <option value="medium">Growing</option>
+        <option value="large">Mature</option>
+
+      </select>
+
+    </div>
+
+    <!-- BUTTON -->
+    <button class="btn btn-dark btn-lg w-100" onclick="calculatePotSize()">
+      Calculate Pot Size
+    </button>
+
+    <!-- RESULT -->
+    <div id="resultBox" class="alert alert-light border mt-4 d-none">
+
+      <h5 class="fw-bold mb-3">Recommended Pot Size</h5>
+      <div id="resultText"></div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- TIPS -->
+<div class="card border-0 shadow-none bg-light rounded-4 mt-4">
+  <div class="card-body p-4">
+
+    <h4 class="fw-bold mb-3">Plant Pot Tips</h4>
+
+    <ul class="mb-0">
+      <li>Always choose a pot 20–30% larger than root ball.</li>
+      <li>Good drainage is more important than size alone.</li>
+      <li>Terracotta pots help reduce overwatering.</li>
+      <li>Repot plants every 1–2 years for healthy growth.</li>
+    </ul>
+
+  </div>
+</div>
+
+<script>
+  function calculatePotSize() {
+
+    const plantType = document.getElementById("plantType").value;
+    const currentPot = parseFloat(document.getElementById("currentPot").value);
+    const stage = document.getElementById("stage").value;
+
+    if (isNaN(currentPot) || currentPot <= 0) {
+      alert("Please enter a valid pot size");
+      return;
+    }
+
+    let multiplier = 1.25;
+
+    // plant factor
+    switch (plantType) {
+      case "succulent":
+        multiplier = 1.2;
+        break;
+      case "herb":
+        multiplier = 1.3;
+        break;
+      case "flower":
+        multiplier = 1.4;
+        break;
+      case "indoor":
+        multiplier = 1.5;
+        break;
+      case "tree":
+        multiplier = 1.7;
+        break;
+    }
+
+    // stage factor
+    if (stage === "small") multiplier -= 0.1;
+    if (stage === "large") multiplier += 0.2;
+
+    let recommended = currentPot * multiplier;
+
+    let advice = "";
+
+    if (recommended < 10) {
+      advice = "Suitable for small decorative pots or desktop plants.";
+    } else if (recommended < 20) {
+      advice = "Good for medium indoor pots with balanced growth.";
+    } else {
+      advice = "Ideal for large floor pots or outdoor placement.";
+    }
+
+    document.getElementById("resultBox").classList.remove("d-none");
+
+    document.getElementById("resultText").innerHTML = `
+    <p><strong>Plant Type:</strong> ${plantType}</p>
+    <p><strong>Current Pot:</strong> ${currentPot} cm</p>
+    <p><strong>Recommended Pot Size:</strong> ${recommended.toFixed(1)} cm</p>
+    <p class="mb-0 text-muted">${advice}</p>
+  `;
+  }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Plant Pot Size Converter",
+    "url": "{{ page.url | absolute_url }}",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All"
+  }
+</script>

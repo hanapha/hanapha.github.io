@@ -1,0 +1,243 @@
+---
+layout: default
+title: Frame Size Converter
+description: Convert photo and wall frame sizes and find the best frame dimensions.
+permalink: /converters/frame-size-converter/
+---
+
+<p class="text-muted mb-4">
+  Find the ideal frame size for photos, artwork, and wall decoration
+  based on image size and display style.
+</p>
+
+<div class="card border-0 shadow-none bg-light rounded-4">
+
+  <div class="card-body p-4">
+
+    <!-- IMAGE WIDTH -->
+    <div class="mb-3">
+
+      <label class="form-label fw-semibold">
+        Image Width
+      </label>
+
+      <div class="input-group input-group-lg">
+
+        <input type="number" id="imgWidth" class="form-control" placeholder="Example: 30">
+
+        <span class="input-group-text">
+          cm
+        </span>
+
+      </div>
+
+    </div>
+
+    <!-- IMAGE HEIGHT -->
+    <div class="mb-3">
+
+      <label class="form-label fw-semibold">
+        Image Height
+      </label>
+
+      <div class="input-group input-group-lg">
+
+        <input type="number" id="imgHeight" class="form-control" placeholder="Example: 40">
+
+        <span class="input-group-text">
+          cm
+        </span>
+
+      </div>
+
+    </div>
+
+    <!-- FRAME STYLE -->
+    <div class="mb-4">
+
+      <label class="form-label fw-semibold">
+        Frame Style
+      </label>
+
+      <select id="frameStyle" class="form-select form-select-lg">
+
+        <option value="standard">
+          Standard
+        </option>
+
+        <option value="gallery">
+          Gallery (Extra Border)
+        </option>
+
+        <option value="minimal">
+          Minimalist
+        </option>
+
+        <option value="bold">
+          Bold Frame
+        </option>
+
+      </select>
+
+    </div>
+
+    <!-- BUTTON -->
+    <button class="btn btn-dark btn-lg w-100" onclick="convertFrameSize()">
+
+      Calculate Frame Size
+
+    </button>
+
+    <!-- RESULT -->
+    <div id="resultBox" class="alert alert-light border mt-4 d-none">
+
+      <h5 class="fw-bold mb-3">
+        Recommended Frame Size
+      </h5>
+
+      <div id="resultText"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- TIPS -->
+<div class="card border-0 shadow-none bg-light rounded-4 mt-4">
+
+  <div class="card-body p-4">
+
+    <h4 class="fw-bold mb-3">
+      Frame Design Tips
+    </h4>
+
+    <ul class="mb-0">
+      <li>Gallery frames usually include extra white border (matting).</li>
+      <li>Large frames create stronger visual impact on walls.</li>
+      <li>Minimal frames work well for modern interiors.</li>
+      <li>Always consider wall space before choosing frame size.</li>
+    </ul>
+
+  </div>
+
+</div>
+
+<!-- FAQ -->
+<div class="card border-0 shadow-none bg-light rounded-4 mt-4">
+
+  <div class="card-body p-4">
+
+    <h4 class="fw-bold mb-3">
+      FAQ
+    </h4>
+
+    <h6 class="fw-semibold">
+      What is a gallery frame?
+    </h6>
+
+    <p class="text-muted">
+      A gallery frame includes extra border space (matting)
+      to highlight the artwork or photo.
+    </p>
+
+    <h6 class="fw-semibold">
+      Should frame size match image size?
+    </h6>
+
+    <p class="text-muted mb-0">
+      Frames are usually slightly larger than the image
+      to allow for borders and mounting space.
+    </p>
+
+  </div>
+
+</div>
+
+
+<script>
+  function convertFrameSize() {
+
+    let imgWidth =
+      parseFloat(document.getElementById("imgWidth").value);
+
+    let imgHeight =
+      parseFloat(document.getElementById("imgHeight").value);
+
+    let frameStyle =
+      document.getElementById("frameStyle").value;
+
+    if (
+      isNaN(imgWidth) ||
+      isNaN(imgHeight) ||
+      imgWidth <= 0 ||
+      imgHeight <= 0
+    ) {
+      alert("Please enter valid image dimensions");
+      return;
+    }
+
+    let padding = 0;
+
+    switch (frameStyle) {
+
+      case "minimal":
+        padding = 2;
+        break;
+
+      case "standard":
+        padding = 4;
+        break;
+
+      case "bold":
+        padding = 6;
+        break;
+
+      case "gallery":
+        padding = 10;
+        break;
+    }
+
+    let frameWidth = imgWidth + (padding * 2);
+    let frameHeight = imgHeight + (padding * 2);
+
+    document
+      .getElementById("resultBox")
+      .classList.remove("d-none");
+
+    document
+      .getElementById("resultText")
+      .innerHTML = `
+      <p>
+        <strong>Image Size:</strong>
+        ${imgWidth} x ${imgHeight} cm
+      </p>
+
+      <p>
+        <strong>Frame Style:</strong>
+        ${frameStyle}
+      </p>
+
+      <p>
+        <strong>Recommended Frame Size:</strong>
+        ${frameWidth} x ${frameHeight} cm
+      </p>
+
+      <p class="mb-0 text-muted">
+        Includes ${padding} cm padding on each side for ${frameStyle} style.
+      </p>
+    `;
+  }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Frame Size Converter",
+    "url": "{{ page.url | absolute_url }}",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All"
+  }
+</script>

@@ -1,0 +1,247 @@
+---
+layout: default
+title: Feng Shui Calculator
+description: Calculate Feng Shui room balance, energy flow, and recommended layout improvements based on room type and
+direction.
+permalink: /converters/feng-shui-calculator/
+---
+
+<p class="text-muted mb-4">
+  Analyze room energy balance and get simple Feng Shui layout suggestions
+  based on room type and facing direction.
+</p>
+
+<div class="card border-0 shadow-none bg-light rounded-4">
+
+  <div class="card-body p-4">
+
+    <!-- ROOM TYPE -->
+    <div class="mb-3">
+
+      <label class="form-label fw-semibold">
+        Room Type
+      </label>
+
+      <select id="roomType" class="form-select form-select-lg">
+
+        <option value="living">
+          Living Room
+        </option>
+
+        <option value="bedroom">
+          Bedroom
+        </option>
+
+        <option value="kitchen">
+          Kitchen
+        </option>
+
+        <option value="office">
+          Home Office
+        </option>
+
+      </select>
+
+    </div>
+
+    <!-- DIRECTION -->
+    <div class="mb-4">
+
+      <label class="form-label fw-semibold">
+        Room Facing Direction
+      </label>
+
+      <select id="direction" class="form-select form-select-lg">
+
+        <option value="north">
+          North
+        </option>
+
+        <option value="east">
+          East
+        </option>
+
+        <option value="south">
+          South
+        </option>
+
+        <option value="west">
+          West
+        </option>
+
+      </select>
+
+    </div>
+
+    <!-- BUTTON -->
+    <button class="btn btn-dark btn-lg w-100" onclick="calculateFengShui()">
+
+      Analyze Feng Shui
+
+    </button>
+
+    <!-- RESULT -->
+    <div id="resultBox" class="alert alert-light border mt-4 d-none">
+
+      <h5 class="fw-bold mb-3">
+        Feng Shui Analysis Result
+      </h5>
+
+      <div id="resultText"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- TIPS -->
+<div class="card border-0 shadow-none bg-light rounded-4 mt-4">
+
+  <div class="card-body p-4">
+
+    <h4 class="fw-bold mb-3">
+      Feng Shui Tips
+    </h4>
+
+    <ul class="mb-0">
+      <li>Keep entryways clear for positive energy flow.</li>
+      <li>Avoid blocking windows with large furniture.</li>
+      <li>Use natural light to improve room balance.</li>
+      <li>Maintain symmetry for a harmonious layout.</li>
+    </ul>
+
+  </div>
+
+</div>
+
+<!-- FAQ -->
+<div class="card border-0 shadow-none bg-light rounded-4 mt-4">
+
+  <div class="card-body p-4">
+
+    <h4 class="fw-bold mb-3">
+      FAQ
+    </h4>
+
+    <h6 class="fw-semibold">
+      What is Feng Shui?
+    </h6>
+
+    <p class="text-muted">
+      Feng Shui is an ancient practice of arranging spaces
+      to improve energy flow and harmony.
+    </p>
+
+    <h6 class="fw-semibold">
+      Does room direction matter?
+    </h6>
+
+    <p class="text-muted mb-0">
+      Yes, different directions are associated with different energy qualities.
+    </p>
+
+  </div>
+
+</div>
+
+<script>
+  function calculateFengShui() {
+
+    let roomType =
+      document.getElementById("roomType").value;
+
+    let direction =
+      document.getElementById("direction").value;
+
+    let score = 70;
+    let advice = "";
+
+    // ROOM TYPE FACTOR
+
+    if (roomType === "bedroom") score += 10;
+    if (roomType === "living") score += 5;
+    if (roomType === "office") score += 0;
+    if (roomType === "kitchen") score -= 5;
+
+    // DIRECTION FACTOR
+
+    switch (direction) {
+
+      case "east":
+        score += 10;
+        break;
+
+      case "north":
+        score += 5;
+        break;
+
+      case "south":
+        score -= 5;
+        break;
+
+      case "west":
+        score -= 2;
+        break;
+    }
+
+    // SCORE ANALYSIS
+
+    if (score >= 85) {
+
+      advice =
+        "Excellent Feng Shui balance. Energy flow is strong and harmonious.";
+    } else if (score >= 75) {
+
+      advice =
+        "Good Feng Shui. Minor adjustments can improve harmony.";
+    } else if (score >= 65) {
+
+      advice =
+        "Moderate balance. Consider improving lighting and furniture placement.";
+    } else {
+
+      advice =
+        "Weak Feng Shui. Rearranging furniture and improving natural light is recommended.";
+    }
+
+    document
+      .getElementById("resultBox")
+      .classList.remove("d-none");
+
+    document
+      .getElementById("resultText")
+      .innerHTML = `
+      <p>
+        <strong>Room Type:</strong>
+        ${roomType}
+      </p>
+
+      <p>
+        <strong>Direction:</strong>
+        ${direction}
+      </p>
+
+      <p>
+        <strong>Energy Score:</strong>
+        ${score} / 100
+      </p>
+
+      <p class="mb-0 text-muted">
+        ${advice}
+      </p>
+    `;
+  }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Feng Shui Calculator",
+    "url": "{{ page.url | absolute_url }}",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "All"
+  }
+</script>

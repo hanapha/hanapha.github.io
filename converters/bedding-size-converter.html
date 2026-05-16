@@ -1,0 +1,332 @@
+---
+layout: default
+title: Bedding Size Converter
+description: Convert bedding sizes and compare mattress, duvet, blanket, and bed dimensions.
+permalink: /converters/bedding-size-converter/
+---
+
+<p class="text-muted mb-4">
+  Compare and convert bedding sizes
+  between US, UK, EU, and international standards.
+</p>
+
+<div class="card border-0 shadow-none bg-light rounded-4">
+
+  <div class="card-body p-4">
+
+    <!-- BED SIZE -->
+    <div class="mb-3">
+
+      <label class="form-label fw-semibold">
+        Bed Size
+      </label>
+
+      <select id="bedSize" class="form-select form-select-lg">
+
+        <option value="single">
+          Single
+        </option>
+
+        <option value="twin">
+          Twin
+        </option>
+
+        <option value="double">
+          Double
+        </option>
+
+        <option value="queen">
+          Queen
+        </option>
+
+        <option value="king">
+          King
+        </option>
+
+      </select>
+
+    </div>
+
+    <!-- REGION -->
+    <div class="mb-4">
+
+      <label class="form-label fw-semibold">
+        Region Standard
+      </label>
+
+      <select id="region" class="form-select form-select-lg">
+
+        <option value="us">
+          United States
+        </option>
+
+        <option value="uk">
+          United Kingdom
+        </option>
+
+        <option value="eu">
+          Europe
+        </option>
+
+        <option value="asia">
+          Asia
+        </option>
+
+      </select>
+
+    </div>
+
+    <!-- BUTTON -->
+    <button class="btn btn-dark btn-lg w-100" onclick="convertBeddingSize()">
+
+      Convert Bedding Size
+
+    </button>
+
+    <!-- RESULT -->
+    <div id="resultBox" class="alert alert-light border mt-4 d-none">
+
+      <h5 class="fw-bold mb-3">
+        Bedding Size Result
+      </h5>
+
+      <div id="resultText"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- TIPS -->
+<div class="card border-0 shadow-none bg-light rounded-4 mt-4">
+
+  <div class="card-body p-4">
+
+    <h4 class="fw-bold mb-3">
+      Bedding Selection Tips
+    </h4>
+
+    <ul class="mb-0">
+      <li>Always check mattress thickness before buying sheets.</li>
+      <li>King-size bedding provides extra comfort for couples.</li>
+      <li>Duvets should be larger than mattress dimensions.</li>
+      <li>Different countries may use different size standards.</li>
+    </ul>
+
+  </div>
+
+</div>
+
+<!-- FAQ -->
+<div class="card border-0 shadow-none bg-light rounded-4 mt-4">
+
+  <div class="card-body p-4">
+
+    <h4 class="fw-bold mb-3">
+      FAQ
+    </h4>
+
+    <h6 class="fw-semibold">
+      Are bedding sizes universal?
+    </h6>
+
+    <p class="text-muted">
+      No, bedding dimensions vary between countries and manufacturers.
+    </p>
+
+    <h6 class="fw-semibold">
+      Should duvet covers be larger than the bed?
+    </h6>
+
+    <p class="text-muted mb-0">
+      Yes, slightly larger duvet covers provide better coverage and comfort.
+    </p>
+
+  </div>
+
+</div>
+
+<script>
+  function convertBeddingSize() {
+
+    let bedSize =
+      document.getElementById("bedSize").value;
+
+    let region =
+      document.getElementById("region").value;
+
+    let dimensions = "";
+
+    let duvet = "";
+
+    // SIZE DATABASE
+
+    const sizes = {
+
+      us: {
+
+        single: {
+          mattress: "99 x 190 cm",
+          duvet: "173 x 218 cm"
+        },
+
+        twin: {
+          mattress: "99 x 190 cm",
+          duvet: "173 x 218 cm"
+        },
+
+        double: {
+          mattress: "137 x 190 cm",
+          duvet: "203 x 229 cm"
+        },
+
+        queen: {
+          mattress: "152 x 203 cm",
+          duvet: "229 x 229 cm"
+        },
+
+        king: {
+          mattress: "193 x 203 cm",
+          duvet: "264 x 229 cm"
+        }
+      },
+
+      uk: {
+
+        single: {
+          mattress: "90 x 190 cm",
+          duvet: "135 x 200 cm"
+        },
+
+        twin: {
+          mattress: "90 x 190 cm",
+          duvet: "135 x 200 cm"
+        },
+
+        double: {
+          mattress: "135 x 190 cm",
+          duvet: "200 x 200 cm"
+        },
+
+        queen: {
+          mattress: "150 x 200 cm",
+          duvet: "230 x 220 cm"
+        },
+
+        king: {
+          mattress: "180 x 200 cm",
+          duvet: "260 x 220 cm"
+        }
+      },
+
+      eu: {
+
+        single: {
+          mattress: "90 x 200 cm",
+          duvet: "140 x 200 cm"
+        },
+
+        twin: {
+          mattress: "90 x 200 cm",
+          duvet: "140 x 200 cm"
+        },
+
+        double: {
+          mattress: "140 x 200 cm",
+          duvet: "200 x 200 cm"
+        },
+
+        queen: {
+          mattress: "160 x 200 cm",
+          duvet: "240 x 220 cm"
+        },
+
+        king: {
+          mattress: "180 x 200 cm",
+          duvet: "260 x 240 cm"
+        }
+      },
+
+      asia: {
+
+        single: {
+          mattress: "100 x 200 cm",
+          duvet: "150 x 210 cm"
+        },
+
+        twin: {
+          mattress: "100 x 200 cm",
+          duvet: "150 x 210 cm"
+        },
+
+        double: {
+          mattress: "140 x 200 cm",
+          duvet: "180 x 220 cm"
+        },
+
+        queen: {
+          mattress: "160 x 200 cm",
+          duvet: "220 x 240 cm"
+        },
+
+        king: {
+          mattress: "180 x 200 cm",
+          duvet: "240 x 260 cm"
+        }
+      }
+
+    };
+
+    dimensions =
+      sizes[region][bedSize].mattress;
+
+    duvet =
+      sizes[region][bedSize].duvet;
+
+    document
+      .getElementById("resultBox")
+      .classList.remove("d-none");
+
+    document
+      .getElementById("resultText")
+      .innerHTML = `
+      <p>
+        <strong>Bed Size:</strong>
+        ${bedSize.charAt(0).toUpperCase() + bedSize.slice(1)}
+      </p>
+
+      <p>
+        <strong>Region:</strong>
+        ${region.toUpperCase()}
+      </p>
+
+      <p>
+        <strong>Recommended Mattress Size:</strong>
+        ${dimensions}
+      </p>
+
+      <p>
+        <strong>Recommended Duvet Size:</strong>
+        ${duvet}
+      </p>
+
+      <p class="mb-0 text-muted">
+        Bedding dimensions may vary slightly
+        between manufacturers and brands.
+      </p>
+    `;
+  }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Bedding Size Converter",
+    "url": "{{ page.url | absolute_url }}",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All"
+  }
+</script>

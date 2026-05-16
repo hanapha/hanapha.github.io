@@ -1,0 +1,294 @@
+---
+layout: default
+title: Candle Size Converter
+description: Convert candle sizes and find recommended candle dimensions.
+permalink: /converters/candle-size-converter/
+---
+
+<p class="text-muted mb-4">
+  Convert candle dimensions and find suitable candle sizes
+  for interior decoration and table styling.
+</p>
+
+<div class="card border-0 shadow-none bg-light rounded-4">
+
+  <div class="card-body p-4">
+
+    <!-- CANDLE TYPE -->
+    <div class="mb-3">
+
+      <label class="form-label fw-semibold">
+        Candle Type
+      </label>
+
+      <select id="candleType" class="form-select form-select-lg">
+
+        <option value="pillar">
+          Pillar Candle
+        </option>
+
+        <option value="votive">
+          Votive Candle
+        </option>
+
+        <option value="taper">
+          Taper Candle
+        </option>
+
+        <option value="jar">
+          Jar Candle
+        </option>
+
+      </select>
+
+    </div>
+
+    <!-- DIAMETER -->
+    <div class="mb-3">
+
+      <label class="form-label fw-semibold">
+        Candle Diameter
+      </label>
+
+      <div class="input-group input-group-lg">
+
+        <input type="number" id="diameter" class="form-control" placeholder="Example: 8">
+
+        <span class="input-group-text">
+          cm
+        </span>
+
+      </div>
+
+    </div>
+
+    <!-- HEIGHT -->
+    <div class="mb-4">
+
+      <label class="form-label fw-semibold">
+        Candle Height
+      </label>
+
+      <div class="input-group input-group-lg">
+
+        <input type="number" id="height" class="form-control" placeholder="Example: 15">
+
+        <span class="input-group-text">
+          cm
+        </span>
+
+      </div>
+
+    </div>
+
+    <!-- BUTTON -->
+    <button class="btn btn-dark btn-lg w-100" onclick="convertCandleSize()">
+
+      Convert Candle Size
+
+    </button>
+
+    <!-- RESULT -->
+    <div id="resultBox" class="alert alert-light border mt-4 d-none">
+
+      <h5 class="fw-bold mb-3">
+        Candle Size Information
+      </h5>
+
+      <div id="resultText"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- TIPS -->
+<div class="card border-0 shadow-none bg-light rounded-4 mt-4">
+
+  <div class="card-body p-4">
+
+    <h4 class="fw-bold mb-3">
+      Candle Styling Tips
+    </h4>
+
+    <ul class="mb-0">
+      <li>Large candles create stronger focal points.</li>
+      <li>Taper candles work well for dining tables.</li>
+      <li>Use grouped candles for layered decor styling.</li>
+      <li>Neutral candle colors fit most interiors.</li>
+    </ul>
+
+  </div>
+
+</div>
+
+<!-- FAQ -->
+<div class="card border-0 shadow-none bg-light rounded-4 mt-4">
+
+  <div class="card-body p-4">
+
+    <h4 class="fw-bold mb-3">
+      FAQ
+    </h4>
+
+    <h6 class="fw-semibold">
+      What is the ideal candle size?
+    </h6>
+
+    <p class="text-muted">
+      Candle size depends on table dimensions,
+      room scale, and decoration style.
+    </p>
+
+    <h6 class="fw-semibold">
+      Are larger candles better for decor?
+    </h6>
+
+    <p class="text-muted mb-0">
+      Larger candles create more visual impact,
+      while smaller candles work well for layered styling.
+    </p>
+
+  </div>
+
+</div>
+
+<script>
+  function convertCandleSize() {
+
+    let candleType =
+      document.getElementById("candleType").value;
+
+    let diameter = parseFloat(
+      document.getElementById("diameter").value
+    );
+
+    let height = parseFloat(
+      document.getElementById("height").value
+    );
+
+    if (
+      isNaN(diameter) ||
+      isNaN(height) ||
+      diameter <= 0 ||
+      height <= 0
+    ) {
+
+      alert("Please enter valid candle dimensions");
+      return;
+    }
+
+    // INCH CONVERSION
+
+    let diameterInch =
+      diameter / 2.54;
+
+    let heightInch =
+      height / 2.54;
+
+    // STYLE CATEGORY
+
+    let sizeCategory = "";
+
+    let volume =
+      diameter * height;
+
+    if (volume < 100) {
+
+      sizeCategory =
+        "Small Decorative Candle";
+
+    } else if (volume < 300) {
+
+      sizeCategory =
+        "Medium Accent Candle";
+
+    } else {
+
+      sizeCategory =
+        "Large Statement Candle";
+    }
+
+    // TYPE RECOMMENDATION
+
+    let recommendation = "";
+
+    switch (candleType) {
+
+      case "pillar":
+
+        recommendation =
+          "Ideal for coffee tables and shelf decoration.";
+
+        break;
+
+      case "votive":
+
+        recommendation =
+          "Perfect for grouped decorative arrangements.";
+
+        break;
+
+      case "taper":
+
+        recommendation =
+          "Best suited for dining table centerpieces.";
+
+        break;
+
+      case "jar":
+
+        recommendation =
+          "Excellent for cozy and modern interiors.";
+
+        break;
+    }
+
+    document
+      .getElementById("resultBox")
+      .classList.remove("d-none");
+
+    document
+      .getElementById("resultText")
+      .innerHTML = `
+      <p>
+        <strong>Candle Type:</strong>
+        ${candleType}
+      </p>
+
+      <p>
+        <strong>Diameter:</strong>
+        ${diameter.toFixed(1)} cm
+        (${diameterInch.toFixed(1)} inches)
+      </p>
+
+      <p>
+        <strong>Height:</strong>
+        ${height.toFixed(1)} cm
+        (${heightInch.toFixed(1)} inches)
+      </p>
+
+      <p>
+        <strong>Size Category:</strong>
+        ${sizeCategory}
+      </p>
+
+      <p class="mb-0 text-muted">
+        ${recommendation}
+      </p>
+    `;
+  }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Candle Size Converter",
+    "url": "{{ page.url | absolute_url }}",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All"
+  }
+</script>

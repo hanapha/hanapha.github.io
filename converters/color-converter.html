@@ -1,0 +1,250 @@
+---
+layout: default
+title: Color Converter
+description: Convert colors between HEX, RGB, HSL, and CMYK formats for interior design and digital projects.
+permalink: /converters/color-converter/
+---
+
+<p class="text-muted mb-4">
+  Convert color codes between HEX, RGB, and HSL formats
+  for interior design, decoration, and creative projects.
+</p>
+
+<div class="card border-0 shadow-none bg-light rounded-4">
+  <div class="card-body p-4">
+
+    <!-- HEX INPUT -->
+    <div class="mb-4">
+      <label class="form-label fw-semibold">
+        HEX Color
+      </label>
+
+      <div class="input-group input-group-lg">
+
+        <span class="input-group-text">
+          #
+        </span>
+
+        <input type="text" id="hexInput" class="form-control" placeholder="Example: ffcc00">
+
+      </div>
+    </div>
+
+    <!-- BUTTON -->
+    <button class="btn btn-dark btn-lg w-100" onclick="convertColor()">
+      Convert Color
+    </button>
+
+    <!-- RESULT -->
+    <div id="resultBox" class="d-none mt-4">
+
+      <div class="card border-0 shadow-none bg-light rounded-4 overflow-hidden">
+
+        <!-- COLOR PREVIEW -->
+        <div id="colorPreview" style="
+                  height:180px;
+                  transition:0.3s;
+                ">
+        </div>
+
+        <div class="card-body p-4">
+
+          <h4 class="fw-bold mb-3">
+            Color Information
+          </h4>
+
+          <div class="mb-2">
+            <strong>HEX:</strong>
+            <span id="hexResult"></span>
+          </div>
+
+          <div class="mb-2">
+            <strong>RGB:</strong>
+            <span id="rgbResult"></span>
+          </div>
+
+          <div class="mb-0">
+            <strong>HSL:</strong>
+            <span id="hslResult"></span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- TIPS -->
+<div class="card border-0 shadow-none bg-light rounded-4 mt-4">
+  <div class="card-body p-4">
+
+    <h4 class="fw-bold mb-3">
+      Color Design Tips
+    </h4>
+
+    <ul class="mb-0">
+      <li>Warm colors create cozy interiors.</li>
+      <li>Neutral colors fit modern minimalist spaces.</li>
+      <li>Dark tones add depth and luxury.</li>
+      <li>Light colors can make rooms feel larger.</li>
+    </ul>
+
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="card border-0 shadow-none bg-light rounded-4 mt-4">
+  <div class="card-body p-4">
+
+    <h4 class="fw-bold mb-3">
+      FAQ
+    </h4>
+
+    <h6 class="fw-semibold">
+      What is HEX color format?
+    </h6>
+
+    <p class="text-muted">
+      HEX is a six-digit color code commonly used
+      for websites and digital design.
+    </p>
+
+    <h6 class="fw-semibold">
+      Why convert colors?
+    </h6>
+
+    <p class="text-muted mb-0">
+      Different design tools and applications
+      use different color formats.
+    </p>
+
+  </div>
+</div>
+
+
+
+<script>
+  function convertColor() {
+
+    let hex =
+      document.getElementById("hexInput")
+      .value
+      .replace("#", "")
+      .trim();
+
+    // VALIDATION
+
+    if (!/^[0-9A-Fa-f]{6}$/.test(hex)) {
+
+      alert("Please enter a valid 6-digit HEX color");
+      return;
+    }
+
+    // RGB
+
+    let r =
+      parseInt(hex.substring(0, 2), 16);
+
+    let g =
+      parseInt(hex.substring(2, 4), 16);
+
+    let b =
+      parseInt(hex.substring(4, 6), 16);
+
+    // HSL CONVERSION
+
+    let rNorm = r / 255;
+    let gNorm = g / 255;
+    let bNorm = b / 255;
+
+    let max =
+      Math.max(rNorm, gNorm, bNorm);
+
+    let min =
+      Math.min(rNorm, gNorm, bNorm);
+
+    let h, s, l;
+
+    l = (max + min) / 2;
+
+    if (max === min) {
+
+      h = s = 0;
+
+    } else {
+
+      let d = max - min;
+
+      s =
+        l > 0.5 ?
+        d / (2 - max - min) :
+        d / (max + min);
+
+      switch (max) {
+
+        case rNorm:
+          h =
+            (gNorm - bNorm) / d +
+            (gNorm < bNorm ? 6 : 0);
+          break;
+
+        case gNorm:
+          h =
+            (bNorm - rNorm) / d + 2;
+          break;
+
+        case bNorm:
+          h =
+            (rNorm - gNorm) / d + 4;
+          break;
+      }
+
+      h /= 6;
+    }
+
+    h = Math.round(h * 360);
+    s = Math.round(s * 100);
+    l = Math.round(l * 100);
+
+    // SHOW RESULT
+
+    document
+      .getElementById("resultBox")
+      .classList.remove("d-none");
+
+    document
+      .getElementById("colorPreview")
+      .style.background =
+      "#" + hex;
+
+    document
+      .getElementById("hexResult")
+      .innerText =
+      "#" + hex.toUpperCase();
+
+    document
+      .getElementById("rgbResult")
+      .innerText =
+      `rgb(${r}, ${g}, ${b})`;
+
+    document
+      .getElementById("hslResult")
+      .innerText =
+      `hsl(${h}, ${s}%, ${l}%)`;
+  }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Color Converter",
+    "url": "{{ page.url | absolute_url }}",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All"
+  }
+</script>

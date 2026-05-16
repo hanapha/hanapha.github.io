@@ -1,0 +1,352 @@
+---
+layout: default
+title: Rug Size Visualizer
+description: Visualize recommended rug sizes based on room type, furniture arrangement, and room dimensions.
+permalink: /converters/rug-size-visualizer/
+---
+
+
+<p class="text-muted mb-4">
+  Preview recommended rug sizes and placement
+  for different room layouts and interior styles.
+</p>
+
+<div class="card border-0 shadow-none bg-light rounded-4">
+
+  <div class="card-body p-4">
+
+    <!-- ROOM TYPE -->
+    <div class="mb-3">
+
+      <label class="form-label fw-semibold">
+        Room Type
+      </label>
+
+      <select id="roomType" class="form-select form-select-lg">
+
+        <option value="living">
+          Living Room
+        </option>
+
+        <option value="bedroom">
+          Bedroom
+        </option>
+
+        <option value="dining">
+          Dining Room
+        </option>
+
+        <option value="office">
+          Home Office
+        </option>
+
+      </select>
+
+    </div>
+
+    <!-- RUG SIZE -->
+    <div class="mb-4">
+
+      <label class="form-label fw-semibold">
+        Rug Size
+      </label>
+
+      <select id="rugSize" class="form-select form-select-lg">
+
+        <option value="small">
+          Small Rug
+        </option>
+
+        <option value="medium">
+          Medium Rug
+        </option>
+
+        <option value="large">
+          Large Rug
+        </option>
+
+      </select>
+
+    </div>
+
+    <!-- BUTTON -->
+    <button class="btn btn-dark btn-lg w-100" onclick="generateRugPreview()">
+
+      Visualize Rug Placement
+
+    </button>
+
+    <!-- RESULT -->
+    <div id="resultBox" class="d-none mt-4">
+
+      <div class="card border-0 shadow-none bg-light rounded-4 overflow-hidden">
+
+        <!-- ROOM -->
+        <div id="roomPreview" style="
+                  height:420px;
+                  background:#f3f3f3;
+                  position:relative;
+                ">
+
+          <!-- RUG -->
+          <div id="rug" style="
+                    position:absolute;
+                    border-radius:16px;
+                    background:#b68d5c;
+                    transition:0.3s;
+                  ">
+          </div>
+
+          <!-- FURNITURE -->
+          <div id="furniture1" style="
+                    position:absolute;
+                    background:#7d7d7d;
+                    border-radius:12px;
+                  ">
+          </div>
+
+          <div id="furniture2" style="
+                    position:absolute;
+                    background:#7d7d7d;
+                    border-radius:12px;
+                  ">
+          </div>
+
+          <div id="furniture3" style="
+                    position:absolute;
+                    background:#7d7d7d;
+                    border-radius:12px;
+                  ">
+          </div>
+
+        </div>
+
+        <div class="card-body p-4">
+
+          <h4 id="resultTitle" class="fw-bold mb-3">
+          </h4>
+
+          <p id="resultDescription" class="text-muted mb-0">
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- TIPS -->
+<div class="card border-0 shadow-none bg-light rounded-4 mt-4">
+
+  <div class="card-body p-4">
+
+    <h4 class="fw-bold mb-3">
+      Rug Placement Tips
+    </h4>
+
+    <ul class="mb-0">
+      <li>Large rugs help rooms feel more connected.</li>
+      <li>Leave visible floor space around rug edges.</li>
+      <li>Dining chairs should stay on the rug when pulled out.</li>
+      <li>Bedroom rugs should extend beyond the bed frame.</li>
+    </ul>
+
+  </div>
+
+</div>
+
+<script>
+  function generateRugPreview() {
+
+    let roomType =
+      document.getElementById("roomType").value;
+
+    let rugSize =
+      document.getElementById("rugSize").value;
+
+    let rug =
+      document.getElementById("rug");
+
+    let furniture1 =
+      document.getElementById("furniture1");
+
+    let furniture2 =
+      document.getElementById("furniture2");
+
+    let furniture3 =
+      document.getElementById("furniture3");
+
+    let title = "";
+    let description = "";
+
+    // RESET
+
+    rug.style.display = "block";
+
+    // ROOM LAYOUTS
+
+    if (roomType === "living") {
+
+      furniture1.style.cssText += `
+      width:180px;
+      height:80px;
+      left:80px;
+      top:150px;
+    `;
+
+      furniture2.style.cssText += `
+      width:100px;
+      height:60px;
+      left:290px;
+      top:160px;
+    `;
+
+      furniture3.style.cssText += `
+      width:80px;
+      height:80px;
+      left:430px;
+      top:150px;
+    `;
+
+      title =
+        "Living Room Rug Layout";
+
+      description =
+        "Recommended rug placement under the seating area for balanced proportions.";
+    } else if (roomType === "bedroom") {
+
+      furniture1.style.cssText += `
+      width:220px;
+      height:120px;
+      left:170px;
+      top:100px;
+    `;
+
+      furniture2.style.cssText += `
+      width:70px;
+      height:70px;
+      left:90px;
+      top:120px;
+    `;
+
+      furniture3.style.display = "none";
+
+      title =
+        "Bedroom Rug Layout";
+
+      description =
+        "Bedroom rug extends around the bed area for added comfort.";
+    } else if (roomType === "dining") {
+
+      furniture1.style.cssText += `
+      width:180px;
+      height:180px;
+      left:190px;
+      top:110px;
+    `;
+
+      furniture2.style.cssText += `
+      width:70px;
+      height:70px;
+      left:120px;
+      top:160px;
+    `;
+
+      furniture3.style.cssText += `
+      width:70px;
+      height:70px;
+      left:400px;
+      top:160px;
+    `;
+
+      title =
+        "Dining Room Rug Layout";
+
+      description =
+        "Dining rug sized large enough for table and chairs.";
+    } else {
+
+      furniture1.style.cssText += `
+      width:220px;
+      height:70px;
+      left:150px;
+      top:80px;
+    `;
+
+      furniture2.style.cssText += `
+      width:90px;
+      height:90px;
+      left:220px;
+      top:220px;
+    `;
+
+      furniture3.style.display = "none";
+
+      title =
+        "Office Rug Layout";
+
+      description =
+        "Workspace rug placement improves comfort and room aesthetics.";
+    }
+
+    // RUG SIZE
+
+    switch (rugSize) {
+
+      case "small":
+
+        rug.style.width = "220px";
+        rug.style.height = "120px";
+        rug.style.left = "180px";
+        rug.style.top = "160px";
+
+        break;
+
+      case "medium":
+
+        rug.style.width = "320px";
+        rug.style.height = "180px";
+        rug.style.left = "130px";
+        rug.style.top = "130px";
+
+        break;
+
+      case "large":
+
+        rug.style.width = "430px";
+        rug.style.height = "240px";
+        rug.style.left = "80px";
+        rug.style.top = "100px";
+
+        break;
+    }
+
+    document
+      .getElementById("resultBox")
+      .classList.remove("d-none");
+
+    document
+      .getElementById("resultTitle")
+      .innerText = title;
+
+    document
+      .getElementById("resultDescription")
+      .innerText = description;
+  }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Rug Size Visualizer",
+    "url": "{{ page.url | absolute_url }}",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "All"
+  }
+</script>

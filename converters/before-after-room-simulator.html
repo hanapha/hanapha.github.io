@@ -1,0 +1,309 @@
+---
+layout: default
+title: Before After Room Simulator
+description: Simulate before and after room makeover ideas with different interior styles and decoration themes.
+permalink: /converters/before-after-room-simulator/
+---
+
+
+<p class="text-muted mb-4">
+  Preview a simple room transformation by selecting
+  different interior styles and makeover themes.
+</p>
+
+<div class="card border-0 shadow-none bg-light rounded-4">
+  <div class="card-body p-4">
+
+    <!-- ROOM TYPE -->
+    <div class="mb-3">
+      <label class="form-label fw-semibold">
+        Room Type
+      </label>
+
+      <select id="roomType" class="form-select form-select-lg">
+
+        <option value="living">
+          Living Room
+        </option>
+
+        <option value="bedroom">
+          Bedroom
+        </option>
+
+        <option value="office">
+          Home Office
+        </option>
+
+        <option value="kitchen">
+          Kitchen
+        </option>
+
+      </select>
+    </div>
+
+    <!-- STYLE -->
+    <div class="mb-4">
+      <label class="form-label fw-semibold">
+        New Interior Style
+      </label>
+
+      <select id="style" class="form-select form-select-lg">
+
+        <option value="modern">
+          Modern
+        </option>
+
+        <option value="minimalist">
+          Minimalist
+        </option>
+
+        <option value="scandinavian">
+          Scandinavian
+        </option>
+
+        <option value="industrial">
+          Industrial
+        </option>
+
+        <option value="luxury">
+          Luxury
+        </option>
+
+      </select>
+    </div>
+
+    <!-- BUTTON -->
+    <button class="btn btn-dark btn-lg w-100" onclick="simulateRoom()">
+      Generate Before & After
+    </button>
+
+    <!-- RESULT -->
+    <div id="resultBox" class="d-none mt-4">
+
+      <div class="row g-4">
+
+        <!-- BEFORE -->
+        <div class="col-md-6">
+
+          <div class="card border-0 shadow-none bg-light rounded-4 overflow-hidden">
+
+            <div style="
+                      height:260px;
+                      background:#d8d8d8;
+                      position:relative;
+                    ">
+
+              <div style="
+                        position:absolute;
+                        bottom:15px;
+                        left:15px;
+                        background:#000;
+                        color:#fff;
+                        padding:6px 12px;
+                        border-radius:999px;
+                        font-size:14px;
+                      ">
+                BEFORE
+              </div>
+
+            </div>
+
+            <div class="card-body">
+
+              <h5 class="fw-bold">
+                Original Room
+              </h5>
+
+              <p class="text-muted mb-0">
+                Standard room appearance before makeover.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- AFTER -->
+        <div class="col-md-6">
+
+          <div class="card border-0 shadow-none bg-light rounded-4 overflow-hidden">
+
+            <div id="afterPreview" style="
+                      height:260px;
+                      position:relative;
+                      transition:0.3s;
+                    ">
+
+              <div style="
+                        position:absolute;
+                        bottom:15px;
+                        left:15px;
+                        background:#000;
+                        color:#fff;
+                        padding:6px 12px;
+                        border-radius:999px;
+                        font-size:14px;
+                      ">
+                AFTER
+              </div>
+
+            </div>
+
+            <div class="card-body">
+
+              <h5 id="afterTitle" class="fw-bold">
+              </h5>
+
+              <p id="afterDescription" class="text-muted mb-0">
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- INFO -->
+<div class="card border-0 shadow-none bg-light rounded-4 mt-4">
+  <div class="card-body p-4">
+
+    <h4 class="fw-bold mb-3">
+      Interior Design Tips
+    </h4>
+
+    <ul class="mb-0">
+      <li>Neutral palettes create timeless spaces.</li>
+      <li>Natural lighting improves room appearance.</li>
+      <li>Minimalist interiors help rooms feel larger.</li>
+      <li>Textures and accent walls add visual depth.</li>
+    </ul>
+
+  </div>
+</div>
+
+<script>
+  function simulateRoom() {
+
+    let roomType =
+      document.getElementById("roomType").value;
+
+    let style =
+      document.getElementById("style").value;
+
+    let bg = "";
+    let title = "";
+    let description = "";
+
+    switch (style) {
+
+      case "modern":
+
+        bg =
+          "linear-gradient(135deg,#d9d9d9,#ffffff)";
+
+        title =
+          "Modern " + capitalize(roomType);
+
+        description =
+          "Clean lines, neutral tones, and modern furniture create a sleek contemporary atmosphere.";
+
+        break;
+
+      case "minimalist":
+
+        bg =
+          "linear-gradient(135deg,#f5f5f5,#dcdcdc)";
+
+        title =
+          "Minimalist " + capitalize(roomType);
+
+        description =
+          "Simple furniture and soft neutral colors create a calm and spacious interior.";
+
+        break;
+
+      case "scandinavian":
+
+        bg =
+          "linear-gradient(135deg,#f4eadf,#ffffff)";
+
+        title =
+          "Scandinavian " + capitalize(roomType);
+
+        description =
+          "Warm wood textures and bright neutral colors create a cozy Nordic-inspired room.";
+
+        break;
+
+      case "industrial":
+
+        bg =
+          "linear-gradient(135deg,#4b4b4b,#8a8a8a)";
+
+        title =
+          "Industrial " + capitalize(roomType);
+
+        description =
+          "Concrete textures and dark accents deliver a bold urban loft appearance.";
+
+        break;
+
+      case "luxury":
+
+        bg =
+          "linear-gradient(135deg,#1f1f1f,#4a4a4a)";
+
+        title =
+          "Luxury " + capitalize(roomType);
+
+        description =
+          "Elegant finishes and premium tones create a sophisticated luxury interior.";
+
+        break;
+    }
+
+    document
+      .getElementById("resultBox")
+      .classList.remove("d-none");
+
+    document
+      .getElementById("afterPreview")
+      .style.background = bg;
+
+    document
+      .getElementById("afterTitle")
+      .innerText = title;
+
+    document
+      .getElementById("afterDescription")
+      .innerText = description;
+  }
+
+  // CAPITALIZE
+
+  function capitalize(text) {
+
+    return text.charAt(0).toUpperCase() +
+      text.slice(1);
+  }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Before After Room Simulator",
+    "url": "{{ page.url | absolute_url }}",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "All"
+  }
+</script>

@@ -1,0 +1,197 @@
+---
+layout: default
+title: Pillow Arrangement Generator
+description: Generate sofa and bed pillow arrangements based on furniture type and interior style.
+permalink: /converters/pillow-arrangement-generator/
+---
+
+
+<p class="text-muted mb-4">
+  Create simple pillow layout ideas for sofas and beds
+  based on style and arrangement preference.
+</p>
+
+<div class="card border-0 shadow-none bg-light rounded-4">
+
+  <div class="card-body p-4">
+
+    <!-- FURNITURE TYPE -->
+    <div class="mb-3">
+
+      <label class="form-label fw-semibold">
+        Furniture Type
+      </label>
+
+      <select id="furnitureType" class="form-select form-select-lg">
+
+        <option value="sofa">Sofa</option>
+        <option value="bed">Bed</option>
+
+      </select>
+
+    </div>
+
+    <!-- STYLE -->
+    <div class="mb-3">
+
+      <label class="form-label fw-semibold">
+        Interior Style
+      </label>
+
+      <select id="style" class="form-select form-select-lg">
+
+        <option value="minimal">Minimalist</option>
+        <option value="modern">Modern</option>
+        <option value="luxury">Luxury</option>
+        <option value="cozy">Cozy</option>
+
+      </select>
+
+    </div>
+
+    <!-- BUTTON -->
+    <button class="btn btn-dark btn-lg w-100" onclick="generatePillows()">
+      Generate Arrangement
+    </button>
+
+    <!-- RESULT -->
+    <div id="resultBox" class="d-none mt-4">
+
+      <div class="card border-0 shadow-none bg-light rounded-4 overflow-hidden">
+
+        <!-- VISUAL AREA -->
+        <div id="preview" style="height:420px; background:#f3f3f3; position:relative;">
+
+          <!-- FURNITURE -->
+          <div id="base" style="
+                  position:absolute;
+                  left:50%;
+                  transform:translateX(-50%);
+                  bottom:60px;
+                  background:#7d7d7d;
+                  border-radius:16px;
+                "></div>
+
+          <!-- PILLOWS -->
+          <div id="p1" class="pillow"></div>
+          <div id="p2" class="pillow"></div>
+          <div id="p3" class="pillow"></div>
+          <div id="p4" class="pillow"></div>
+          <div id="p5" class="pillow"></div>
+
+        </div>
+
+        <div class="card-body p-4">
+
+          <h4 id="title" class="fw-bold mb-2"></h4>
+          <p id="desc" class="text-muted mb-0"></p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<style>
+  .pillow {
+    position: absolute;
+    background: #b38b59;
+    border-radius: 14px;
+    display: none;
+  }
+</style>
+
+<script>
+  function resetPillows() {
+    for (let i = 1; i <= 5; i++) {
+      const p = document.getElementById("p" + i);
+      p.style.display = "none";
+      p.style.width = "50px";
+      p.style.height = "50px";
+    }
+  }
+
+  function generatePillows() {
+
+    const type = document.getElementById("furnitureType").value;
+    const style = document.getElementById("style").value;
+
+    const base = document.getElementById("base");
+
+    resetPillows();
+
+    let title = "";
+    let desc = "";
+
+    // BASE SIZE
+    if (type === "sofa") {
+      base.style.width = "320px";
+      base.style.height = "90px";
+      base.style.bottom = "70px";
+    } else {
+      base.style.width = "260px";
+      base.style.height = "140px";
+      base.style.bottom = "70px";
+    }
+
+    // PILLOW PATTERN
+    if (type === "sofa") {
+
+      document.getElementById("p1").style = "display:block; width:60px; height:60px; left:35%; top:190px;";
+      document.getElementById("p2").style = "display:block; width:60px; height:60px; left:45%; top:190px;";
+      document.getElementById("p3").style = "display:block; width:60px; height:60px; left:55%; top:190px;";
+
+      if (style === "luxury") {
+        document.getElementById("p4").style = "display:block; width:70px; height:70px; left:65%; top:180px;";
+      }
+
+      title = "Sofa Pillow Arrangement";
+      desc = "Balanced 2–3 pillow layout for sofa seating with optional accent pillow.";
+
+    } else {
+
+      document.getElementById("p1").style = "display:block; width:70px; height:70px; left:38%; top:140px;";
+      document.getElementById("p2").style = "display:block; width:70px; height:70px; left:52%; top:140px;";
+
+      if (style === "cozy") {
+        document.getElementById("p3").style = "display:block; width:60px; height:60px; left:45%; top:200px;";
+        document.getElementById("p4").style = "display:block; width:60px; height:60px; left:55%; top:200px;";
+      }
+
+      title = "Bed Pillow Arrangement";
+      desc = "Layered pillow setup for a comfortable and aesthetic bed design.";
+    }
+
+    // STYLE COLOR
+    const pillows = document.querySelectorAll(".pillow");
+
+    pillows.forEach(p => {
+      if (style === "minimal") p.style.background = "#c9c9c9";
+      if (style === "modern") p.style.background = "#8c8c8c";
+      if (style === "luxury") p.style.background = "#4b4b4b";
+      if (style === "cozy") p.style.background = "#c49a6c";
+    });
+
+    document.getElementById("resultBox").classList.remove("d-none");
+    document.getElementById("title").innerText = title;
+    document.getElementById("desc").innerText = desc;
+  }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Pillow Arrangement Generator",
+    "url": "{{ page.url | absolute_url }}",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "All"
+  }
+</script>

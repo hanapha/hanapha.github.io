@@ -1,0 +1,401 @@
+---
+layout: default
+title: Room Layout Preview
+description: Preview simple room layouts and furniture arrangements based on room type and interior style.
+permalink: /converters/room-layout-preview/
+---
+
+<p class="text-muted mb-4">
+  Generate a simple room layout preview
+  with furniture arrangement recommendations.
+</p>
+
+<div class="card border-0 shadow-none bg-light rounded-4">
+
+  <div class="card-body p-4">
+
+    <!-- ROOM TYPE -->
+    <div class="mb-3">
+
+      <label class="form-label fw-semibold">
+        Room Type
+      </label>
+
+      <select id="roomType" class="form-select form-select-lg">
+
+        <option value="living">
+          Living Room
+        </option>
+
+        <option value="bedroom">
+          Bedroom
+        </option>
+
+        <option value="office">
+          Home Office
+        </option>
+
+        <option value="dining">
+          Dining Room
+        </option>
+
+      </select>
+
+    </div>
+
+    <!-- STYLE -->
+    <div class="mb-4">
+
+      <label class="form-label fw-semibold">
+        Interior Style
+      </label>
+
+      <select id="style" class="form-select form-select-lg">
+
+        <option value="minimal">
+          Minimalist
+        </option>
+
+        <option value="modern">
+          Modern
+        </option>
+
+        <option value="luxury">
+          Luxury
+        </option>
+
+        <option value="scandinavian">
+          Scandinavian
+        </option>
+
+      </select>
+
+    </div>
+
+    <!-- BUTTON -->
+    <button class="btn btn-dark btn-lg w-100" onclick="generateRoomPreview()">
+
+      Generate Room Layout
+
+    </button>
+
+    <!-- RESULT -->
+    <div id="resultBox" class="d-none mt-4">
+
+      <div class="card border-0 shadow-none bg-light rounded-4 overflow-hidden">
+
+        <!-- ROOM PREVIEW -->
+        <div id="roomPreview" style="
+                  height:420px;
+                  background:#f5f5f5;
+                  position:relative;
+                  transition:0.3s;
+                ">
+
+          <!-- ITEM 1 -->
+          <div id="item1" style="
+                    position:absolute;
+                    border-radius:12px;
+                    display:none;
+                  ">
+          </div>
+
+          <!-- ITEM 2 -->
+          <div id="item2" style="
+                    position:absolute;
+                    border-radius:12px;
+                    display:none;
+                  ">
+          </div>
+
+          <!-- ITEM 3 -->
+          <div id="item3" style="
+                    position:absolute;
+                    border-radius:12px;
+                    display:none;
+                  ">
+          </div>
+
+          <!-- ITEM 4 -->
+          <div id="item4" style="
+                    position:absolute;
+                    border-radius:12px;
+                    display:none;
+                  ">
+          </div>
+
+        </div>
+
+        <div class="card-body p-4">
+
+          <h4 id="layoutTitle" class="fw-bold mb-3">
+          </h4>
+
+          <p id="layoutDescription" class="text-muted mb-0">
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- TIPS -->
+<div class="card border-0 shadow-none bg-light rounded-4 mt-4">
+
+  <div class="card-body p-4">
+
+    <h4 class="fw-bold mb-3">
+      Room Planning Tips
+    </h4>
+
+    <ul class="mb-0">
+      <li>Keep walking paths clear for comfort.</li>
+      <li>Use large furniture as the room focal point.</li>
+      <li>Natural lighting improves room atmosphere.</li>
+      <li>Balance furniture size with room proportions.</li>
+    </ul>
+
+  </div>
+
+</div>
+
+
+<script>
+  function generateRoomPreview() {
+
+    let roomType =
+      document.getElementById("roomType").value;
+
+    let style =
+      document.getElementById("style").value;
+
+    let roomPreview =
+      document.getElementById("roomPreview");
+
+    let items = [
+      document.getElementById("item1"),
+      document.getElementById("item2"),
+      document.getElementById("item3"),
+      document.getElementById("item4")
+    ];
+
+    // RESET
+
+    items.forEach(item => {
+
+      item.style.display = "block";
+      item.style.background = "#8c8c8c";
+      item.style.transform = "scale(1)";
+    });
+
+    let title = "";
+    let description = "";
+
+    // ROOM TYPES
+
+    if (roomType === "living") {
+
+      items[0].style.cssText += `
+      width:180px;
+      height:80px;
+      left:70px;
+      top:170px;
+    `;
+
+      items[1].style.cssText += `
+      width:120px;
+      height:60px;
+      left:280px;
+      top:180px;
+    `;
+
+      items[2].style.cssText += `
+      width:80px;
+      height:80px;
+      left:450px;
+      top:170px;
+    `;
+
+      items[3].style.display = "none";
+
+      title =
+        "Living Room Layout";
+
+      description =
+        "Comfortable sofa-centered living room arrangement.";
+    } else if (roomType === "bedroom") {
+
+      items[0].style.cssText += `
+      width:220px;
+      height:120px;
+      left:170px;
+      top:90px;
+    `;
+
+      items[1].style.cssText += `
+      width:70px;
+      height:70px;
+      left:90px;
+      top:120px;
+    `;
+
+      items[2].style.cssText += `
+      width:120px;
+      height:60px;
+      left:220px;
+      top:260px;
+    `;
+
+      items[3].style.display = "none";
+
+      title =
+        "Bedroom Layout";
+
+      description =
+        "Bed-centered arrangement with balanced furniture placement.";
+    } else if (roomType === "office") {
+
+      items[0].style.cssText += `
+      width:220px;
+      height:70px;
+      left:150px;
+      top:70px;
+    `;
+
+      items[1].style.cssText += `
+      width:90px;
+      height:90px;
+      left:220px;
+      top:190px;
+    `;
+
+      items[2].style.cssText += `
+      width:100px;
+      height:60px;
+      left:430px;
+      top:90px;
+    `;
+
+      items[3].style.display = "none";
+
+      title =
+        "Home Office Layout";
+
+      description =
+        "Functional workspace designed for comfort and productivity.";
+    } else {
+
+      items[0].style.cssText += `
+      width:180px;
+      height:180px;
+      left:190px;
+      top:110px;
+    `;
+
+      items[1].style.cssText += `
+      width:70px;
+      height:70px;
+      left:120px;
+      top:160px;
+    `;
+
+      items[2].style.cssText += `
+      width:70px;
+      height:70px;
+      left:390px;
+      top:160px;
+    `;
+
+      items[3].style.cssText += `
+      width:70px;
+      height:70px;
+      left:260px;
+      top:40px;
+    `;
+
+      title =
+        "Dining Room Layout";
+
+      description =
+        "Balanced dining area with centered table arrangement.";
+    }
+
+    // STYLE EFFECTS
+
+    switch (style) {
+
+      case "minimal":
+
+        roomPreview.style.background =
+          "#f5f5f5";
+
+        items.forEach(item => {
+          item.style.background = "#c7c7c7";
+        });
+
+        break;
+
+      case "modern":
+
+        roomPreview.style.background =
+          "#ededed";
+
+        items.forEach(item => {
+          item.style.background = "#8c8c8c";
+        });
+
+        break;
+
+      case "luxury":
+
+        roomPreview.style.background =
+          "#2f2f2f";
+
+        items.forEach(item => {
+          item.style.background = "#555";
+        });
+
+        break;
+
+      case "scandinavian":
+
+        roomPreview.style.background =
+          "#f4eadf";
+
+        items.forEach(item => {
+          item.style.background = "#b89b7a";
+        });
+
+        break;
+    }
+
+    document
+      .getElementById("resultBox")
+      .classList.remove("d-none");
+
+    document
+      .getElementById("layoutTitle")
+      .innerText = title;
+
+    document
+      .getElementById("layoutDescription")
+      .innerText = description;
+  }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Room Layout Preview",
+    "url": "{{ page.url | absolute_url }}",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "All"
+  }
+</script>

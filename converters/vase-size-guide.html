@@ -1,0 +1,170 @@
+---
+layout: default
+title: Vase Size Guide
+description: Find the ideal vase size based on flower type, stem length, and interior decor style.
+permalink: /converters/vase-size-guide/
+---
+
+<p class="text-muted mb-4">
+  Choose the perfect vase size for your flowers and home decor arrangement.
+</p>
+
+<div class="card border-0 shadow-sm rounded-4">
+
+  <div class="card-body p-4">
+
+    <!-- FLOWER TYPE -->
+    <div class="mb-3">
+
+      <label class="form-label fw-semibold">
+        Flower Type
+      </label>
+
+      <select id="flowerType" class="form-select form-select-lg">
+
+        <option value="roses">Roses</option>
+        <option value="tulips">Tulips</option>
+        <option value="sunflowers">Sunflowers</option>
+        <option value="mixed">Mixed Bouquet</option>
+        <option value="branches">Decor Branches</option>
+
+      </select>
+
+    </div>
+
+    <!-- STEM LENGTH -->
+    <div class="mb-3">
+
+      <label class="form-label fw-semibold">
+        Stem Length (cm)
+      </label>
+
+      <input type="number" id="stemLength" class="form-control form-control-lg" placeholder="Example: 40">
+
+    </div>
+
+    <!-- STYLE -->
+    <div class="mb-4">
+
+      <label class="form-label fw-semibold">
+        Vase Style
+      </label>
+
+      <select id="style" class="form-select form-select-lg">
+
+        <option value="minimal">Minimalist</option>
+        <option value="modern">Modern</option>
+        <option value="luxury">Luxury</option>
+        <option value="rustic">Rustic</option>
+
+      </select>
+
+    </div>
+
+    <!-- BUTTON -->
+    <button class="btn btn-dark btn-lg w-100" onclick="calculateVase()">
+      Get Vase Recommendation
+    </button>
+
+    <!-- RESULT -->
+    <div id="resultBox" class="alert alert-light border mt-4 d-none">
+
+      <h5 class="fw-bold mb-3">Recommended Vase Size</h5>
+      <div id="resultText"></div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- TIPS -->
+<div class="card border-0 shadow-sm rounded-4 mt-4">
+  <div class="card-body p-4">
+
+    <h4 class="fw-bold mb-3">Vase Styling Tips</h4>
+
+    <ul class="mb-0">
+      <li>Vase height should be 1/2 to 2/3 of flower stem length.</li>
+      <li>Wide vases suit mixed bouquets.</li>
+      <li>Thin vases work best for tulips and single stems.</li>
+      <li>Match vase style with interior design theme.</li>
+    </ul>
+
+  </div>
+</div>
+
+<script>
+  function calculateVase() {
+
+    const flowerType = document.getElementById("flowerType").value;
+    const stemLength = parseFloat(document.getElementById("stemLength").value);
+    const style = document.getElementById("style").value;
+
+    if (isNaN(stemLength) || stemLength <= 0) {
+      alert("Please enter a valid stem length");
+      return;
+    }
+
+    // base ratio depending on flower type
+    let ratio = 0.6;
+
+    switch (flowerType) {
+      case "roses":
+        ratio = 0.65;
+        break;
+      case "tulips":
+        ratio = 0.7;
+        break;
+      case "sunflowers":
+        ratio = 0.55;
+        break;
+      case "mixed":
+        ratio = 0.6;
+        break;
+      case "branches":
+        ratio = 0.75;
+        break;
+    }
+
+    let vaseHeight = stemLength * ratio;
+
+    // style adjustment
+    let note = "";
+
+    switch (style) {
+      case "minimal":
+        note = "Clean and simple vase design fits minimalist interiors.";
+        break;
+      case "modern":
+        note = "Sleek shapes with balanced proportions are recommended.";
+        break;
+      case "luxury":
+        note = "Tall glass or ceramic vases enhance luxury appearance.";
+        break;
+      case "rustic":
+        note = "Textured or earthy vases suit rustic home decor.";
+        break;
+    }
+
+    document.getElementById("resultBox").classList.remove("d-none");
+
+    document.getElementById("resultText").innerHTML = `
+    <p><strong>Flower Type:</strong> ${flowerType}</p>
+    <p><strong>Stem Length:</strong> ${stemLength} cm</p>
+    <p><strong>Recommended Vase Height:</strong> ${vaseHeight.toFixed(1)} cm</p>
+    <p class="mb-0 text-muted">${note}</p>
+  `;
+  }
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Vase Size Guide",
+    "url": "{{ page.url | absolute_url }}",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "All"
+  }
+</script>
